@@ -11,9 +11,17 @@ export const Wrapper = styled(Container)`
   background: linear-gradient(
     179.96deg,
     #82aab4 0.04%,
-    rgba(77, 185, 210, 0.604167) 24.95%,
-    rgba(210, 174, 82, 0) 51.29%
+    rgba(77, 185, 210, 0.604167) 12%,
+    rgba(210, 174, 82, 0) 50%
   );
+`;
+
+export const MenuContainer = styled(Container)`
+  flex-grow: 1;
+  padding: 2.5rem 0;
+  margin-top: 6rem;
+  border: 3px solid white;
+  background: #f6f0eb;
 `;
 
 export const HeroText = styled(Typography)`

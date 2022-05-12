@@ -4,3 +4,8 @@ export interface NavLink {
   underline: "none" | "hover" | "always" | undefined;
   content: string;
 }
+
+export interface MenuItemProps {
+  foodName: string;
+  description: string;
+}

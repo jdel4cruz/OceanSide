@@ -1,19 +1,12 @@
-import React from "react";
-import { styled } from "@mui/system";
-
-import { Breadcrumbs } from "@mui/material";
-
 //Interfaces
 import { NavLink } from "./interfaces";
 
 //Components
 import NavBar from "./Components/NavBar";
+import MenuGrid from "./Components/MenuGrid";
 
 //Styles
-import { Wrapper, HeroText } from "./App.styles";
-
-import AddAlarmIcon from "@mui/icons-material/AddAlarm";
-import AdbIcon from "@mui/icons-material/Adb";
+import { Wrapper, HeroText, MenuContainer } from "./App.styles";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
@@ -38,11 +31,30 @@ const topNavBar: NavLink[] = [
   },
 ];
 
+const foodNavBar: NavLink[] = [
+  {
+    path: "/food/breakfast",
+    color: "inherit",
+    underline: "none",
+    content: "Breakfast",
+  },
+  {
+    path: "/food/other",
+    color: "inherit",
+    underline: "none",
+    content: "Coffee/Beverages",
+  },
+];
+
 function App() {
   return (
-    <Wrapper>
-      <NavBar links={topNavBar} />
+    <Wrapper disableGutters>
+      <NavBar links={topNavBar} gap="3.5rem" fontSize="1.5rem" mTop="2rem" />
       <HeroText>OceanSide</HeroText>
+      <NavBar links={foodNavBar} gap="1rem" fontSize="1rem" mTop="0" />
+      <MenuContainer>
+        <MenuGrid />
+      </MenuContainer>
     </Wrapper>
   );
 }
