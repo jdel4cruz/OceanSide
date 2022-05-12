@@ -8,4 +8,15 @@ export interface NavLink {
 export interface MenuItemProps {
   foodName: string;
   description: string;
+  foodOptions?: foodOptions;
+}
+
+interface foodOptions {
+  removeOptions?: foodOption[];
+  addOptions?: foodOption[];
+}
+
+interface foodOption {
+  optionName: string;
+  price: number;
 }

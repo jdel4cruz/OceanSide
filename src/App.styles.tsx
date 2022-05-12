@@ -18,7 +18,7 @@ export const Wrapper = styled(Container)`
 
 export const MenuContainer = styled(Container)`
   flex-grow: 1;
-  padding: 2.5rem 0;
+  padding: 1.5rem 0;
   margin-top: 6rem;
   border: 3px solid white;
   background: #f6f0eb;

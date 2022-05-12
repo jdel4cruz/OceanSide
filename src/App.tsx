@@ -10,6 +10,13 @@ import { Wrapper, HeroText, MenuContainer } from "./App.styles";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
+const theme = createTheme({
+  typography: {
+    fontFamily: `'Lato', 'Roboto', 'sans-serif'`,
+    fontSize: 16,
+  },
+});
+
 const topNavBar: NavLink[] = [
   {
     path: "/about",
@@ -48,14 +55,16 @@ const foodNavBar: NavLink[] = [
 
 function App() {
   return (
-    <Wrapper disableGutters>
-      <NavBar links={topNavBar} gap="3.5rem" fontSize="1.5rem" mTop="2rem" />
-      <HeroText>OceanSide</HeroText>
-      <NavBar links={foodNavBar} gap="1rem" fontSize="1rem" mTop="0" />
-      <MenuContainer>
-        <MenuGrid />
-      </MenuContainer>
-    </Wrapper>
+    <ThemeProvider theme={theme}>
+      <Wrapper disableGutters>
+        <NavBar links={topNavBar} gap="3.5rem" fontSize="1.5rem" mTop="2rem" />
+        <HeroText>OceanSide</HeroText>
+        <NavBar links={foodNavBar} gap="1rem" fontSize="1rem" mTop="0" />
+        <MenuContainer>
+          <MenuGrid />
+        </MenuContainer>
+      </Wrapper>
+    </ThemeProvider>
   );
 }
 

@@ -13,7 +13,6 @@ export const StyledCard = styled(Card)`
 export const StyledHeader = styled(CardHeader)`
   padding: 0.5rem 1rem;
   span {
-    font-family: "Lato";
     font-style: normal;
     font-weight: bold;
     font-size: 1.25rem;

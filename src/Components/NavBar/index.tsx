@@ -20,8 +20,13 @@ const NavBar = ({
 }) => {
   return (
     <Wrapper gap={gap} fontSize={fontSize} mTop={mTop}>
-      {links.map((link: NavLink) => (
-        <Link href={link.path} color={link.color} underline={link.underline}>
+      {links.map((link: NavLink, i: number) => (
+        <Link
+          href={link.path}
+          color={link.color}
+          underline={link.underline}
+          key={i}
+        >
           {link.content}
         </Link>
       ))}

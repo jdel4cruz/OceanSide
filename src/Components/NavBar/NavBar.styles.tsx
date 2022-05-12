@@ -1,7 +1,9 @@
 import { Container } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const Wrapper = styled(Container)<{
+export const Wrapper = styled(Container, {
+  shouldForwardProp: (prop) => prop !== "mTop",
+})<{
   gap: string;
   fontSize: string;
   mTop: string;
@@ -13,6 +15,6 @@ export const Wrapper = styled(Container)<{
   gap: ${(props) => (props.gap ? props.gap : "")};
 
   font-size: ${(props) => (props.fontSize ? props.fontSize : "1rem")};
-  font-family: "Lato";
+
   color: #ffffff;
 `;
