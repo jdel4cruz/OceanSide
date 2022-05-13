@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 
 //Components
 import MenuImgCard from "../../Components/MenuImgCard";
+import FoodOptions from "../../Components/FoodOptions";
 
 //Styles
 import { Wrapper, MenuContainer } from "./AddToCart.styles";

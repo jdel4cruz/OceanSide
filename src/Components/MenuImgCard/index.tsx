@@ -1,5 +1,7 @@
 import { CardMedia, Typography } from "@mui/material";
 
+import FoodOptions from "../../Components/FoodOptions";
+
 //Styles
 import {
   StyledCard,
@@ -19,6 +21,22 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemProps }) => {
       <StyledDivider />
       <StyledContent>
         <Typography>{menuItem.description}</Typography>
+      </StyledContent>
+      <StyledDivider />
+      <StyledContent>
+        <Typography>Add Options</Typography>
+        <StyledDivider />
+        {menuItem.foodOptions?.addOptions !== undefined && (
+          <FoodOptions options={menuItem.foodOptions.addOptions} />
+        )}
+      </StyledContent>
+      <StyledDivider />
+      <StyledContent>
+        <Typography>Remove Options</Typography>
+        <StyledDivider />
+        {menuItem.foodOptions?.removeOptions !== undefined && (
+          <FoodOptions options={menuItem.foodOptions.removeOptions} />
+        )}
       </StyledContent>
     </StyledCard>
   );

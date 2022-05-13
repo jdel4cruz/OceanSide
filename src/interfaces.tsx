@@ -9,15 +9,15 @@ export interface MenuItemProps {
   foodName: string;
   description: string;
   imgPath?: string;
-  foodOptions?: foodOptions;
+  foodOptions?: foodOptionsInterface;
 }
 
-interface foodOptions {
-  removeOptions?: foodOption[];
-  addOptions?: foodOption[];
+export interface foodOptionsInterface {
+  removeOptions?: foodOptionInterface[];
+  addOptions?: foodOptionInterface[];
 }
 
-interface foodOption {
+export interface foodOptionInterface {
   optionName: string;
   price: number;
 }
