@@ -3,7 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 //Routes
-import Menu from "./Routes/Menu/Menu";
+import Menu from "./Routes/Menu";
+import AddToCart from "./Routes/AddToCart";
 
 const theme = createTheme({
   typography: {
@@ -17,6 +18,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Routes>
         <Route path="/" element={<Menu />}></Route>
+        <Route path="/addtocart/:foodId" element={<AddToCart />}></Route>
       </Routes>
     </ThemeProvider>
   );

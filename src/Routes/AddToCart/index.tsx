@@ -1,13 +1,13 @@
-import { Grid } from "@mui/material";
+import { useParams } from "react-router";
+
+//Components
+import MenuImgCard from "../../Components/MenuImgCard";
+
+//Styles
+import { Wrapper, MenuContainer } from "./AddToCart.styles";
 
 //Interfaces
 import { MenuItemProps } from "../../interfaces";
-
-//Components
-import MenuCard from "../MenuCard";
-
-//Styles
-import { StyledGrid } from "./MenuGrid.styles";
 
 const menuItems: MenuItemProps[] = [
   {
@@ -254,16 +254,26 @@ const menuItems: MenuItemProps[] = [
   },
 ];
 
-const MenuGrid = () => {
+const AddToCart = () => {
+  const { foodId } = useParams();
+
+  let menuItem;
+  if (foodId !== undefined) {
+    console.log(menuItems[+foodId]);
+    menuItem = menuItems[+foodId];
+  }
+
   return (
-    <StyledGrid container spacing={1}>
-      {menuItems.map((menuItem: MenuItemProps, i: number) => (
-        <Grid item xs={11} sm={6} key={i}>
-          <MenuCard menuItem={menuItem} />
-        </Grid>
-      ))}
-    </StyledGrid>
+    <Wrapper disableGutters>
+      <MenuContainer>
+        {menuItem !== undefined ? (
+          <MenuImgCard menuItem={menuItem} />
+        ) : (
+          <div>ERROR</div>
+        )}
+      </MenuContainer>
+    </Wrapper>
   );
 };
 
-export default MenuGrid;
+export default AddToCart;

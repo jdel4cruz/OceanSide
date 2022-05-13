@@ -8,6 +8,7 @@ export interface NavLink {
 export interface MenuItemProps {
   foodName: string;
   description: string;
+  imgPath?: string;
   foodOptions?: foodOptions;
 }
 
