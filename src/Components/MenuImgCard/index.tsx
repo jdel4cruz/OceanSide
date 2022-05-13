@@ -4,6 +4,7 @@ import FoodOptions from "../../Components/FoodOptions";
 
 //Components
 import AdjustQtyInput from "../AdjustQtyInput";
+import AddToCartButton from "../AddToCartButton";
 
 //Styles
 import {
@@ -43,8 +44,9 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemProps }) => {
       </StyledContent>
       <StyledDivider />
       <StyledContent>
-        <Stack alignItems="center">
+        <Stack alignItems="center" spacing={2}>
           <AdjustQtyInput />
+          <AddToCartButton />
         </Stack>
       </StyledContent>
     </StyledCard>
