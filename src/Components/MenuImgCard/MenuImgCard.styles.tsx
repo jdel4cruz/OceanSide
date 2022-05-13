@@ -8,7 +8,9 @@ import {
 import { styled } from "@mui/system";
 
 export const StyledCard = styled(Card)`
+  margin-top: 5rem;
   border: 4px solid white;
+  padding: 0.5rem;
 `;
 
 export const StyledHeader = styled(CardHeader)`

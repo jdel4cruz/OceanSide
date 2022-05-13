@@ -1,6 +1,9 @@
-import { CardMedia, Typography } from "@mui/material";
+import { CardMedia, Typography, Stack } from "@mui/material";
 
 import FoodOptions from "../../Components/FoodOptions";
+
+//Components
+import AdjustQtyInput from "../AdjustQtyInput";
 
 //Styles
 import {
@@ -37,6 +40,12 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemProps }) => {
         {menuItem.foodOptions?.removeOptions !== undefined && (
           <FoodOptions options={menuItem.foodOptions.removeOptions} />
         )}
+      </StyledContent>
+      <StyledDivider />
+      <StyledContent>
+        <Stack alignItems="center">
+          <AdjustQtyInput />
+        </Stack>
       </StyledContent>
     </StyledCard>
   );
