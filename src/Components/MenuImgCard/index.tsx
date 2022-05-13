@@ -12,6 +12,7 @@ import {
   StyledDivider,
   StyledHeader,
   StyledContent,
+  Price,
 } from "./MenuImgCard.styles";
 
 //Interfaces
@@ -46,6 +47,7 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemProps }) => {
       <StyledContent>
         <Stack alignItems="center" spacing={2}>
           <AdjustQtyInput />
+          <Price variant="h6">Price: Placeholder</Price>
           <AddToCartButton />
         </Stack>
       </StyledContent>

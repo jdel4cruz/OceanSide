@@ -17,7 +17,9 @@ const foodOptions = ({
   return (
     <StyledStack spacing={1}>
       {options !== undefined ? (
-        options.map((foodOption) => <FoodOption option={foodOption} />)
+        options.map((foodOption, i) => (
+          <FoodOption option={foodOption} key={i} />
+        ))
       ) : (
         <div>No options</div>
       )}

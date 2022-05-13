@@ -17,6 +17,12 @@ export const MenuContainer = styled(Container)`
   background: #f6f0eb;
 `;
 
+export const Header = styled(Typography)`
+  align-self: start;
+  margin-top: 1rem;
+  color: white;
+`;
+
 /* export const HeroText = styled(Typography)`
   margin-top: 3rem;
 

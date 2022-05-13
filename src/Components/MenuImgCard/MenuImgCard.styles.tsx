@@ -8,7 +8,7 @@ import {
 import { styled } from "@mui/system";
 
 export const StyledCard = styled(Card)`
-  margin-top: 5rem;
+  margin-top: 0.25rem;
   border: 4px solid white;
   padding: 0.5rem;
 `;
@@ -24,10 +24,13 @@ export const StyledHeader = styled(CardHeader)`
 `;
 
 export const StyledDivider = styled(Divider)`
-  border: 2px solid #f6ede5;
+  border: 2px solid #f7e4d4;
 `;
 
 export const StyledContent = styled(CardContent)`
   font-size: 0.75rem;
   color: #0000009e;
+`;
+export const Price = styled(Typography)`
+  align-self: start;
 `;

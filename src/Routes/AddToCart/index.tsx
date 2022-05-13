@@ -3,9 +3,10 @@ import { useParams } from "react-router";
 //Components
 import MenuImgCard from "../../Components/MenuImgCard";
 import FoodOptions from "../../Components/FoodOptions";
+import ReturnButton from "../../Components/ReturnButton";
 
 //Styles
-import { Wrapper, MenuContainer } from "./AddToCart.styles";
+import { Wrapper, MenuContainer, Header } from "./AddToCart.styles";
 
 //Interfaces
 import { MenuItemProps } from "../../interfaces";
@@ -266,6 +267,8 @@ const AddToCart = () => {
 
   return (
     <Wrapper>
+      <ReturnButton />
+      <Header variant="h5">Add To Cart:</Header>
       {menuItem !== undefined ? (
         <MenuImgCard menuItem={menuItem} />
       ) : (
