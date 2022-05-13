@@ -6,8 +6,6 @@ export const Wrapper = styled(Container)`
   flex-direction: column;
   align-items: center;
 
-  height: 100vh;
-
   background: linear-gradient(
     179.96deg,
     #82aab4 0.04%,

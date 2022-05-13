@@ -265,14 +265,12 @@ const AddToCart = () => {
   }
 
   return (
-    <Wrapper disableGutters>
-      <MenuContainer>
-        {menuItem !== undefined ? (
-          <MenuImgCard menuItem={menuItem} />
-        ) : (
-          <div>ERROR</div>
-        )}
-      </MenuContainer>
+    <Wrapper>
+      {menuItem !== undefined ? (
+        <MenuImgCard menuItem={menuItem} />
+      ) : (
+        <div>ERROR</div>
+      )}
     </Wrapper>
   );
 };

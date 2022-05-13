@@ -1,7 +1,15 @@
-import { Card, CardHeader, CardContent, Divider } from "@mui/material";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  Divider,
+  Typography,
+} from "@mui/material";
 import { styled } from "@mui/system";
 
-export const StyledCard = styled(Card)``;
+export const StyledCard = styled(Card)`
+  border: 4px solid white;
+`;
 
 export const StyledHeader = styled(CardHeader)`
   padding: 0.5rem 1rem;

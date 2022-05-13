@@ -1,9 +1,13 @@
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
+
+//Components
+import FoodOption from "../FoodOption";
+
+//Styles
+import { StyledStack } from "./FoodOptions.styles";
 
 //Interfaces
 import { foodOptionInterface } from "../../interfaces";
-
-import React from "react";
 
 const foodOptions = ({
   options,
@@ -11,13 +15,13 @@ const foodOptions = ({
   options: foodOptionInterface[] | undefined;
 }) => {
   return (
-    <Stack>
+    <StyledStack spacing={1}>
       {options !== undefined ? (
-        options.map((foodOption) => <div>{foodOption.optionName}</div>)
+        options.map((foodOption) => <FoodOption option={foodOption} />)
       ) : (
         <div>No options</div>
       )}
-    </Stack>
+    </StyledStack>
   );
 };
 
