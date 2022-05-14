@@ -31,13 +31,13 @@ const topNavBar: NavLink[] = [
 
 const foodNavBar: NavLink[] = [
   {
-    path: "/food/breakfast",
+    path: "/breakfast",
     color: "inherit",
     underline: "none",
     content: "Breakfast",
   },
   {
-    path: "/food/other",
+    path: "/beverages",
     color: "inherit",
     underline: "none",
     content: "Coffee/Beverages",

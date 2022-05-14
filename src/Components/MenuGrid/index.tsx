@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-
+import { useParams } from "react-router";
 //Interfaces
 import { MenuItemProps } from "../../interfaces";
 
@@ -9,12 +9,12 @@ import MenuCard from "../MenuCard";
 //Styles
 import { StyledGrid } from "./MenuGrid.styles";
 
-const menuItems: MenuItemProps[] = [
+const breakfast: MenuItemProps[] = [
   {
     foodName: "Blueberry Banana French Toast",
     description:
       "French Toast made with Japanese Shokupan bread. Topped with blueberries and bananas, dusted with powdered sugar, and finished with maple syrup.",
-    imgPath: "/Images/Blueberry_Banana_French_Toast.jpg",
+    imgPath: "/Images/Breakfast/Blueberry_Banana_French_Toast.jpg",
     foodOptions: {
       removeOptions: [
         {
@@ -45,7 +45,7 @@ const menuItems: MenuItemProps[] = [
   {
     foodName: "Homemade Croissants",
     description: "Baked at the break of dawn everyday.",
-    imgPath: "/Images/Croissant.jpg",
+    imgPath: "/Images/Breakfast/Croissant.jpg",
     foodOptions: {
       addOptions: [
         {
@@ -63,13 +63,13 @@ const menuItems: MenuItemProps[] = [
     foodName: "Smoked Salmon Avocado Toast",
     description:
       "Local cold-smoked salmon placed atop a slice of sourdough avocado toast.",
-    imgPath: "/Images/Smoked_Salmon_Avocado_Toast.jpg",
+    imgPath: "/Images/Breakfast/Smoked_Salmon_Avocado_Toast.jpg",
   },
   {
     foodName: "The Rise n' Shine",
     description:
       "What you need to hit the ground running. Sliced avocado fanned on top of a slice of ciabatta bread accompanied with a sunnyside egg.",
-    imgPath: "/Images/The_Rise_N_Shine.jpg",
+    imgPath: "/Images/Breakfast/The_Rise_N_Shine.jpg",
 
     foodOptions: {
       removeOptions: [
@@ -90,7 +90,7 @@ const menuItems: MenuItemProps[] = [
     foodName: "Gift of Elysium",
     description:
       "Made from the gardens of paradise (aka the local farmers market). Contains free-range eggs, spinach, feta cheese, red onion, and Monterey Jack cheese.",
-    imgPath: "/Images/Gift_From_Elysium.jpg",
+    imgPath: "/Images/Breakfast/Gift_From_Elysium.jpg",
     foodOptions: {
       removeOptions: [
         {
@@ -126,7 +126,7 @@ const menuItems: MenuItemProps[] = [
     foodName: "Just Toast",
     description:
       "Sometimes simple is best. Accompanied with butter and our homemade orange marmalade",
-    imgPath: "/Images/Just_Toast.jpg",
+    imgPath: "/Images/Breakfast/Just_Toast.jpg",
 
     foodOptions: {
       removeOptions: [
@@ -151,7 +151,7 @@ const menuItems: MenuItemProps[] = [
     foodName: "Chocolate Crepes",
     description:
       "Two of our housemade crepes topped with a chocolate drizzle, powdered sugar, whipped creme, and a scoop of vanilla bean ice cream",
-    imgPath: "/Images/Chocolate_Crepe.jpg",
+    imgPath: "/Images/Breakfast/Chocolate_Crepe.jpg",
 
     foodOptions: {
       removeOptions: [
@@ -192,7 +192,7 @@ const menuItems: MenuItemProps[] = [
     foodName: "Strawberry Pancakes",
     description:
       "A full stack of pancakes adorned with powdered sugar, fresh strawberries, and housemade strawberry syrup",
-    imgPath: "/Images/Strawberry_Pancakes.jpg",
+    imgPath: "/Images/Breakfast/Strawberry_Pancakes.jpg",
     foodOptions: {
       removeOptions: [
         {
@@ -228,7 +228,7 @@ const menuItems: MenuItemProps[] = [
     foodName: "Triple Berry Waffles",
     description:
       "A massive waffle topped with vanilla crème fraîche and our triple berry compote",
-    imgPath: "/Images/Triple_Berry_Waffles.jpg",
+    imgPath: "/Images/Breakfast/Triple_Berry_Waffles.jpg",
     foodOptions: {
       removeOptions: [
         {
@@ -254,14 +254,141 @@ const menuItems: MenuItemProps[] = [
   },
 ];
 
+const beverages: MenuItemProps[] = [
+  {
+    foodName: "Coffee",
+    description:
+      "Pourover coffee that uses lightly roasted Colombian  washed beans which exhibit notes of green apple, cherry, and white tea.",
+    imgPath: "/Images/Beverages/coffee.jpg",
+    foodOptions: {
+      addOptions: [
+        {
+          optionName: "Decaf",
+          price: 0,
+        },
+      ],
+    },
+  },
+  {
+    foodName: "Latte",
+    description:
+      "Our Lattes are produced with medium roasted beans from Peru that provide caramel, chocolate, and honey notes that work in tandem with the rich notes provided from the steamed milk.",
+    imgPath: "/Images/Beverages/latte.jpg",
+    foodOptions: {
+      addOptions: [
+        {
+          optionName: "Decaf",
+          price: 0,
+        },
+        {
+          optionName: "Add an extra shot",
+          price: 1,
+        },
+      ],
+    },
+  },
+  {
+    foodName: "Espresso",
+    description:
+      "Made with beans produced from El Salvador that carry notes of citrus, jasmine, and brown sugar",
+    imgPath: "/Images/Beverages/espresso.jpg",
+    foodOptions: {
+      removeOptions: [
+        {
+          optionName: "Single shot",
+          price: -1,
+        },
+      ],
+      addOptions: [
+        {
+          optionName: "Decaf",
+          price: 0,
+        },
+        {
+          optionName: "Add an extra shot",
+          price: 1,
+        },
+      ],
+    },
+  },
+  {
+    foodName: "Mimosa",
+    description:
+      "Made with fresh squeezed orange juice, locally sourced champagne, and finished with mint and lime juice.",
+    imgPath: "/Images/Beverages/Mimosa.jpg",
+    foodOptions: {
+      removeOptions: [
+        {
+          optionName: "Omit mint",
+          price: 0,
+        },
+        {
+          optionName: "Omit lime",
+          price: 0,
+        },
+        {
+          optionName: "Non-Alcoholic",
+          price: 0,
+        },
+      ],
+    },
+  },
+  {
+    foodName: "Sangria Lemonade",
+    description:
+      "Made with housemade lemonade, locally sourced red wine, frozen raspberries, and garnished with lemon.",
+    imgPath: "/Images/Beverages/Sangria_Lemonade.jpg",
+    foodOptions: {
+      removeOptions: [
+        {
+          optionName: "Omit lemon",
+          price: 0,
+        },
+        {
+          optionName: "Non-Alcoholic",
+          price: 0,
+        },
+      ],
+    },
+  },
+  {
+    foodName: "English Breakfast Tea",
+    description:
+      "We provide an English Breakfast tea that carries a toasty aroma and notes of honey. Goes great with milk and sugar.",
+    imgPath: "/Images/Beverages/tea.jpg",
+  },
+];
+
+// type FoodType = "breakfast" | "beverages";
+
+interface MenuItemsInterface {
+  [index: string]: MenuItemProps[];
+}
+
+const menuItems: MenuItemsInterface = {
+  breakfast,
+  beverages,
+};
+
 const MenuGrid = () => {
+  const { foodType } = useParams();
+
+  let activeMenu: MenuItemProps[] | undefined;
+  if (foodType !== undefined) {
+    activeMenu = menuItems[foodType];
+  }
+
   return (
     <StyledGrid container spacing={1}>
-      {menuItems.map((menuItem: MenuItemProps, i: number) => (
-        <Grid item xs={11} sm={6} key={i}>
-          <MenuCard menuItem={menuItem} />
-        </Grid>
-      ))}
+      {activeMenu !== undefined ? (
+        activeMenu.map((menuItem: MenuItemProps, i: number) => (
+          <Grid item xs={11} sm={6} key={i}>
+            <MenuCard menuItem={menuItem} />
+          </Grid>
+        ))
+      ) : (
+        <div>error</div>
+      )}
     </StyledGrid>
   );
 };
