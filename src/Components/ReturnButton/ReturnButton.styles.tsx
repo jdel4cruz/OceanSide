@@ -8,4 +8,11 @@ export const StyledIconButton = styled(Button)`
 
   background: white;
   font-size: 3rem;
+
+  :hover {
+    background: #cfaf90;
+    svg {
+      color: white;
+    }
+  }
 `;
