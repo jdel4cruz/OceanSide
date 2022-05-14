@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import { useParams } from "react-router";
+
 //Interfaces
 import { MenuItemProps } from "../../interfaces";
 
@@ -370,9 +370,7 @@ const menuItems: MenuItemsInterface = {
   beverages,
 };
 
-const MenuGrid = () => {
-  const { foodType } = useParams();
-
+const MenuGrid = ({ foodType }: { foodType: string }) => {
   let activeMenu: MenuItemProps[] | undefined;
   if (foodType !== undefined) {
     activeMenu = menuItems[foodType];

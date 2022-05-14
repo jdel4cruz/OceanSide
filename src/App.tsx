@@ -17,7 +17,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Routes>
-        <Route path="/:foodType" element={<Menu />}></Route>
+        <Route path="/" element={<Menu />}></Route>
         <Route
           path="/:foodType/addtocart/:foodId"
           element={<AddToCart />}

@@ -1,8 +1,11 @@
+import { useState } from "react";
+
 //Interfaces
-import { NavLink } from "../../interfaces";
+import { NavLink, setStateButtonInterface } from "../../interfaces";
 
 //Components
 import NavBar from "../../Components/NavBar";
+import MenuNavBar from "../../Components/MenuNavBar";
 import MenuGrid from "../../Components/MenuGrid";
 
 //Styles
@@ -29,29 +32,35 @@ const topNavBar: NavLink[] = [
   },
 ];
 
-const foodNavBar: NavLink[] = [
-  {
-    path: "/breakfast",
-    color: "inherit",
-    underline: "none",
-    content: "Breakfast",
-  },
-  {
-    path: "/beverages",
-    color: "inherit",
-    underline: "none",
-    content: "Coffee/Beverages",
-  },
-];
-
 const Menu = () => {
+  const [foodType, setFoodType] = useState("breakfast");
+
+  const menuNavBar: setStateButtonInterface[] = [
+    {
+      setStateFunc: setFoodType,
+      value: "breakfast",
+      variant: "text",
+      content: "Breakfast",
+    },
+    {
+      setStateFunc: setFoodType,
+      value: "beverages",
+      variant: "text",
+      content: "Coffee/Beverages",
+    },
+  ];
   return (
     <Wrapper disableGutters>
       <NavBar links={topNavBar} gap="3.5rem" fontSize="1.5rem" mTop="2rem" />
       <HeroText>OceanSide</HeroText>
-      <NavBar links={foodNavBar} gap="1rem" fontSize="1rem" mTop="0" />
+      <MenuNavBar
+        stateSetters={menuNavBar}
+        gap="1rem"
+        fontSize="1rem"
+        mTop="0"
+      />
       <MenuContainer>
-        <MenuGrid />
+        <MenuGrid foodType={foodType} />
       </MenuContainer>
     </Wrapper>
   );
