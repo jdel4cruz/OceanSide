@@ -22,7 +22,10 @@ const MenuCard = ({
   const navigate = useNavigate();
 
   return (
-    <StyledCard variant="outlined" onClick={() => navigate("")}>
+    <StyledCard
+      variant="outlined"
+      onClick={() => navigate(`/${menuItem.foodType}/addtocart/${id}`)}
+    >
       <StyledHeader title={menuItem.foodName} />
       <StyledDivider />
       <StyledContent>

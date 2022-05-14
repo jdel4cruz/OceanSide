@@ -24,7 +24,7 @@ const AddToCart = () => {
 
   return (
     <Wrapper>
-      <ReturnButton />
+      <ReturnButton path="/" />
       <Header variant="h5">Add To Cart:</Header>
       {menuItem !== undefined ? (
         <MenuImgCard menuItem={menuItem} />
