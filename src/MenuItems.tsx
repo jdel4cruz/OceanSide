@@ -1,16 +1,4 @@
-import { Grid } from "@mui/material";
-
-//Interfaces
-import { MenuItemProps } from "../../interfaces";
-
-//Components
-import MenuCard from "../MenuCard";
-
-//Styles
-import { StyledGrid } from "./MenuGrid.styles";
-
-//Data
-import { menuItems } from "../../MenuItems";
+import { MenuItemProps, MenuItemsInterface } from "./interfaces";
 
 const breakfast: MenuItemProps[] = [
   {
@@ -377,36 +365,7 @@ const beverages: MenuItemProps[] = [
   },
 ];
 
-// type FoodType = "breakfast" | "beverages";
-
-interface MenuItemsInterface {
-  [index: string]: MenuItemProps[];
-}
-
-// const menuItems: MenuItemsInterface = {
-//   breakfast,
-//   beverages,
-// };
-
-const MenuGrid = ({ foodType }: { foodType: string }) => {
-  let activeMenu: MenuItemProps[] | undefined;
-  if (foodType !== undefined) {
-    activeMenu = menuItems[foodType];
-  }
-
-  return (
-    <StyledGrid container spacing={1}>
-      {activeMenu !== undefined ? (
-        activeMenu.map((menuItem: MenuItemProps, i: number) => (
-          <Grid item xs={11} sm={6} key={i}>
-            <MenuCard menuItem={menuItem} id={i} />
-          </Grid>
-        ))
-      ) : (
-        <div>error</div>
-      )}
-    </StyledGrid>
-  );
+export const menuItems: MenuItemsInterface = {
+  breakfast,
+  beverages,
 };
-
-export default MenuGrid;

@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import { useNavigate } from "react-router";
 
 //Styles
 import {
@@ -11,9 +12,17 @@ import {
 //Interfaces
 import { MenuItemProps } from "../../interfaces";
 
-const MenuCard = ({ menuItem }: { menuItem: MenuItemProps }) => {
+const MenuCard = ({
+  menuItem,
+  id,
+}: {
+  menuItem: MenuItemProps;
+  id: number;
+}) => {
+  const navigate = useNavigate();
+
   return (
-    <StyledCard variant="outlined">
+    <StyledCard variant="outlined" onClick={() => navigate("")}>
       <StyledHeader title={menuItem.foodName} />
       <StyledDivider />
       <StyledContent>

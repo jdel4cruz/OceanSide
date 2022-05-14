@@ -27,22 +27,29 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemProps }) => {
       <StyledContent>
         <Typography>{menuItem.description}</Typography>
       </StyledContent>
-      <StyledDivider />
-      <StyledHeader title="Add Options" />
-      <StyledDivider />
-      <StyledContent>
-        {menuItem.foodOptions?.addOptions !== undefined && (
-          <FoodOptions options={menuItem.foodOptions.addOptions} />
-        )}
-      </StyledContent>
-      <StyledDivider />
-      <StyledHeader title="Remove Options" />
-      <StyledDivider />
-      <StyledContent>
-        {menuItem.foodOptions?.removeOptions !== undefined && (
-          <FoodOptions options={menuItem.foodOptions.removeOptions} />
-        )}
-      </StyledContent>
+
+      {menuItem.foodOptions?.addOptions !== undefined && (
+        <>
+          <StyledDivider />
+          <StyledHeader title="Add Options" />
+          <StyledDivider />
+          <StyledContent>
+            <FoodOptions options={menuItem.foodOptions.addOptions} />
+          </StyledContent>
+        </>
+      )}
+
+      {menuItem.foodOptions?.removeOptions !== undefined && (
+        <>
+          <StyledDivider />
+          <StyledHeader title="Remove Options" />
+          <StyledDivider />
+          <StyledContent>
+            <FoodOptions options={menuItem.foodOptions.removeOptions} />
+          </StyledContent>
+        </>
+      )}
+
       <StyledDivider />
       <StyledContent>
         <Stack alignItems="center" spacing={2}>

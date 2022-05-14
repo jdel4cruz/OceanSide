@@ -5,6 +5,10 @@ export interface NavLink {
   content: string;
 }
 
+export interface MenuItemsInterface {
+  [index: string]: MenuItemProps[];
+}
+
 export interface setStateButtonInterface {
   setStateFunc: (value: string) => void;
   value: string;
@@ -14,6 +18,7 @@ export interface setStateButtonInterface {
 
 export interface MenuItemProps {
   foodName: string;
+  foodType: "breakfast" | "beverages";
   description: string;
   imgPath?: string;
   foodOptions?: foodOptionsInterface;
