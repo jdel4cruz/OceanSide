@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 //Routes
 import Menu from "./Routes/Menu";
 import AddToCart from "./Routes/AddToCart";
+import Cart from "./Routes/Cart";
 
 const theme = createTheme({
   typography: {
@@ -17,11 +18,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Routes>
-        <Route path="/" element={<Menu />}></Route>
-        <Route
-          path="/:foodType/addtocart/:foodId"
-          element={<AddToCart />}
-        ></Route>
+        <Route path="/" element={<Menu />} />
+        <Route path="/:foodType/addtocart/:foodId" element={<AddToCart />} />
+        <Route path="/Cart" element={<Cart />} />
       </Routes>
     </ThemeProvider>
   );
