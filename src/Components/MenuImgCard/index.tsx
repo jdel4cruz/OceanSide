@@ -1,5 +1,6 @@
-import { CardMedia, Typography, Stack } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import { CardMedia, Typography, Stack } from "@mui/material";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 
 import { useDispatch } from "react-redux";
@@ -38,6 +39,7 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
   const [extraOptions, setExtraOptions] = useState(initialOptions);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const totalPrice = () => {
     const activeOptions = Object.keys(extraOptions);
@@ -118,9 +120,10 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
             size="large"
             endIcon={<ShoppingBagIcon />}
             disableElevation
-            onClick={() =>
-              dispatch(newCartItem({ qty, price, extraOptions, menuItem }))
-            }
+            onClick={() => {
+              dispatch(newCartItem({ qty, price, extraOptions, menuItem }));
+              navigate(`/`);
+            }}
           >
             Add to cart
           </StyledButton>
