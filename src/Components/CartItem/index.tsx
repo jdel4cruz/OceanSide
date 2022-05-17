@@ -1,4 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
+import {
+  deleteCartItem,
+  removeCartItem,
+  addCartItem,
+} from "../../Redux/Reducers/cartReducer";
+import { AppDispatch } from "../../Redux/store";
+
 import { CardMedia, IconButton, Typography, Stack } from "@mui/material";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
@@ -18,6 +25,8 @@ const CartItem = ({
   menuItem: MenuItemPropsInterface;
   qty: number;
 }) => {
+  const dispatch: AppDispatch = useDispatch();
+
   return (
     <Stack>
       <StyledHeader>{menuItem.foodName}</StyledHeader>
@@ -31,7 +40,6 @@ const CartItem = ({
         <img src={menuItem.imgPath} alt="menuItemImg"></img>
 
         <div>
-          <AdjustQtyInput></AdjustQtyInput>
           <Price>${menuItem.price * qty}</Price>
         </div>
 

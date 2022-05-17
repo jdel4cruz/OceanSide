@@ -1,4 +1,5 @@
 import { CardMedia, Typography, Stack } from "@mui/material";
+import { useState } from "react";
 
 import FoodOptions from "../../Components/FoodOptions";
 
@@ -18,7 +19,19 @@ import {
 //Interfaces
 import { MenuItemPropsInterface } from "../../interfaces";
 
+interface InitialOptions {
+  [index: string]: boolean;
+}
+
+const initialOptions: InitialOptions = {};
+
 const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
+  const [qty, setQty] = useState(1);
+  const [extraOptions, setExtraOptions] = useState(initialOptions);
+
+  console.log(extraOptions);
+  console.log(qty);
+
   return (
     <StyledCard variant="outlined">
       <CardMedia component="img" image={menuItem.imgPath} />
@@ -34,7 +47,10 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
           <StyledHeader title="Add Options" />
           <StyledDivider />
           <StyledContent>
-            <FoodOptions options={menuItem.foodOptions.addOptions} />
+            <FoodOptions
+              options={menuItem.foodOptions.addOptions}
+              setOptions={setExtraOptions}
+            />
           </StyledContent>
         </>
       )}
@@ -45,7 +61,10 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
           <StyledHeader title="Remove Options" />
           <StyledDivider />
           <StyledContent>
-            <FoodOptions options={menuItem.foodOptions.removeOptions} />
+            <FoodOptions
+              options={menuItem.foodOptions.removeOptions}
+              setOptions={setExtraOptions}
+            />
           </StyledContent>
         </>
       )}
@@ -53,8 +72,8 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
       <StyledDivider />
       <StyledContent>
         <Stack alignItems="center" spacing={2}>
-          <AdjustQtyInput />
-          <Price variant="h6">Price: Placeholder</Price>
+          <AdjustQtyInput qty={qty} setQty={setQty} />
+          <Price variant="h6">{`Price: $${menuItem.price * qty}`}</Price>
           <AddToCartButton />
         </Stack>
       </StyledContent>

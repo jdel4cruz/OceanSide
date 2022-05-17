@@ -1,27 +1,24 @@
-import { CardMedia, Typography, Stack } from "@mui/material";
-
-import FoodOptions from "../../Components/FoodOptions";
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/store";
 
 //Components
-import AdjustQtyInput from "../AdjustQtyInput";
-import AddToCartButton from "../AddToCartButton";
+import ReturnButton from "../ReturnButton";
 
 //Styles
-import {
-  StyledCard,
-  StyledDivider,
-  StyledHeader,
-  StyledContent,
-  Price,
-} from "./CartItems.styles";
+import { Wrapper } from "./CartItems.styles";
 
 //Interfaces
 import { MenuItemPropsInterface } from "../../interfaces";
 
 const CartItems = () => {
+  const { cart } = useSelector((state: RootState) => state.cart);
   //Will map out cartItems based on current Cart state in redux store. Each item will be passed foodType and foodId
 
-  return <></>;
+  return (
+    <Wrapper>
+      <ReturnButton path="/"></ReturnButton>
+    </Wrapper>
+  );
 };
 
 export default CartItems;
