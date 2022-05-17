@@ -1,11 +1,10 @@
-import React from "react";
-import { Link } from "@mui/material";
+import { useNavigate } from "react-router";
 
 //Interfaces
 import { NavLink } from "../../interfaces";
 
 //Styles
-import { Wrapper } from "./NavBar.styles";
+import { StyledLink, Wrapper } from "./NavBar.styles";
 
 const NavBar = ({
   links,
@@ -21,14 +20,9 @@ const NavBar = ({
   return (
     <Wrapper gap={gap} fontSize={fontSize} mTop={mTop}>
       {links.map((link: NavLink, i: number) => (
-        <Link
-          href={link.path}
-          color={link.color}
-          underline={link.underline}
-          key={i}
-        >
+        <StyledLink to={link.path} key={i}>
           {link.content}
-        </Link>
+        </StyledLink>
       ))}
     </Wrapper>
   );

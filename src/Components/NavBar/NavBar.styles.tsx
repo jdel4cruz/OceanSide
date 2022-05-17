@@ -1,4 +1,5 @@
 import { Container } from "@mui/material";
+import { Link } from "react-router-dom";
 import { styled } from "@mui/system";
 
 export const Wrapper = styled(Container, {
@@ -17,4 +18,9 @@ export const Wrapper = styled(Container, {
   font-size: ${(props) => (props.fontSize ? props.fontSize : "1rem")};
 
   color: #ffffff;
+`;
+
+export const StyledLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
 `;

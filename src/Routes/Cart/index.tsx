@@ -2,6 +2,8 @@ import { useParams } from "react-router";
 
 //Components
 import ReturnButton from "../../Components/ReturnButton";
+import CartItems from "../../Components/CartItems";
+
 //Styles
 import { Wrapper, MenuContainer, Header } from "./Cart.styles";
 
@@ -16,6 +18,7 @@ const Cart = () => {
     <Wrapper>
       <ReturnButton path="/" />
       <Header variant="h5">My Cart:</Header>
+      <CartItems />
     </Wrapper>
   );
 };
