@@ -1,6 +1,9 @@
 import { Checkbox, Stack, Typography } from "@mui/material";
 import React from "react";
 
+//Helper Functions
+import { priceToString } from "../../HelperFunctions";
+
 //Interfaces
 import { foodOptionInterface } from "../../interfaces";
 interface InitialOptions {
@@ -30,7 +33,7 @@ const FoodOption = ({
     <Stack direction="row" justifyContent="space-between" alignItems="center">
       <Stack direction="row" alignItems="center" spacing={2}>
         <Typography>{option.optionName}</Typography>
-        <Typography>${option.price}</Typography>
+        <Typography>${priceToString(option.price)}</Typography>
       </Stack>
 
       <Checkbox onChange={handleChange} />

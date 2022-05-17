@@ -16,6 +16,9 @@ import {
   Price,
 } from "./MenuImgCard.styles";
 
+//Helper Functions
+import { priceToString } from "../../HelperFunctions";
+
 //Interfaces
 import { MenuItemPropsInterface } from "../../interfaces";
 
@@ -28,16 +31,6 @@ const initialOptions: InitialOptions = {};
 const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
   const [qty, setQty] = useState(1);
   const [extraOptions, setExtraOptions] = useState(initialOptions);
-
-  const priceToString = (priceNumber: number) => {
-    const priceString = priceNumber.toString();
-    const dollars = priceString.slice(0, priceString.length - 2);
-    console.log(dollars);
-    const cents = priceString.slice(-2);
-    console.log(cents);
-
-    return `${dollars}.${cents}`;
-  };
 
   const totalPrice = () => {
     const activeOptions = Object.keys(extraOptions);
