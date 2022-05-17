@@ -1,9 +1,19 @@
 export const priceToString = (priceNumber: number) => {
   const priceString = priceNumber.toString();
-  const dollars = priceString.slice(0, priceString.length - 2);
-  console.log(dollars);
-  const cents = priceString.slice(-2);
-  console.log(cents);
 
-  return `${dollars}.${cents}`;
+  if (priceNumber === 0) {
+    return "Free";
+  }
+
+  if (priceString.length === 1) {
+    return `$0.0${priceString}`;
+  }
+  if (priceString.length === 2) {
+    return `$0.${priceString}`;
+  }
+
+  const dollars = priceString.slice(0, priceString.length - 2);
+  const cents = priceString.slice(-2);
+
+  return `$${dollars}.${cents}`;
 };

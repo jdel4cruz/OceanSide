@@ -33,7 +33,7 @@ const FoodOption = ({
     <Stack direction="row" justifyContent="space-between" alignItems="center">
       <Stack direction="row" alignItems="center" spacing={2}>
         <Typography>{option.optionName}</Typography>
-        <Typography>${priceToString(option.price)}</Typography>
+        <Typography>{priceToString(option.price)}</Typography>
       </Stack>
 
       <Checkbox onChange={handleChange} />

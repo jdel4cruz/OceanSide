@@ -109,7 +109,7 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
       <StyledContent>
         <Stack alignItems="center" spacing={2}>
           <AdjustQtyInput qty={qty} setQty={setQty} />
-          <Price variant="h6">{`Price: $${price}`}</Price>
+          <Price variant="h6">{`Price: ${price}`}</Price>
           <AddToCartButton />
         </Stack>
       </StyledContent>
