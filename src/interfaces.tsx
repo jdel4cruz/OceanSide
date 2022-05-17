@@ -23,6 +23,7 @@ export interface MenuItemPropsInterface {
   description: string;
   imgPath?: string;
   foodOptions?: foodOptionsInterface;
+  price: number;
 }
 
 export interface foodOptionsInterface {

@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Provider } from "react-redux";
+
+import { store } from "./Redux/store";
 
 //Routes
 import Menu from "./Routes/Menu";
@@ -17,11 +19,13 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Routes>
-        <Route path="/" element={<Menu />} />
-        <Route path="/:foodType/addtocart/:foodId" element={<AddToCart />} />
-        <Route path="/Cart" element={<Cart />} />
-      </Routes>
+      <Provider store={store}>
+        <Routes>
+          <Route path="/" element={<Menu />} />
+          <Route path="/:foodType/addtocart/:foodId" element={<AddToCart />} />
+          <Route path="/Cart" element={<Cart />} />
+        </Routes>
+      </Provider>
     </ThemeProvider>
   );
 }
