@@ -1,7 +1,8 @@
-import { MenuItemProps, MenuItemsInterface } from "./interfaces";
+import { MenuItemPropsInterface, MenuItemsInterface } from "./interfaces";
 
-const breakfast: MenuItemProps[] = [
+const breakfast: MenuItemPropsInterface[] = [
   {
+    foodId: 1,
     foodName: "Blueberry Banana French Toast",
     foodType: "breakfast",
     description:
@@ -35,6 +36,7 @@ const breakfast: MenuItemProps[] = [
     },
   },
   {
+    foodId: 2,
     foodName: "Homemade Croissants",
     foodType: "breakfast",
     description: "Baked at the break of dawn everyday.",
@@ -53,6 +55,7 @@ const breakfast: MenuItemProps[] = [
     },
   },
   {
+    foodId: 3,
     foodName: "Smoked Salmon Avocado Toast",
     foodType: "breakfast",
     description:
@@ -60,6 +63,7 @@ const breakfast: MenuItemProps[] = [
     imgPath: "/Images/Breakfast/Smoked_Salmon_Avocado_Toast.jpg",
   },
   {
+    foodId: 4,
     foodName: "The Rise n' Shine",
     foodType: "breakfast",
     description:
@@ -82,6 +86,7 @@ const breakfast: MenuItemProps[] = [
     },
   },
   {
+    foodId: 5,
     foodName: "Gift of Elysium",
     foodType: "breakfast",
     description:
@@ -119,6 +124,7 @@ const breakfast: MenuItemProps[] = [
     },
   },
   {
+    foodId: 6,
     foodName: "Just Toast",
     foodType: "breakfast",
     description:
@@ -145,6 +151,7 @@ const breakfast: MenuItemProps[] = [
     },
   },
   {
+    foodId: 7,
     foodName: "Chocolate Crepes",
     foodType: "breakfast",
     description:
@@ -187,6 +194,7 @@ const breakfast: MenuItemProps[] = [
     },
   },
   {
+    foodId: 8,
     foodName: "Strawberry Pancakes",
     foodType: "breakfast",
     description:
@@ -224,6 +232,7 @@ const breakfast: MenuItemProps[] = [
     },
   },
   {
+    foodId: 9,
     foodName: "Triple Berry Waffles",
     foodType: "breakfast",
     description:
@@ -254,8 +263,9 @@ const breakfast: MenuItemProps[] = [
   },
 ];
 
-const beverages: MenuItemProps[] = [
+const beverages: MenuItemPropsInterface[] = [
   {
+    foodId: 10,
     foodName: "Coffee",
     foodType: "beverages",
     description:
@@ -271,6 +281,7 @@ const beverages: MenuItemProps[] = [
     },
   },
   {
+    foodId: 11,
     foodName: "Latte",
     foodType: "beverages",
     description:
@@ -290,6 +301,7 @@ const beverages: MenuItemProps[] = [
     },
   },
   {
+    foodId: 12,
     foodName: "Espresso",
     foodType: "beverages",
     description:
@@ -315,6 +327,7 @@ const beverages: MenuItemProps[] = [
     },
   },
   {
+    foodId: 13,
     foodName: "Mimosa",
     foodType: "beverages",
     description:
@@ -338,6 +351,7 @@ const beverages: MenuItemProps[] = [
     },
   },
   {
+    foodId: 14,
     foodName: "Sangria Lemonade",
     foodType: "beverages",
     description:
@@ -357,6 +371,7 @@ const beverages: MenuItemProps[] = [
     },
   },
   {
+    foodId: 15,
     foodName: "English Breakfast Tea",
     foodType: "beverages",
     description:
@@ -364,6 +379,8 @@ const beverages: MenuItemProps[] = [
     imgPath: "/Images/Beverages/tea.jpg",
   },
 ];
+
+export const menuItemsArray = [...breakfast, ...beverages];
 
 export const menuItems: MenuItemsInterface = {
   breakfast,

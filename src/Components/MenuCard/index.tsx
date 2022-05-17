@@ -10,13 +10,13 @@ import {
 } from "./MenuCard.styles";
 
 //Interfaces
-import { MenuItemProps } from "../../interfaces";
+import { MenuItemPropsInterface } from "../../interfaces";
 
 const MenuCard = ({
   menuItem,
   id,
 }: {
-  menuItem: MenuItemProps;
+  menuItem: MenuItemPropsInterface;
   id: number;
 }) => {
   const navigate = useNavigate();

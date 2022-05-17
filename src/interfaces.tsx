@@ -6,7 +6,7 @@ export interface NavLink {
 }
 
 export interface MenuItemsInterface {
-  [index: string]: MenuItemProps[];
+  [index: string]: MenuItemPropsInterface[];
 }
 
 export interface setStateButtonInterface {
@@ -16,7 +16,8 @@ export interface setStateButtonInterface {
   content: string;
 }
 
-export interface MenuItemProps {
+export interface MenuItemPropsInterface {
+  foodId: number;
   foodName: string;
   foodType: "breakfast" | "beverages";
   description: string;

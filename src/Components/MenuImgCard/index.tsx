@@ -16,9 +16,9 @@ import {
 } from "./MenuImgCard.styles";
 
 //Interfaces
-import { MenuItemProps } from "../../interfaces";
+import { MenuItemPropsInterface } from "../../interfaces";
 
-const MenuImgCard = ({ menuItem }: { menuItem: MenuItemProps }) => {
+const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
   return (
     <StyledCard variant="outlined">
       <CardMedia component="img" image={menuItem.imgPath} />

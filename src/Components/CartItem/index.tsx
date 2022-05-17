@@ -8,12 +8,17 @@ import AdjustQtyInput from "../AdjustQtyInput";
 import { StyledDivider, StyledHeader, Price } from "./CartItem.styles";
 
 //Interfaces
-import { MenuItemProps } from "../../interfaces";
+import { MenuItemPropsInterface } from "../../interfaces";
 
-const CartItem = ({ menuItem }: { menuItem: MenuItemProps }) => {
+const CartItem = () => {
+  /*Will get current state of cart item based on props passed. Buttons will send actions to 
+    increment and decrement qty of cart item. Trash icon will be used to remove item from cart altogether.
+
+  */
+
   return (
     <Stack>
-      <StyledHeader title={menuItem.foodName} />
+      <StyledHeader>MenuItemName</StyledHeader>
       <StyledDivider />
       <Stack
         direction="row"
@@ -21,7 +26,7 @@ const CartItem = ({ menuItem }: { menuItem: MenuItemProps }) => {
         alignItems="center"
         justifyContent="space-between"
       >
-        <img src={menuItem.imgPath} alt="menuItemImg"></img>
+        <img src="" alt="menuItemImg"></img>
 
         <div>
           <AdjustQtyInput></AdjustQtyInput>

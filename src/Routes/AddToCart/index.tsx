@@ -9,7 +9,7 @@ import ReturnButton from "../../Components/ReturnButton";
 import { Wrapper, MenuContainer, Header } from "./AddToCart.styles";
 
 //Interfaces
-import { MenuItemProps } from "../../interfaces";
+import { MenuItemPropsInterface } from "../../interfaces";
 
 //Data
 import { menuItems } from "../../MenuItems";

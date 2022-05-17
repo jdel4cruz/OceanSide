@@ -16,50 +16,12 @@ import {
 } from "./CartItems.styles";
 
 //Interfaces
-import { MenuItemProps } from "../../interfaces";
+import { MenuItemPropsInterface } from "../../interfaces";
 
-const CartItems = ({ menuItem }: { menuItem: MenuItemProps }) => {
-  return (
-    <StyledCard variant="outlined">
-      <CardMedia component="img" image={menuItem.imgPath} />
-      <StyledHeader title={menuItem.foodName} />
-      <StyledDivider />
-      <StyledContent>
-        <Typography>{menuItem.description}</Typography>
-      </StyledContent>
+const CartItems = () => {
+  //Will map out cartItems based on current Cart state in redux store. Each item will be passed foodType and foodId
 
-      {menuItem.foodOptions?.addOptions !== undefined && (
-        <>
-          <StyledDivider />
-          <StyledHeader title="Add Options" />
-          <StyledDivider />
-          <StyledContent>
-            <FoodOptions options={menuItem.foodOptions.addOptions} />
-          </StyledContent>
-        </>
-      )}
-
-      {menuItem.foodOptions?.removeOptions !== undefined && (
-        <>
-          <StyledDivider />
-          <StyledHeader title="Remove Options" />
-          <StyledDivider />
-          <StyledContent>
-            <FoodOptions options={menuItem.foodOptions.removeOptions} />
-          </StyledContent>
-        </>
-      )}
-
-      <StyledDivider />
-      <StyledContent>
-        <Stack alignItems="center" spacing={2}>
-          <AdjustQtyInput />
-          <Price variant="h6">Price: Placeholder</Price>
-          <AddToCartButton />
-        </Stack>
-      </StyledContent>
-    </StyledCard>
-  );
+  return <></>;
 };
 
 export default CartItems;
