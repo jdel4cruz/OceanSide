@@ -3,9 +3,10 @@ import { RootState } from "../../Redux/store";
 
 //Components
 import ReturnButton from "../ReturnButton";
+import CartItem from "../CartItem";
 
 //Styles
-import { Wrapper } from "./CartItems.styles";
+import { Wrapper, CartStack } from "./CartItems.styles";
 
 //Interfaces
 import { MenuItemPropsInterface } from "../../interfaces";
@@ -17,6 +18,11 @@ const CartItems = () => {
   return (
     <Wrapper>
       <ReturnButton path="/"></ReturnButton>
+      <CartStack>
+        {cart.map((cartItem) => (
+          <CartItem menuItem={cartItem.menuItem} qty={cartItem.qty} />
+        ))}
+      </CartStack>
     </Wrapper>
   );
 };

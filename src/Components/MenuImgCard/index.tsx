@@ -29,6 +29,49 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
   const [qty, setQty] = useState(1);
   const [extraOptions, setExtraOptions] = useState(initialOptions);
 
+  const priceToString = (priceNumber: number) => {
+    const priceString = priceNumber.toString();
+    const dollars = priceString.slice(0, priceString.length - 2);
+    console.log(dollars);
+    const cents = priceString.slice(-2);
+    console.log(cents);
+
+    return `${dollars}.${cents}`;
+  };
+
+  const totalPrice = () => {
+    const activeOptions = Object.keys(extraOptions);
+    const menuOptions = menuItem.foodOptions;
+    const addOptions = menuOptions?.addOptions;
+    const removeOptions = menuOptions?.removeOptions;
+
+    let totalPrice = menuItem.price;
+
+    activeOptions.forEach((option) => {
+      if (addOptions !== undefined) {
+        const addOption = addOptions.find(
+          (element) => element.optionName === option
+        );
+        if (addOption !== undefined) {
+          totalPrice += addOption.price;
+        }
+      }
+
+      if (removeOptions !== undefined) {
+        const removeOption = removeOptions.find(
+          (element) => element.optionName === option
+        );
+        if (removeOption !== undefined) {
+          totalPrice += removeOption.price;
+        }
+      }
+    });
+
+    return priceToString(totalPrice * qty);
+  };
+
+  const price = totalPrice();
+
   console.log(extraOptions);
   console.log(qty);
 
@@ -73,7 +116,7 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
       <StyledContent>
         <Stack alignItems="center" spacing={2}>
           <AdjustQtyInput qty={qty} setQty={setQty} />
-          <Price variant="h6">{`Price: $${menuItem.price * qty}`}</Price>
+          <Price variant="h6">{`Price: $${price}`}</Price>
           <AddToCartButton />
         </Stack>
       </StyledContent>
