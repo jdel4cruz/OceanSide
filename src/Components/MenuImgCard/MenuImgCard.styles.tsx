@@ -1,4 +1,5 @@
 import {
+  Button,
   Card,
   CardHeader,
   CardContent,
@@ -33,4 +34,22 @@ export const StyledContent = styled(CardContent)`
 `;
 export const Price = styled(Typography)`
   align-self: start;
+`;
+
+export const StyledButton = styled(Button)`
+  min-width: 100%;
+  height: 4rem;
+
+  border-radius: 0.5rem;
+  background: white;
+
+  border: 1px solid #cfaf90;
+  color: #cfaf90;
+  font-weight: 500;
+
+  :hover {
+    background: #cfaf90;
+    border: none;
+    color: white;
+  }
 `;

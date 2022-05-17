@@ -1,5 +1,9 @@
 import { CardMedia, Typography, Stack } from "@mui/material";
 import { useState } from "react";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+
+import { useDispatch } from "react-redux";
+import { newCartItem } from "../../Redux/Reducers/cartReducer";
 
 import FoodOptions from "../../Components/FoodOptions";
 
@@ -13,6 +17,7 @@ import {
   StyledDivider,
   StyledHeader,
   StyledContent,
+  StyledButton,
   Price,
 } from "./MenuImgCard.styles";
 
@@ -31,6 +36,8 @@ const initialOptions: InitialOptions = {};
 const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
   const [qty, setQty] = useState(1);
   const [extraOptions, setExtraOptions] = useState(initialOptions);
+
+  const dispatch = useDispatch();
 
   const totalPrice = () => {
     const activeOptions = Object.keys(extraOptions);
@@ -60,13 +67,10 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
       }
     });
 
-    return priceToString(totalPrice * qty);
+    return totalPrice * qty;
   };
 
   const price = totalPrice();
-
-  console.log(extraOptions);
-  console.log(qty);
 
   return (
     <StyledCard variant="outlined">
@@ -109,8 +113,17 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
       <StyledContent>
         <Stack alignItems="center" spacing={2}>
           <AdjustQtyInput qty={qty} setQty={setQty} />
-          <Price variant="h6">{`Price: ${price}`}</Price>
-          <AddToCartButton />
+          <Price variant="h6">{`Price: ${priceToString(price)}`}</Price>
+          <StyledButton
+            size="large"
+            endIcon={<ShoppingBagIcon />}
+            disableElevation
+            onClick={() =>
+              dispatch(newCartItem({ qty, price, extraOptions, menuItem }))
+            }
+          >
+            Add to cart
+          </StyledButton>
         </Stack>
       </StyledContent>
     </StyledCard>
