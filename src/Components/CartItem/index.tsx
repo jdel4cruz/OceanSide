@@ -6,17 +6,24 @@ import {
 } from "../../Redux/Reducers/cartReducer";
 import { AppDispatch } from "../../Redux/store";
 
-import { CardMedia, IconButton, Typography, Stack } from "@mui/material";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
 //Components
 import AdjustQtyInput from "../AdjustQtyInput";
 
 //Styles
-import { StyledDivider, StyledHeader, Price } from "./CartItem.styles";
+import {
+  StyledCard,
+  StyledDivider,
+  StyledHeader,
+  MediaContainer,
+  Price,
+  StyledContent,
+} from "./CartItem.styles";
 
 //Interfaces
 import { MenuItemPropsInterface } from "../../interfaces";
+import { CardMedia, IconButton } from "@mui/material";
 
 const CartItem = ({
   menuItem,
@@ -28,26 +35,20 @@ const CartItem = ({
   const dispatch: AppDispatch = useDispatch();
 
   return (
-    <Stack>
-      <StyledHeader>{menuItem.foodName}</StyledHeader>
+    <StyledCard>
+      <StyledHeader title={menuItem.foodName} />
       <StyledDivider />
-      <Stack
-        direction="row"
-        spacing={3}
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <img src={menuItem.imgPath} alt="menuItemImg"></img>
+      <StyledContent>
+        <MediaContainer>
+          <CardMedia component="img" image={menuItem.imgPath} />
+        </MediaContainer>
 
-        <div>
-          <Price>${menuItem.price * qty}</Price>
-        </div>
-
+        <Price>Placeholder</Price>
         <IconButton>
-          <DeleteRoundedIcon />
+          <DeleteRoundedIcon></DeleteRoundedIcon>
         </IconButton>
-      </Stack>
-    </Stack>
+      </StyledContent>
+    </StyledCard>
   );
 };
 
