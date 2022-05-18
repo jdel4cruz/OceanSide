@@ -90,7 +90,9 @@ const cartSlice = createSlice({
       state,
       action: PayloadAction<UpdateCartItemActionPayload>
     ) => {
-      state.cart.filter((item) => item.cartId !== action.payload.cartId);
+      state.cart = state.cart.filter(
+        (item) => item.cartId !== action.payload.cartId
+      );
     },
   },
 });

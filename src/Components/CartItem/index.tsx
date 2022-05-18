@@ -1,9 +1,5 @@
-import { useSelector, useDispatch } from "react-redux";
-import {
-  deleteCartItem,
-  removeCartItem,
-  addCartItem,
-} from "../../Redux/Reducers/cartReducer";
+import { useDispatch } from "react-redux";
+import { deleteCartItem } from "../../Redux/Reducers/cartReducer";
 import { AppDispatch } from "../../Redux/store";
 
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
@@ -39,6 +35,8 @@ const CartItem = ({
   price: number;
   cartId: number;
 }) => {
+  const dispatch: AppDispatch = useDispatch();
+
   return (
     <StyledCard>
       <StyledHeader title={menuItem.foodName} />
@@ -52,7 +50,7 @@ const CartItem = ({
           <Price>{priceToString(price)}</Price>
         </ContentContainer>
 
-        <IconButton>
+        <IconButton onClick={() => dispatch(deleteCartItem({ cartId }))}>
           <DeleteRoundedIcon></DeleteRoundedIcon>
         </IconButton>
       </StyledContent>
