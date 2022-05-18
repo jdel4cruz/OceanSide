@@ -18,9 +18,15 @@ const CartItems = () => {
 
   return (
     <Wrapper>
-      <CartStack>
-        {cart.map((cartItem) => (
-          <CartItem menuItem={cartItem.menuItem} qty={cartItem.qty} />
+      <CartStack spacing={-1}>
+        {cart.map((cartItem, i) => (
+          <CartItem
+            menuItem={cartItem.menuItem}
+            qty={cartItem.qty}
+            price={cartItem.price}
+            cartId={cartItem.cartId}
+            key={i}
+          />
         ))}
       </CartStack>
     </Wrapper>

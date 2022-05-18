@@ -6,6 +6,9 @@ import { menuItems, menuItemsArray } from "../../MenuItems";
 //Interfaces
 import { MenuItemPropsInterface } from "../../interfaces";
 
+//Helper Functions
+import { totalPrice } from "../../HelperFunctions";
+
 interface CartItemInterface {
   menuItem: MenuItemPropsInterface;
   qty: number;
@@ -13,10 +16,12 @@ interface CartItemInterface {
     [index: string]: boolean;
   };
   price: number;
+  cartId: number;
 }
 
 interface CartState {
   cart: CartItemInterface[];
+  nextId: number;
 }
 
 interface NewCartItemActionPayload {
@@ -29,11 +34,12 @@ interface NewCartItemActionPayload {
 }
 
 interface UpdateCartItemActionPayload {
-  foodId: number;
+  cartId: number;
 }
 
 const initialState: CartState = {
   cart: [],
+  nextId: 0,
 };
 
 const cartSlice = createSlice({
@@ -46,15 +52,22 @@ const cartSlice = createSlice({
         menuItem: action.payload.menuItem,
         options: action.payload.extraOptions,
         price: action.payload.price,
+        cartId: state.nextId,
       });
+      state.nextId += 1;
     },
     addCartItem: (
       state,
       action: PayloadAction<UpdateCartItemActionPayload>
     ) => {
       state.cart.forEach((cartItem) => {
-        if (cartItem.menuItem.foodId === action.payload.foodId) {
-          return (cartItem.qty += 1);
+        if (cartItem.cartId === action.payload.cartId) {
+          cartItem.qty += 1;
+          cartItem.price = totalPrice(
+            cartItem.options,
+            cartItem.menuItem,
+            cartItem.qty
+          );
         }
       });
     },
@@ -63,8 +76,13 @@ const cartSlice = createSlice({
       action: PayloadAction<UpdateCartItemActionPayload>
     ) => {
       state.cart.forEach((cartItem) => {
-        if (cartItem.menuItem.foodId === action.payload.foodId) {
-          return (cartItem.qty -= 1);
+        if (cartItem.cartId === action.payload.cartId) {
+          cartItem.qty -= 1;
+          cartItem.price = totalPrice(
+            cartItem.options,
+            cartItem.menuItem,
+            cartItem.qty
+          );
         }
       });
     },
@@ -72,9 +90,7 @@ const cartSlice = createSlice({
       state,
       action: PayloadAction<UpdateCartItemActionPayload>
     ) => {
-      state.cart.filter(
-        (item) => item.menuItem.foodId !== action.payload.foodId
-      );
+      state.cart.filter((item) => item.cartId !== action.payload.cartId);
     },
   },
 });

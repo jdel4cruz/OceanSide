@@ -23,7 +23,7 @@ import {
 } from "./MenuImgCard.styles";
 
 //Helper Functions
-import { priceToString } from "../../HelperFunctions";
+import { priceToString, totalPrice } from "../../HelperFunctions";
 
 //Interfaces
 import { MenuItemPropsInterface } from "../../interfaces";
@@ -41,38 +41,7 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const totalPrice = () => {
-    const activeOptions = Object.keys(extraOptions);
-    const menuOptions = menuItem.foodOptions;
-    const addOptions = menuOptions?.addOptions;
-    const removeOptions = menuOptions?.removeOptions;
-
-    let totalPrice = menuItem.price;
-
-    activeOptions.forEach((option) => {
-      if (addOptions !== undefined) {
-        const addOption = addOptions.find(
-          (element) => element.optionName === option
-        );
-        if (addOption !== undefined) {
-          totalPrice += addOption.price;
-        }
-      }
-
-      if (removeOptions !== undefined) {
-        const removeOption = removeOptions.find(
-          (element) => element.optionName === option
-        );
-        if (removeOption !== undefined) {
-          totalPrice += removeOption.price;
-        }
-      }
-    });
-
-    return totalPrice * qty;
-  };
-
-  const price = totalPrice();
+  const price = totalPrice(extraOptions, menuItem, qty);
 
   return (
     <StyledCard variant="outlined">

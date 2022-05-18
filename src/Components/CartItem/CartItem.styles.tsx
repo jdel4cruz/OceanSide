@@ -24,8 +24,8 @@ export const StyledHeader = styled(CardHeader)`
   }
 `;
 
-export const MediaContainer = styled(Container)`
-  width: 40%;
+export const ContentContainer = styled("div")`
+  width: 30%;
   padding: 0;
   margin: 0;
 `;

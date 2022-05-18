@@ -17,7 +17,7 @@ const Cart = () => {
   return (
     <Wrapper>
       <ReturnButton path="/" />
-      <Header variant="h5">My Cart:</Header>
+      <Header variant="h4">My Cart:</Header>
       <CartItems />
     </Wrapper>
   );
