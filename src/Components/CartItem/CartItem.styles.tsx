@@ -3,18 +3,19 @@ import {
   CardHeader,
   Container,
   Divider,
+  Stack,
   Typography,
 } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const StyledCard = styled(Card)`
-  margin-top: 0.25rem;
   border: 4px solid white;
   padding: 0.5rem;
 `;
 
 export const StyledHeader = styled(CardHeader)`
   padding: 0.5rem 0;
+  padding-top: 0;
 
   .MuiCardHeader-title {
     font-style: normal;
@@ -25,7 +26,12 @@ export const StyledHeader = styled(CardHeader)`
 `;
 
 export const ContentContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 30%;
+  flex: 1 1 0;
   padding: 0;
   margin: 0;
 `;

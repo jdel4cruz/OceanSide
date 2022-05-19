@@ -1,10 +1,8 @@
-import { Container, Typography } from "@mui/material";
+import { Stack, Container, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const Wrapper = styled(Container)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+export const Wrapper = styled(Stack)`
+  min-height: 100vh;
   padding: 1.5rem;
 
   background: #9eccd0;

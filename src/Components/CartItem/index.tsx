@@ -47,7 +47,7 @@ const CartItem = ({
         </ContentContainer>
         <ContentContainer>
           <AdjustCartQty qty={qty} cartId={cartId} />
-          <Price>{priceToString(price)}</Price>
+          <Price>{`Price ${priceToString(price)}`}</Price>
         </ContentContainer>
 
         <IconButton onClick={() => dispatch(deleteCartItem({ cartId }))}>

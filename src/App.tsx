@@ -9,10 +9,23 @@ import Menu from "./Routes/Menu";
 import AddToCart from "./Routes/AddToCart";
 import Cart from "./Routes/Cart";
 
+declare module "@mui/material/styles" {
+  interface Palette {
+    custom: Palette["primary"];
+  }
+
+  interface PaletteOptions {
+    custom?: PaletteOptions["primary"];
+  }
+}
+
 const theme = createTheme({
   typography: {
     fontFamily: `'Lato', 'Roboto', 'sans-serif'`,
     fontSize: 16,
+  },
+  palette: {
+    custom: {},
   },
 });
 

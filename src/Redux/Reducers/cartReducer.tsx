@@ -1,27 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-//Data
-import { menuItems, menuItemsArray } from "../../MenuItems";
-
 //Interfaces
-import { MenuItemPropsInterface } from "../../interfaces";
+import { MenuItemPropsInterface, CartItemInterface } from "../../interfaces";
 
 //Helper Functions
 import { totalPrice } from "../../HelperFunctions";
 
-interface CartItemInterface {
-  menuItem: MenuItemPropsInterface;
-  qty: number;
-  options: {
-    [index: string]: boolean;
-  };
-  price: number;
-  cartId: number;
-}
-
 interface CartState {
   cart: CartItemInterface[];
   nextId: number;
+  tax: number;
 }
 
 interface NewCartItemActionPayload {
@@ -40,6 +28,7 @@ interface UpdateCartItemActionPayload {
 const initialState: CartState = {
   cart: [],
   nextId: 0,
+  tax: 0.056,
 };
 
 const cartSlice = createSlice({

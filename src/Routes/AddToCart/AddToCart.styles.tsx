@@ -3,6 +3,7 @@ import { styled } from "@mui/system";
 
 export const Wrapper = styled(Container)`
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   align-items: center;
   padding: 1.5rem;

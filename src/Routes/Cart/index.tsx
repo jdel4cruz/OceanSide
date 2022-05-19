@@ -1,23 +1,25 @@
-import { useParams } from "react-router";
+import { useSelector } from "react-redux";
+import { Stack } from "@mui/material";
 
 //Components
 import ReturnButton from "../../Components/ReturnButton";
 import CartItems from "../../Components/CartItems";
 
 //Styles
-import { Wrapper, MenuContainer, Header } from "./Cart.styles";
-
-//Interfaces
-import { MenuItemPropsInterface } from "../../interfaces";
-
-//Data
-import { menuItems } from "../../MenuItems";
+import { Wrapper, Header } from "./Cart.styles";
 
 const Cart = () => {
   return (
-    <Wrapper>
-      <ReturnButton path="/" />
-      <Header variant="h4">My Cart:</Header>
+    <Wrapper alignItems="center">
+      <Stack
+        sx={{ width: 1, mb: "1rem" }}
+        direction="row"
+        justifyContent="space-between"
+        spacing={5}
+      >
+        <Header variant="h4">My Cart:</Header>
+        <ReturnButton path="/" />
+      </Stack>
       <CartItems />
     </Wrapper>
   );

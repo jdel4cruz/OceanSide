@@ -1,16 +1,15 @@
-import { Container, Stack, IconButton, Typography } from "@mui/material";
-import { AppDispatch } from "../../Redux/store";
+import { Stack, IconButton, Typography } from "@mui/material";
+
 import { addCartItem, removeCartItem } from "../../Redux/Reducers/cartReducer";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const AdjustCartQty = ({ cartId, qty }: { cartId: number; qty: number }) => {
   const dispatch = useDispatch();
   return (
     <Stack direction="row" alignItems="center" spacing={0}>
-      <Typography variant="body1">Qty:</Typography>
       <Stack direction="row" alignItems="center" spacing={0}>
         <IconButton
           size="small"

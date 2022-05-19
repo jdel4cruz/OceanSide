@@ -35,3 +35,13 @@ export interface foodOptionInterface {
   optionName: string;
   price: number;
 }
+
+export interface CartItemInterface {
+  menuItem: MenuItemPropsInterface;
+  qty: number;
+  options: {
+    [index: string]: boolean;
+  };
+  price: number;
+  cartId: number;
+}
