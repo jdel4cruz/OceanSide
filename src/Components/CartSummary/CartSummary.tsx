@@ -1,4 +1,13 @@
-import { Card, CardContent, Stack, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Stack,
+  Typography,
+} from "@mui/material";
+
+//Styles
+import { StyledButton } from "./CartSummary.styles";
 
 //Interfaces
 import { CartItemInterface } from "../../interfaces";
@@ -27,26 +36,37 @@ const CartSummary = ({
     <Card>
       <CardContent>
         <Stack>
-          <Stack direction="row" justifyContent="space-between">
-            <Typography>Item Total</Typography>
-            <Typography>{priceToString(total)}</Typography>
+          <Stack direction="row" justifyContent="space-between" spacing={1}>
+            <Typography sx={{ fontWeight: "bold" }}>Item Total</Typography>
+            <Typography sx={{ fontWeight: "bold" }}>
+              {priceToString(total)}
+            </Typography>
           </Stack>
           <Stack direction="row" justifyContent="space-between">
-            <Typography>Tax</Typography>
-            <Typography>{priceToString(Math.round(total * tax))}</Typography>
+            <Typography sx={{ fontWeight: "bold" }}>Tax</Typography>
+            <Typography sx={{ fontWeight: "bold" }}>
+              {priceToString(Math.round(total * tax))}
+            </Typography>
           </Stack>
           <Stack
             sx={{ paddingTop: "1rem" }}
             direction="row"
             justifyContent="space-between"
           >
-            <Typography>Total:</Typography>
-            <Typography>
+            <Typography sx={{ fontWeight: "bold" }}>Total:</Typography>
+            <Typography sx={{ fontWeight: "bold" }}>
               {priceToString(Math.round(total + total * tax))}
             </Typography>
           </Stack>
         </Stack>
       </CardContent>
+      <CardActions
+        sx={{ display: "flex", justifyContent: "center", pb: "1rem" }}
+      >
+        <StyledButton size="large" disableElevation>
+          Proceed to Checkout
+        </StyledButton>
+      </CardActions>
     </Card>
   );
 };

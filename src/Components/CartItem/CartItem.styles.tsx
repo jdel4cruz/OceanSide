@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  Container,
-  Divider,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Card, CardHeader, Divider, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const StyledCard = styled(Card)`
