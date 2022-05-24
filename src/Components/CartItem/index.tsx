@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { deleteCartItem } from "../../Redux/Reducers/cartReducer";
 import { AppDispatch } from "../../Redux/store";
 
+import { Typography } from "@mui/material";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
 //Components
@@ -13,7 +14,6 @@ import {
   StyledDivider,
   StyledHeader,
   ContentContainer,
-  Price,
   StyledContent,
 } from "./CartItem.styles";
 
@@ -47,7 +47,7 @@ const CartItem = ({
         </ContentContainer>
         <ContentContainer>
           <AdjustCartQty qty={qty} cartId={cartId} />
-          <Price>{`Price ${priceToString(price)}`}</Price>
+          <Typography>{`Price ${priceToString(price)}`}</Typography>
         </ContentContainer>
 
         <IconButton onClick={() => dispatch(deleteCartItem({ cartId }))}>

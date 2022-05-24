@@ -1,4 +1,4 @@
-import { Card, CardHeader, Divider, Typography } from "@mui/material";
+import { Card, CardHeader, Divider } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const StyledCard = styled(Card)`
@@ -41,5 +41,3 @@ export const StyledContent = styled("div")`
 export const StyledDivider = styled(Divider)`
   border: 2px solid #f7e4d4;
 `;
-
-export const Price = styled(Typography)``;

@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import { Stack } from "@mui/material";
 
 //Components
 import MenuImgCard from "../../Components/MenuImgCard";
@@ -24,8 +25,16 @@ const AddToCart = () => {
 
   return (
     <Wrapper>
-      <ReturnButton path="/" />
-      <Header variant="h5">Add To Cart:</Header>
+      <Stack
+        sx={{ width: 1, mb: "1rem" }}
+        direction="row"
+        justifyContent="space-between"
+      >
+        <Header variant="h4">Add To Cart:</Header>
+
+        <ReturnButton path="/" />
+      </Stack>
+
       {menuItem !== undefined ? (
         <MenuImgCard menuItem={menuItem} />
       ) : (
