@@ -5,6 +5,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { useNavigate } from "react-router";
 
 //Styles
 import { StyledButton } from "./CartSummary.styles";
@@ -29,6 +30,8 @@ const CartSummary = ({
 
     return total;
   };
+
+  const navigate = useNavigate();
 
   const total = cartTotalPrice();
 
@@ -63,7 +66,11 @@ const CartSummary = ({
       <CardActions
         sx={{ display: "flex", justifyContent: "center", pb: "1rem" }}
       >
-        <StyledButton size="large" disableElevation>
+        <StyledButton
+          size="large"
+          disableElevation
+          onClick={() => navigate("/checkout")}
+        >
           Proceed to Checkout
         </StyledButton>
       </CardActions>
