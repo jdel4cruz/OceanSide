@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 
 //Interfaces
-import { NavLink } from "../../interfaces";
+import { NavLink } from "../../../../interfaces";
 
 //Styles
 import { StyledLink, Wrapper } from "./NavBar.styles";

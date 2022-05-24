@@ -2,8 +2,8 @@ import { useParams } from "react-router";
 import { Stack } from "@mui/material";
 
 //Components
-import MenuImgCard from "../../Components/MenuImgCard";
-import FoodOptions from "../../Components/FoodOptions";
+import MenuImgCard from "./Components/MenuImgCard";
+import FoodOptions from "./Components/FoodOptions";
 import ReturnButton from "../../Components/ReturnButton";
 
 //Styles

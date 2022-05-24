@@ -4,9 +4,9 @@ import { useState } from "react";
 import { NavLink, setStateButtonInterface } from "../../interfaces";
 
 //Components
-import NavBar from "../../Components/NavBar";
-import MenuNavBar from "../../Components/MenuNavBar";
-import MenuGrid from "../../Components/MenuGrid";
+import NavBar from "./Components/NavBar";
+import MenuNavBar from "./Components/MenuNavBar";
+import MenuGrid from "./Components/MenuGrid";
 
 //Styles
 import { Wrapper, HeroText, MenuContainer } from "./Menu.styles";

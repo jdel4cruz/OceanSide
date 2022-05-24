@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 
 //Interfaces
-import { setStateButtonInterface } from "../../interfaces";
+import { setStateButtonInterface } from "../../../../interfaces";
 
 //Styles
 import { Wrapper } from "./MenuNavBar.styles";

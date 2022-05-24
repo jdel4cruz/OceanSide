@@ -10,10 +10,10 @@ import {
 import { StyledButton } from "./CartSummary.styles";
 
 //Interfaces
-import { CartItemInterface } from "../../interfaces";
+import { CartItemInterface } from "../../../../interfaces";
 
 //Helper Functions
-import { priceToString } from "../../HelperFunctions";
+import { priceToString } from "../../../../HelperFunctions";
 
 const CartSummary = ({
   cart,

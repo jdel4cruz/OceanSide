@@ -4,13 +4,13 @@ import { CardMedia, Typography, Stack } from "@mui/material";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 
 import { useDispatch } from "react-redux";
-import { newCartItem } from "../../Redux/Reducers/cartReducer";
+import { newCartItem } from "../../../../Redux/Reducers/cartReducer";
 
-import FoodOptions from "../../Components/FoodOptions";
+import FoodOptions from "../FoodOptions";
 
 //Components
 import AdjustQtyInput from "../AdjustQtyInput";
-import AddToCartButton from "../AddToCartButton";
+import AddToCartButton from "../../../Cart/Components/AddToCartButton";
 
 //Styles
 import {
@@ -23,10 +23,10 @@ import {
 } from "./MenuImgCard.styles";
 
 //Helper Functions
-import { priceToString, totalPrice } from "../../HelperFunctions";
+import { priceToString, totalPrice } from "../../../../HelperFunctions";
 
 //Interfaces
-import { MenuItemPropsInterface } from "../../interfaces";
+import { MenuItemPropsInterface } from "../../../../interfaces";
 
 interface InitialOptions {
   [index: string]: boolean;

@@ -10,7 +10,7 @@ import {
 } from "./MenuCard.styles";
 
 //Interfaces
-import { MenuItemPropsInterface } from "../../interfaces";
+import { MenuItemPropsInterface } from "../../../../interfaces";
 
 const MenuCard = ({
   menuItem,

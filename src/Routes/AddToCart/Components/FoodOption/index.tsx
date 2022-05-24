@@ -2,10 +2,10 @@ import { Checkbox, Stack, Typography } from "@mui/material";
 import React from "react";
 
 //Helper Functions
-import { priceToString } from "../../HelperFunctions";
+import { priceToString } from "../../../../HelperFunctions";
 
 //Interfaces
-import { foodOptionInterface } from "../../interfaces";
+import { foodOptionInterface } from "../../../../interfaces";
 interface InitialOptions {
   [index: string]: boolean;
 }

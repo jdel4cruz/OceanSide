@@ -2,7 +2,7 @@ import { Stack } from "@mui/material";
 
 //Components
 import ReturnButton from "../../Components/ReturnButton";
-import CartItems from "../../Components/CartItems";
+import CartItems from "./Components/CartItems";
 
 //Styles
 import { Wrapper, Header } from "./Cart.styles";

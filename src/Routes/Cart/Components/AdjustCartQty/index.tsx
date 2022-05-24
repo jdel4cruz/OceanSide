@@ -1,6 +1,9 @@
 import { Stack, IconButton, Typography } from "@mui/material";
 
-import { addCartItem, removeCartItem } from "../../Redux/Reducers/cartReducer";
+import {
+  addCartItem,
+  removeCartItem,
+} from "../../../../Redux/Reducers/cartReducer";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 

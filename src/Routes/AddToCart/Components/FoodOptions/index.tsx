@@ -7,7 +7,7 @@ import FoodOption from "../FoodOption";
 import { StyledStack } from "./FoodOptions.styles";
 
 //Interfaces
-import { foodOptionInterface } from "../../interfaces";
+import { foodOptionInterface } from "../../../../interfaces";
 
 interface InitialOptions {
   [index: string]: boolean;

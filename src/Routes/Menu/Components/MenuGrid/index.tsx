@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 
 //Interfaces
-import { MenuItemPropsInterface } from "../../interfaces";
+import { MenuItemPropsInterface } from "../../../../interfaces";
 
 //Components
 import MenuCard from "../MenuCard";
@@ -10,7 +10,7 @@ import MenuCard from "../MenuCard";
 import { StyledGrid } from "./MenuGrid.styles";
 
 //Data
-import { menuItems } from "../../MenuItems";
+import { menuItems } from "../../../../MenuItems";
 
 const MenuGrid = ({ foodType }: { foodType: string }) => {
   let activeMenu: MenuItemPropsInterface[] | undefined;
