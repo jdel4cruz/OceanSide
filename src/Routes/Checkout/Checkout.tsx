@@ -9,6 +9,7 @@ import {
   getYear,
   lightFormat,
 } from "date-fns";
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import {
   Container,
   Paper,
@@ -23,6 +24,9 @@ import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRound
 import ShoppingBagTwoToneIcon from "@mui/icons-material/ShoppingBagTwoTone";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 
+//Components
+import UserInput from "./UserInput";
+
 //Interfaces
 interface PersonalInfo {
   firstName: string;
@@ -32,6 +36,7 @@ interface PersonalInfo {
   [index: string]: string;
 }
 
+//InitialState?
 const initialPersonalInfo: PersonalInfo = {
   firstName: "",
   lastName: "",
@@ -45,6 +50,8 @@ const Checkout = () => {
   const [personalInfo, setPersonalInfo] = useState(initialPersonalInfo);
   console.log(orderNotes);
   console.log(personalInfo.firstName);
+
+  const methods = useForm<PersonalInfo>();
 
   const handlePersonalInfo = (
     event: React.ChangeEvent<HTMLTextAreaElement>
@@ -82,7 +89,9 @@ const Checkout = () => {
         <AppBar sx={{ flexDirection: "row", p: "1rem" }}>
           <IconButton onClick={() => console.log("this isworking")}>
             <ArrowBackIosNewRoundedIcon />
-            <Typography sx={{ ml: "1rem" }}>Checkout</Typography>
+            <Typography sx={{ ml: "1rem" }} variant="h4">
+              Checkout
+            </Typography>
           </IconButton>
         </AppBar>
 
@@ -115,53 +124,101 @@ const Checkout = () => {
             Personal Information
           </Typography>
           <Paper sx={{ p: "1rem", mt: "1rem" }}>
-            <Stack spacing={2}>
-              <TextField
-                id="firstName"
-                label="First name *"
-                variant="standard"
-                placeholder="First name"
-                sx={{ width: 1 }}
-                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                  handlePersonalInfo(e)
-                }
-              ></TextField>
-              <TextField
-                id="lastName"
-                label="Last name *"
-                variant="standard"
-                placeholder="Last name"
-                sx={{ width: 1 }}
-                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                  handlePersonalInfo(e)
-                }
-              ></TextField>
-              <TextField
-                id="email"
-                label="Email address *"
-                variant="standard"
-                placeholder="Email address"
-                sx={{ width: 1 }}
-                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                  handlePersonalInfo(e)
-                }
-              ></TextField>
-              <TextField
-                id="phone"
-                label="Phone number *"
-                variant="standard"
-                placeholder="Phone number"
-                sx={{ width: 1 }}
-                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                  handlePersonalInfo(e)
-                }
-              ></TextField>
-            </Stack>
+            <FormProvider {...methods}>
+              <form>
+                <Stack spacing={2}>
+                  <TextField
+                    id="firstName"
+                    label="First name *"
+                    variant="standard"
+                    placeholder="First name"
+                    sx={{ width: 1 }}
+                  ></TextField>
+                  <TextField
+                    id="lastName"
+                    label="Last name *"
+                    variant="standard"
+                    placeholder="Last name"
+                    sx={{ width: 1 }}
+                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                      handlePersonalInfo(e)
+                    }
+                  ></TextField>
+                  <TextField
+                    id="email"
+                    label="Email address *"
+                    variant="standard"
+                    placeholder="Email address"
+                    sx={{ width: 1 }}
+                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                      handlePersonalInfo(e)
+                    }
+                  ></TextField>
+                  <TextField
+                    id="phone"
+                    label="Phone number *"
+                    variant="standard"
+                    placeholder="Phone number"
+                    sx={{ width: 1 }}
+                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                      handlePersonalInfo(e)
+                    }
+                  ></TextField>
+                </Stack>
+              </form>
+            </FormProvider>
           </Paper>
         </Container>
       </Stack>
     </Paper>
   );
 };
+
+const PersonalInformationProps = [
+  {
+    id: "firstName",
+    defaultValue: "",
+    name: "firstName",
+    type: "firstName",
+    label: "First name *",
+    variant: "standard",
+    placeholder: "First name",
+    sx: { width: 1 },
+    required: true,
+  },
+  {
+    id: "lastName",
+    defaultValue: "",
+    name: "lastName",
+    type: "lastName",
+    label: "Last name *",
+    variant: "standard",
+    placeholder: "Last name",
+    sx: { width: 1 },
+    required: true,
+  },
+  {
+    id: "email",
+    defaultValue: "",
+    name: "email",
+    type: "email",
+    label: "Email *",
+    variant: "standard",
+    placeholder: "Email",
+    sx: { width: 1 },
+    required: true,
+  },
+  {
+    id: "phone",
+    defaultValue: "",
+    name: "phone",
+    type: "phone",
+    label: "Phone *",
+    variant: "standard",
+    placeholder: "Phone",
+    sx: { width: 1 },
+    required: true,
+  },
+];
 
 export default Checkout;
