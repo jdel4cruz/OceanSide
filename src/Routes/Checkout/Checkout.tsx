@@ -36,145 +36,19 @@ interface PersonalInfo {
   [index: string]: string;
 }
 
-//InitialState?
-const initialPersonalInfo: PersonalInfo = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  phone: "",
-};
+interface PersonalInputProps {
+  name: string;
+  defaultValue: string;
+  variant: "standard" | "filled" | "outlined" | undefined;
+  type: string;
+  label: string;
+  id: string;
+  placeholder: string;
+  sx: { width: number };
+  required: boolean;
+}
 
-const Checkout = () => {
-  const [isPickup, setIsPickup] = useState(true);
-  const [orderNotes, setOrderNotes] = useState("N/A");
-  const [personalInfo, setPersonalInfo] = useState(initialPersonalInfo);
-  console.log(orderNotes);
-  console.log(personalInfo.firstName);
-
-  const methods = useForm<PersonalInfo>();
-
-  const handlePersonalInfo = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    const target = event.target;
-    const value = target.value;
-    const key = target.id;
-
-    setPersonalInfo((prevInfo) => {
-      const newInfo = { ...prevInfo };
-      newInfo[key] = value;
-      return newInfo;
-    });
-  };
-
-  const currentDate = new Date();
-  console.log(currentDate);
-  const date = getDate(currentDate);
-  const month = getMonth(currentDate);
-  const year = getYear(currentDate);
-
-  const openingTime = new Date(`${month + 1} ${date}, ${year} 08:00:00`);
-  //   const closingTime = addHours(openingTime, 8);
-
-  const pickupTime =
-    currentDate <= subMinutes(addDays(openingTime, 1), 30)
-      ? `${
-          date === getDate(openingTime) ? "Tomorrow" : "Today"
-        } at ${lightFormat(openingTime, "h:mm")}`
-      : addMinutes(currentDate, 30);
-
-  return (
-    <Paper sx={{ height: "100vh", backgroundColor: "#f6f0eb" }}>
-      <Stack spacing={0}>
-        <AppBar sx={{ flexDirection: "row", p: "1rem" }}>
-          <IconButton onClick={() => console.log("this isworking")}>
-            <ArrowBackIosNewRoundedIcon />
-            <Typography sx={{ ml: "1rem" }} variant="h4">
-              Checkout
-            </Typography>
-          </IconButton>
-        </AppBar>
-
-        <Container sx={{ p: ".25rem" }}>
-          <Typography sx={{ mt: "8rem", ml: "1rem" }} variant="h5">
-            Order Details
-          </Typography>
-          <Paper sx={{ p: "1rem", mt: "1rem" }}>
-            <Stack direction="row" spacing={3}>
-              <ShoppingBagTwoToneIcon />
-              <Typography>Pickup</Typography>
-              <Typography variant="subtitle2"> 164 Chardonnay Drive</Typography>
-            </Stack>
-            <Stack direction="row" spacing={3} sx={{ mt: "1rem" }}>
-              <AccessTimeRoundedIcon />
-              <Typography>{`${pickupTime}`}</Typography>
-            </Stack>
-            <TextField
-              label="Order Notes"
-              variant="standard"
-              placeholder="Order Notes"
-              sx={{ width: 1 }}
-              onChange={(e) => setOrderNotes(e.target.value)}
-            />
-          </Paper>
-        </Container>
-
-        <Container sx={{ p: ".25rem" }}>
-          <Typography sx={{ mt: "5rem", ml: "1rem" }} variant="h5">
-            Personal Information
-          </Typography>
-          <Paper sx={{ p: "1rem", mt: "1rem" }}>
-            <FormProvider {...methods}>
-              <form>
-                <Stack spacing={2}>
-                  <TextField
-                    id="firstName"
-                    label="First name *"
-                    variant="standard"
-                    placeholder="First name"
-                    sx={{ width: 1 }}
-                  ></TextField>
-                  <TextField
-                    id="lastName"
-                    label="Last name *"
-                    variant="standard"
-                    placeholder="Last name"
-                    sx={{ width: 1 }}
-                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                      handlePersonalInfo(e)
-                    }
-                  ></TextField>
-                  <TextField
-                    id="email"
-                    label="Email address *"
-                    variant="standard"
-                    placeholder="Email address"
-                    sx={{ width: 1 }}
-                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                      handlePersonalInfo(e)
-                    }
-                  ></TextField>
-                  <TextField
-                    id="phone"
-                    label="Phone number *"
-                    variant="standard"
-                    placeholder="Phone number"
-                    sx={{ width: 1 }}
-                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                      handlePersonalInfo(e)
-                    }
-                  ></TextField>
-                </Stack>
-              </form>
-            </FormProvider>
-          </Paper>
-        </Container>
-      </Stack>
-    </Paper>
-  );
-};
-
-const PersonalInformationProps = [
+const personalInformationProps: PersonalInputProps[] = [
   {
     id: "firstName",
     defaultValue: "",
@@ -220,5 +94,93 @@ const PersonalInformationProps = [
     required: true,
   },
 ];
+
+const Checkout = () => {
+  const [orderNotes, setOrderNotes] = useState("N/A");
+
+  const methods = useForm<PersonalInfo>();
+
+  const handleOnSubmit: SubmitHandler<PersonalInfo> = (data: PersonalInfo) => {
+    console.log(data);
+  };
+
+  const currentDate = new Date();
+  const date = getDate(currentDate);
+  const month = getMonth(currentDate);
+  const year = getYear(currentDate);
+
+  const openingTime = new Date(`${month + 1} ${date}, ${year} 08:00:00`);
+  const closingTime = addHours(openingTime, 8);
+
+  let pickupTime = `Today at ${lightFormat(
+    addMinutes(currentDate, 30),
+    "h:mm"
+  )}`;
+  if (currentDate >= subMinutes(closingTime, 30)) {
+    pickupTime = `Tomorrow at ${lightFormat(addDays(openingTime, 1), "h:mm")}`;
+  }
+  if (currentDate <= openingTime) {
+    pickupTime = `today at ${lightFormat(openingTime, "h:mm")}`;
+  }
+
+  return (
+    <Paper sx={{ height: "100vh", backgroundColor: "#f6f0eb" }}>
+      <Stack spacing={0}>
+        <AppBar sx={{ flexDirection: "row", p: "1rem" }}>
+          <IconButton onClick={() => console.log("this isworking")}>
+            <ArrowBackIosNewRoundedIcon />
+            <Typography sx={{ ml: "1rem" }} variant="h4">
+              Checkout
+            </Typography>
+          </IconButton>
+        </AppBar>
+
+        <Container sx={{ p: ".25rem" }}>
+          <Typography sx={{ mt: "8rem", ml: "1rem" }} variant="h5">
+            Order Details
+          </Typography>
+          <Paper sx={{ p: "1rem", mt: "1rem" }}>
+            <Stack direction="row" spacing={3}>
+              <ShoppingBagTwoToneIcon />
+              <Typography>Pickup</Typography>
+              <Typography variant="subtitle2"> 164 Chardonnay Drive</Typography>
+            </Stack>
+            <Stack direction="row" spacing={3} sx={{ mt: "1rem" }}>
+              <AccessTimeRoundedIcon />
+              <Typography>{`${pickupTime}`}</Typography>
+            </Stack>
+            <TextField
+              label="Order Notes"
+              variant="standard"
+              placeholder="Order Notes"
+              sx={{ width: 1 }}
+              onChange={(e) => setOrderNotes(e.target.value)}
+            />
+          </Paper>
+        </Container>
+
+        <Container sx={{ p: ".25rem" }}>
+          <Typography sx={{ mt: "5rem", ml: "1rem" }} variant="h5">
+            Personal Information
+          </Typography>
+          <Paper sx={{ p: "1rem", mt: "1rem" }}>
+            <FormProvider {...methods}>
+              <form onSubmit={methods.handleSubmit(handleOnSubmit)}>
+                <Stack spacing={2}>
+                  {personalInformationProps.map((inputProps, i) => (
+                    <UserInput {...inputProps} key={i} />
+                  ))}
+                  <Button type="submit" variant="contained">
+                    Submit
+                  </Button>
+                </Stack>
+              </form>
+            </FormProvider>
+          </Paper>
+        </Container>
+      </Stack>
+    </Paper>
+  );
+};
 
 export default Checkout;

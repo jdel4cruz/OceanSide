@@ -41,16 +41,3 @@ const UserInput = (props: {
 };
 
 export default UserInput;
-
-{
-  /* <TextField
-  id="firstName"
-  label="First name *"
-  variant="standard"
-  placeholder="First name"
-  sx={{ width: 1 }}
-  onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-    handlePersonalInfo(e)
-  }
-></TextField>; */
-}
