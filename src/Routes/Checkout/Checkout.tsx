@@ -18,7 +18,6 @@ import {
   Button,
   Stack,
   Typography,
-  TextField,
 } from "@mui/material";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import ShoppingBagTwoToneIcon from "@mui/icons-material/ShoppingBagTwoTone";
@@ -33,10 +32,11 @@ interface PersonalInfo {
   lastName: string;
   email: string;
   phone: string;
+  orderNotes: string;
   [index: string]: string;
 }
 
-interface PersonalInputProps {
+interface InputProps {
   name: string;
   defaultValue: string;
   variant: "standard" | "filled" | "outlined" | undefined;
@@ -48,13 +48,13 @@ interface PersonalInputProps {
   required: boolean;
 }
 
-const personalInformationProps: PersonalInputProps[] = [
+const personalInformationProps: InputProps[] = [
   {
     id: "firstName",
     defaultValue: "",
     name: "firstName",
     type: "firstName",
-    label: "First name *",
+    label: "First name",
     variant: "standard",
     placeholder: "First name",
     sx: { width: 1 },
@@ -65,7 +65,7 @@ const personalInformationProps: PersonalInputProps[] = [
     defaultValue: "",
     name: "lastName",
     type: "lastName",
-    label: "Last name *",
+    label: "Last name",
     variant: "standard",
     placeholder: "Last name",
     sx: { width: 1 },
@@ -76,7 +76,7 @@ const personalInformationProps: PersonalInputProps[] = [
     defaultValue: "",
     name: "email",
     type: "email",
-    label: "Email *",
+    label: "Email",
     variant: "standard",
     placeholder: "Email",
     sx: { width: 1 },
@@ -87,7 +87,7 @@ const personalInformationProps: PersonalInputProps[] = [
     defaultValue: "",
     name: "phone",
     type: "phone",
-    label: "Phone *",
+    label: "Phone",
     variant: "standard",
     placeholder: "Phone",
     sx: { width: 1 },
@@ -95,9 +95,19 @@ const personalInformationProps: PersonalInputProps[] = [
   },
 ];
 
-const Checkout = () => {
-  const [orderNotes, setOrderNotes] = useState("N/A");
+const orderNotesInputProps: InputProps = {
+  name: "orderNotes",
+  defaultValue: "",
+  variant: "standard",
+  type: "orderNotes",
+  label: "Order Notes",
+  id: "orderNotes",
+  placeholder: "Please specify any additional order notes",
+  sx: { width: 1 },
+  required: false,
+};
 
+const Checkout = () => {
   const methods = useForm<PersonalInfo>();
 
   const handleOnSubmit: SubmitHandler<PersonalInfo> = (data: PersonalInfo) => {
@@ -125,60 +135,57 @@ const Checkout = () => {
 
   return (
     <Paper sx={{ height: "100vh", backgroundColor: "#f6f0eb" }}>
-      <Stack spacing={0}>
-        <AppBar sx={{ flexDirection: "row", p: "1rem" }}>
-          <IconButton onClick={() => console.log("this isworking")}>
-            <ArrowBackIosNewRoundedIcon />
-            <Typography sx={{ ml: "1rem" }} variant="h4">
-              Checkout
-            </Typography>
-          </IconButton>
-        </AppBar>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(handleOnSubmit)}>
+          <Stack spacing={0}>
+            <AppBar sx={{ flexDirection: "row", p: "1rem" }}>
+              <IconButton onClick={() => console.log("this isworking")}>
+                <ArrowBackIosNewRoundedIcon />
+                <Typography sx={{ ml: "1rem" }} variant="h4">
+                  Checkout
+                </Typography>
+              </IconButton>
+            </AppBar>
 
-        <Container sx={{ p: ".25rem" }}>
-          <Typography sx={{ mt: "8rem", ml: "1rem" }} variant="h5">
-            Order Details
-          </Typography>
-          <Paper sx={{ p: "1rem", mt: "1rem" }}>
-            <Stack direction="row" spacing={3}>
-              <ShoppingBagTwoToneIcon />
-              <Typography>Pickup</Typography>
-              <Typography variant="subtitle2"> 164 Chardonnay Drive</Typography>
-            </Stack>
-            <Stack direction="row" spacing={3} sx={{ mt: "1rem" }}>
-              <AccessTimeRoundedIcon />
-              <Typography>{`${pickupTime}`}</Typography>
-            </Stack>
-            <TextField
-              label="Order Notes"
-              variant="standard"
-              placeholder="Order Notes"
-              sx={{ width: 1 }}
-              onChange={(e) => setOrderNotes(e.target.value)}
-            />
-          </Paper>
-        </Container>
+            <Container sx={{ p: ".25rem" }}>
+              <Typography sx={{ mt: "8rem", ml: "1rem" }} variant="h5">
+                Order Details
+              </Typography>
+              <Paper sx={{ p: "1rem", mt: "1rem" }}>
+                <Stack direction="row" spacing={3}>
+                  <ShoppingBagTwoToneIcon />
+                  <Typography>Pickup</Typography>
+                  <Typography variant="subtitle2">
+                    {" "}
+                    164 Chardonnay Drive
+                  </Typography>
+                </Stack>
+                <Stack direction="row" spacing={3} sx={{ mt: "1rem" }}>
+                  <AccessTimeRoundedIcon />
+                  <Typography>{`${pickupTime}`}</Typography>
+                </Stack>
+                <UserInput {...orderNotesInputProps} />
+              </Paper>
+            </Container>
 
-        <Container sx={{ p: ".25rem" }}>
-          <Typography sx={{ mt: "5rem", ml: "1rem" }} variant="h5">
-            Personal Information
-          </Typography>
-          <Paper sx={{ p: "1rem", mt: "1rem" }}>
-            <FormProvider {...methods}>
-              <form onSubmit={methods.handleSubmit(handleOnSubmit)}>
+            <Container sx={{ p: ".25rem" }}>
+              <Typography sx={{ mt: "5rem", ml: "1rem" }} variant="h5">
+                Personal Information
+              </Typography>
+              <Paper sx={{ p: "1rem", mt: "1rem" }}>
                 <Stack spacing={2}>
                   {personalInformationProps.map((inputProps, i) => (
                     <UserInput {...inputProps} key={i} />
                   ))}
-                  <Button type="submit" variant="contained">
-                    Submit
-                  </Button>
                 </Stack>
-              </form>
-            </FormProvider>
-          </Paper>
-        </Container>
-      </Stack>
+              </Paper>
+            </Container>
+          </Stack>
+          <Button type="submit" variant="contained">
+            Submit
+          </Button>
+        </form>
+      </FormProvider>
     </Paper>
   );
 };
