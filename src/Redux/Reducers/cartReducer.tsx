@@ -4,12 +4,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MenuItemPropsInterface, CartItemInterface } from "../../interfaces";
 
 //Helper Functions
-import { totalPrice } from "../../HelperFunctions";
+import { totalPrice, cartTotalPrice } from "../../HelperFunctions";
 
 interface CartState {
   cart: CartItemInterface[];
   nextId: number;
   tax: number;
+  total: number;
 }
 
 interface NewCartItemActionPayload {
@@ -29,6 +30,7 @@ const initialState: CartState = {
   cart: [],
   nextId: 0,
   tax: 0.056,
+  total: 0,
 };
 
 const cartSlice = createSlice({
@@ -44,6 +46,7 @@ const cartSlice = createSlice({
         cartId: state.nextId,
       });
       state.nextId += 1;
+      state.total = cartTotalPrice(state.cart);
     },
     addCartItem: (
       state,
@@ -59,6 +62,7 @@ const cartSlice = createSlice({
           );
         }
       });
+      state.total = cartTotalPrice(state.cart);
     },
     removeCartItem: (
       state,
@@ -74,6 +78,10 @@ const cartSlice = createSlice({
           );
         }
       });
+      if (state.cart.length === 0) {
+        state.total = 0;
+      }
+      state.total = cartTotalPrice(state.cart);
     },
     deleteCartItem: (
       state,
@@ -82,6 +90,10 @@ const cartSlice = createSlice({
       state.cart = state.cart.filter(
         (item) => item.cartId !== action.payload.cartId
       );
+      if (state.cart.length === 0) {
+        state.total = 0;
+      }
+      state.total = cartTotalPrice(state.cart);
     },
   },
 });

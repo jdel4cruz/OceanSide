@@ -18,7 +18,7 @@ const CartItems = () => {
   /*Will map out cartItems based on current Cart state in redux store. 
     Each item will be passed foodType and foodId  
   */
-  const { cart, tax } = useSelector((state: RootState) => state.cart);
+  const { cart, tax, total } = useSelector((state: RootState) => state.cart);
 
   const navigate = useNavigate();
 
@@ -51,7 +51,7 @@ const CartItems = () => {
             key={i}
           />
         ))}
-        <CartSummary cart={cart} tax={tax} />
+        <CartSummary total={total} tax={tax} />
       </CartStack>
     </Wrapper>
   );

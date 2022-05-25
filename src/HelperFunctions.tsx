@@ -1,5 +1,5 @@
 //Interfaces
-import { MenuItemPropsInterface } from "./interfaces";
+import { MenuItemPropsInterface, CartItemInterface } from "./interfaces";
 
 export const totalPrice = (
   extraOptions: { [index: string]: boolean },
@@ -34,6 +34,14 @@ export const totalPrice = (
   });
 
   return totalPrice * qty;
+};
+
+export const cartTotalPrice = (cart: CartItemInterface[]) => {
+  const total = cart.reduce((sum, current) => {
+    return sum + current.price;
+  }, 0);
+
+  return total;
 };
 
 export const priceToString = (priceNumber: number) => {

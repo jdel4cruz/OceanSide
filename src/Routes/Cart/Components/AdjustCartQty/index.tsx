@@ -3,6 +3,7 @@ import { Stack, IconButton, Typography } from "@mui/material";
 import {
   addCartItem,
   removeCartItem,
+  deleteCartItem,
 } from "../../../../Redux/Reducers/cartReducer";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
@@ -16,7 +17,11 @@ const AdjustCartQty = ({ cartId, qty }: { cartId: number; qty: number }) => {
       <Stack direction="row" alignItems="center" spacing={0}>
         <IconButton
           size="small"
-          onClick={() => qty > 1 && dispatch(removeCartItem({ cartId }))}
+          onClick={() =>
+            qty > 1
+              ? dispatch(removeCartItem({ cartId }))
+              : dispatch(deleteCartItem({ cartId }))
+          }
         >
           <RemoveIcon />
         </IconButton>

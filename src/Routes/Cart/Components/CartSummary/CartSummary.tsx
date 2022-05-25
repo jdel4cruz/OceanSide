@@ -14,26 +14,10 @@ import { StyledButton } from "./CartSummary.styles";
 import { CartItemInterface } from "../../../../interfaces";
 
 //Helper Functions
-import { priceToString } from "../../../../HelperFunctions";
+import { priceToString, cartTotalPrice } from "../../../../HelperFunctions";
 
-const CartSummary = ({
-  cart,
-  tax,
-}: {
-  cart: CartItemInterface[];
-  tax: number;
-}) => {
-  const cartTotalPrice = () => {
-    const total = cart.reduce((sum, current) => {
-      return sum + current.price;
-    }, 0);
-
-    return total;
-  };
-
+const CartSummary = ({ tax, total }: { tax: number; total: number }) => {
   const navigate = useNavigate();
-
-  const total = cartTotalPrice();
 
   return (
     <Card>

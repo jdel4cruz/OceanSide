@@ -24,7 +24,7 @@ import ShoppingBagTwoToneIcon from "@mui/icons-material/ShoppingBagTwoTone";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 
 //Components
-import UserInput from "./UserInput";
+import UserInput from "./Components/UserInput";
 
 //Interfaces
 interface PersonalInfo {
@@ -179,6 +179,13 @@ const Checkout = () => {
                   ))}
                 </Stack>
               </Paper>
+            </Container>
+
+            <Container sx={{ p: ".25rem" }}>
+              <Typography sx={{ mt: "5rem", ml: "1rem" }} variant="h5">
+                Tips
+              </Typography>
+              <Paper sx={{ p: "1rem", mt: "1rem" }}></Paper>
             </Container>
           </Stack>
           <Button type="submit" variant="contained">
