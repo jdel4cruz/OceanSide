@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   addHours,
   subMinutes,
@@ -18,22 +17,31 @@ import {
   Button,
   Stack,
   Typography,
+  ToggleButtonGroup,
 } from "@mui/material";
+
+import { useSelector } from "react-redux";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import ShoppingBagTwoToneIcon from "@mui/icons-material/ShoppingBagTwoTone";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 
 //Components
 import UserInput from "./Components/UserInput";
+import TipButtonGroup from "./Components/TipButtonGroup";
+
+//Helper Functions
+import { cartTotalPrice } from "../../HelperFunctions";
 
 //Interfaces
-interface PersonalInfo {
+import { RootState } from "../../Redux/store";
+interface IFormInputs {
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
   orderNotes: string;
-  [index: string]: string;
+  tips: number;
+  total: number;
 }
 
 interface InputProps {
@@ -108,11 +116,15 @@ const orderNotesInputProps: InputProps = {
 };
 
 const Checkout = () => {
-  const methods = useForm<PersonalInfo>();
+  const methods = useForm<IFormInputs>();
+  const { tax, total } = useSelector((state: RootState) => state.cart);
 
-  const handleOnSubmit: SubmitHandler<PersonalInfo> = (data: PersonalInfo) => {
+  const handleOnSubmit: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
+    methods.setValue("total", total + methods.getValues("tips"));
+
     console.log(data);
   };
+  console.log(methods.watch("firstName"));
 
   const currentDate = new Date();
   const date = getDate(currentDate);
@@ -134,7 +146,7 @@ const Checkout = () => {
   }
 
   return (
-    <Paper sx={{ height: "100vh", backgroundColor: "#f6f0eb" }}>
+    <Paper sx={{ backgroundColor: "#f6f0eb" }}>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(handleOnSubmit)}>
           <Stack spacing={0}>
@@ -180,14 +192,16 @@ const Checkout = () => {
                 </Stack>
               </Paper>
             </Container>
-
-            <Container sx={{ p: ".25rem" }}>
-              <Typography sx={{ mt: "5rem", ml: "1rem" }} variant="h5">
-                Tips
-              </Typography>
-              <Paper sx={{ p: "1rem", mt: "1rem" }}></Paper>
-            </Container>
           </Stack>
+
+          <Container sx={{ p: ".25rem" }}>
+            <Typography sx={{ mt: "5rem", ml: "1rem" }} variant="h5">
+              Tips
+            </Typography>
+            <Paper sx={{ p: "1rem", mt: "1rem" }}>
+              <TipButtonGroup name="tips" />
+            </Paper>
+          </Container>
           <Button type="submit" variant="contained">
             Submit
           </Button>
