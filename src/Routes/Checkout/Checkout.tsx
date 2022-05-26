@@ -17,9 +17,7 @@ import {
   Button,
   Stack,
   Typography,
-  ToggleButtonGroup,
 } from "@mui/material";
-
 import { useSelector } from "react-redux";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import ShoppingBagTwoToneIcon from "@mui/icons-material/ShoppingBagTwoTone";
@@ -29,9 +27,6 @@ import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 import UserInput from "./Components/UserInput";
 import TipButtonGroup from "./Components/TipButtonGroup";
 
-//Helper Functions
-import { cartTotalPrice } from "../../HelperFunctions";
-
 //Interfaces
 import { RootState } from "../../Redux/store";
 interface IFormInputs {
@@ -40,7 +35,7 @@ interface IFormInputs {
   email: string;
   phone: string;
   orderNotes: string;
-  tips: number;
+  tips: number | null;
   total: number;
 }
 
@@ -116,15 +111,24 @@ const orderNotesInputProps: InputProps = {
 };
 
 const Checkout = () => {
-  const methods = useForm<IFormInputs>();
   const { tax, total } = useSelector((state: RootState) => state.cart);
+  const checkoutTotal = total * (1 + tax);
+  const methods = useForm<IFormInputs>({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      orderNotes: "",
+      tips: null,
+      total: checkoutTotal,
+    },
+  });
 
   const handleOnSubmit: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
-    methods.setValue("total", total + methods.getValues("tips"));
-
     console.log(data);
   };
-  console.log(methods.watch("firstName"));
+  console.log(methods.watch("total"));
 
   const currentDate = new Date();
   const date = getDate(currentDate);

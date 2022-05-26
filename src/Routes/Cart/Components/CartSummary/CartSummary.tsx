@@ -10,11 +10,8 @@ import { useNavigate } from "react-router";
 //Styles
 import { StyledButton } from "./CartSummary.styles";
 
-//Interfaces
-import { CartItemInterface } from "../../../../interfaces";
-
 //Helper Functions
-import { priceToString, cartTotalPrice } from "../../../../HelperFunctions";
+import { priceToString } from "../../../../HelperFunctions";
 
 const CartSummary = ({ tax, total }: { tax: number; total: number }) => {
   const navigate = useNavigate();
