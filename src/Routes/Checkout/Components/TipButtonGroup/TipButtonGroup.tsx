@@ -11,12 +11,13 @@ import { RootState } from "../../../../Redux/store";
 import { useFormContext, Controller } from "react-hook-form";
 
 //Helper Functions
-import { priceToString } from "../../../../HelperFunctions";
+import { priceToString, priceToNumber } from "../../../../HelperFunctions";
 
 const TipButtonGroup = ({ name }: { name: string }) => {
   const { control, watch, setValue, getValues } = useFormContext();
   const { tax, total } = useSelector((state: RootState) => state.cart);
   console.log(watch(name));
+  console.log(watch("total"));
 
   return (
     <Stack direction="row">
@@ -31,30 +32,35 @@ const TipButtonGroup = ({ name }: { name: string }) => {
             onChange={(e, value) => {
               console.log("this is changing");
               field.onChange(value);
-              setValue("total", total * (1 + tax) + getValues("tips"));
+              setValue(
+                "total",
+                `${priceToString(
+                  total * (1 + tax) + priceToNumber(getValues("tips"))
+                )}`
+              );
             }}
           >
-            <ToggleButton value={Math.round(total * 0.05)}>
+            <ToggleButton value={`${priceToString(Math.round(total * 0.05))}`}>
               <Stack>
                 <Typography>{`5%`}</Typography>
                 <Typography>
-                  {priceToString(Math.round(0.05 * total))}
+                  {`$${priceToString(Math.round(0.05 * total))}`}
                 </Typography>
               </Stack>
             </ToggleButton>
-            <ToggleButton value={Math.round(total * 0.1)}>
+            <ToggleButton value={`${priceToString(Math.round(total * 0.1))}`}>
               <Stack>
                 <Typography>{`10%`}</Typography>
                 <Typography>
-                  {priceToString(Math.round(0.1 * total))}
+                  {`$${priceToString(Math.round(0.1 * total))}`}
                 </Typography>
               </Stack>
             </ToggleButton>
-            <ToggleButton value={Math.round(total * 0.15)}>
+            <ToggleButton value={`${priceToString(Math.round(total * 0.15))}`}>
               <Stack>
                 <Typography>{`15%`}</Typography>
                 <Typography>
-                  {priceToString(Math.round(0.15 * total))}
+                  {`$${priceToString(Math.round(0.15 * total))}`}
                 </Typography>
               </Stack>
             </ToggleButton>
@@ -79,6 +85,16 @@ const TipButtonGroup = ({ name }: { name: string }) => {
               min: "0",
               max: "10000",
               step: "0.01",
+            }}
+            onChange={(e) => {
+              console.log("this is changing");
+              field.onChange(e.target.value);
+              setValue(
+                "total",
+                `${priceToString(
+                  total * (1 + tax) + priceToNumber(getValues("tips"))
+                )}`
+              );
             }}
           />
         )}

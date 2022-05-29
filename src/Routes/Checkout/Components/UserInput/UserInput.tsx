@@ -15,7 +15,6 @@ const UserInput = (props: {
   const {
     control,
     formState: { errors },
-    watch,
   } = useFormContext();
 
   return (
@@ -26,13 +25,13 @@ const UserInput = (props: {
       rules={{ required: props.required }}
       render={({ field }) => (
         <TextField
+          {...field}
           variant={props.variant}
           type={props.type}
           label={props.label}
           id={props.id}
           placeholder={props.placeholder}
           sx={props.sx}
-          {...field}
           error={!!errors[props.type]}
           helperText={errors[props.type] ? errors[props.type]?.message : ""}
         />

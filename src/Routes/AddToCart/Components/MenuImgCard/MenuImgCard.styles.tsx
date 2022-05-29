@@ -29,11 +29,13 @@ export const StyledDivider = styled(Divider)`
 `;
 
 export const StyledContent = styled(CardContent)`
+  box-sizing: border-box;
+  width: 100%;
   font-size: 0.75rem;
   color: #0000009e;
 `;
 export const Price = styled(Typography)`
-  align-self: start;
+  align-self: center;
 `;
 
 export const StyledButton = styled(Button)`

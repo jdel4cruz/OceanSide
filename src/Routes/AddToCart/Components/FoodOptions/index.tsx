@@ -1,5 +1,3 @@
-import { Stack, Typography } from "@mui/material";
-
 //Components
 import FoodOption from "../FoodOption";
 

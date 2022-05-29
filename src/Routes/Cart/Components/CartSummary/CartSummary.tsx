@@ -23,13 +23,13 @@ const CartSummary = ({ tax, total }: { tax: number; total: number }) => {
           <Stack direction="row" justifyContent="space-between" spacing={1}>
             <Typography sx={{ fontWeight: "bold" }}>Item Total</Typography>
             <Typography sx={{ fontWeight: "bold" }}>
-              {priceToString(total)}
+              {`$${priceToString(total)}`}
             </Typography>
           </Stack>
           <Stack direction="row" justifyContent="space-between">
             <Typography sx={{ fontWeight: "bold" }}>Tax</Typography>
             <Typography sx={{ fontWeight: "bold" }}>
-              {priceToString(Math.round(total * tax))}
+              {`$${priceToString(Math.round(total * tax))}`}
             </Typography>
           </Stack>
           <Stack
@@ -39,7 +39,7 @@ const CartSummary = ({ tax, total }: { tax: number; total: number }) => {
           >
             <Typography sx={{ fontWeight: "bold" }}>Total:</Typography>
             <Typography sx={{ fontWeight: "bold" }}>
-              {priceToString(Math.round(total + total * tax))}
+              {`$${priceToString(Math.round(total + total * tax))}`}
             </Typography>
           </Stack>
         </Stack>

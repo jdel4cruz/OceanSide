@@ -29,6 +29,7 @@ const CartItems = () => {
         <StyledButton
           size="large"
           disableElevation
+          variant="contained"
           onClick={() => {
             navigate(`/`);
           }}

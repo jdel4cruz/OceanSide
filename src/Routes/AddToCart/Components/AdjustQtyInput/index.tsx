@@ -1,5 +1,4 @@
-import { Container, Stack, IconButton, Typography } from "@mui/material";
-import { AppDispatch } from "../../../../Redux/store";
+import { Stack, IconButton, Typography } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import React from "react";
@@ -15,7 +14,6 @@ const AdjustQtyInput = ({
 }) => {
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
-      <Typography variant="h6">Qty:</Typography>
       <Stack direction="row" alignItems="center" spacing={2}>
         <IconButton onClick={() => qty > 1 && setQty((prevQty) => prevQty - 1)}>
           <RemoveIcon />

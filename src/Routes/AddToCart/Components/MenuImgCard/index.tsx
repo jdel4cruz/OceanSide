@@ -10,7 +10,6 @@ import FoodOptions from "../FoodOptions";
 
 //Components
 import AdjustQtyInput from "../AdjustQtyInput";
-import AddToCartButton from "../../../Cart/Components/AddToCartButton";
 
 //Styles
 import {
@@ -79,12 +78,15 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
           </StyledContent>
         </>
       )}
-
       <StyledDivider />
+
       <StyledContent>
         <Stack alignItems="center" spacing={2}>
-          <AdjustQtyInput qty={qty} setQty={setQty} />
-          <Price variant="h6">{`Price: ${priceToString(price)}`}</Price>
+          <Stack direction="row" alignItems="center" spacing={8}>
+            <Price variant="h6">{`Price: $${priceToString(price)}`}</Price>
+            <AdjustQtyInput qty={qty} setQty={setQty} />
+          </Stack>
+
           <StyledButton
             size="large"
             endIcon={<ShoppingBagIcon />}

@@ -44,22 +44,42 @@ export const cartTotalPrice = (cart: CartItemInterface[]) => {
   return total;
 };
 
+export const priceToNumber = (stringPrice: string) => {
+  if (stringPrice.includes(".")) {
+    const regex = /(?<=\.)\d{1,2}/;
+    const match = stringPrice.match(regex);
+    if (match !== null) {
+      const cents = match[0];
+
+      if (cents.length === 1) {
+        return Number(`${stringPrice.replace(".", "")}0`);
+      }
+
+      return Number(stringPrice.replace(".", ""));
+    }
+
+    return Number(stringPrice.replace(".", "00"));
+  }
+
+  return Number(stringPrice) * 100;
+};
+
 export const priceToString = (priceNumber: number) => {
-  const priceString = priceNumber.toString();
+  const priceString = Math.round(priceNumber).toString();
 
   if (priceNumber === 0) {
     return "Free";
   }
 
   if (priceString.length === 1) {
-    return `$0.0${priceString}`;
+    return `0.0${priceString}`;
   }
   if (priceString.length === 2) {
-    return `$0.${priceString}`;
+    return `0.${priceString}`;
   }
 
   const dollars = priceString.slice(0, priceString.length - 2);
   const cents = priceString.slice(-2);
 
-  return `$${dollars}.${cents}`;
+  return `${dollars}.${cents}`;
 };

@@ -22,10 +22,17 @@ import { useSelector } from "react-redux";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import ShoppingBagTwoToneIcon from "@mui/icons-material/ShoppingBagTwoTone";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
+import { useNavigate } from "react-router";
 
 //Components
 import UserInput from "./Components/UserInput";
 import TipButtonGroup from "./Components/TipButtonGroup";
+
+//Styles
+import { StyledButton } from "./Checkout.styles";
+
+//HelperFunctions
+import { priceToString } from "../../HelperFunctions";
 
 //Interfaces
 import { RootState } from "../../Redux/store";
@@ -35,8 +42,8 @@ interface IFormInputs {
   email: string;
   phone: string;
   orderNotes: string;
-  tips: number | null;
-  total: number;
+  tips: string | null;
+  total: string;
 }
 
 interface InputProps {
@@ -111,8 +118,9 @@ const orderNotesInputProps: InputProps = {
 };
 
 const Checkout = () => {
-  const { tax, total } = useSelector((state: RootState) => state.cart);
-  const checkoutTotal = total * (1 + tax);
+  const { tax, total, cart } = useSelector((state: RootState) => state.cart);
+  const navigate = useNavigate();
+  const checkoutTotal = `${priceToString(total * (1 + tax))}`;
   const methods = useForm<IFormInputs>({
     defaultValues: {
       firstName: "",
@@ -124,6 +132,24 @@ const Checkout = () => {
       total: checkoutTotal,
     },
   });
+
+  if (cart.length === 0) {
+    return (
+      <>
+        <div>There are no cart items!</div>
+        <StyledButton
+          size="large"
+          disableElevation
+          variant="contained"
+          onClick={() => {
+            navigate(`/`);
+          }}
+        >
+          Return to menu
+        </StyledButton>
+      </>
+    );
+  }
 
   const handleOnSubmit: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
     console.log(data);

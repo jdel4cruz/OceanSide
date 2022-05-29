@@ -31,12 +31,23 @@ const FoodOption = ({
 
   return (
     <Stack direction="row" justifyContent="space-between" alignItems="center">
-      <Stack direction="row" alignItems="center" spacing={2}>
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        spacing={2}
+        width={1}
+      >
         <Typography>{option.optionName}</Typography>
-        <Typography>{priceToString(option.price)}</Typography>
+        <Stack direction="row" alignItems="center">
+          <Typography>
+            {option.price
+              ? `$${priceToString(option.price)}`
+              : priceToString(option.price)}
+          </Typography>
+          <Checkbox onChange={handleChange} />
+        </Stack>
       </Stack>
-
-      <Checkbox onChange={handleChange} />
     </Stack>
   );
 };
