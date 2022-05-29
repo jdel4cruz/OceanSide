@@ -20,7 +20,7 @@ const TipButtonGroup = ({ name }: { name: string }) => {
   console.log(watch("total"));
 
   return (
-    <Stack direction="row">
+    <Stack direction="row" alignItems="end" spacing={4}>
       <Controller
         name={name}
         control={control}
@@ -30,14 +30,7 @@ const TipButtonGroup = ({ name }: { name: string }) => {
             {...field}
             exclusive
             onChange={(e, value) => {
-              console.log("this is changing");
-              field.onChange(value);
-              setValue(
-                "total",
-                `${priceToString(
-                  total * (1 + tax) + priceToNumber(getValues("tips"))
-                )}`
-              );
+              field.onChange(value ? value : "");
             }}
           >
             <ToggleButton value={`${priceToString(Math.round(total * 0.05))}`}>

@@ -27,12 +27,13 @@ import { useNavigate } from "react-router";
 //Components
 import UserInput from "./Components/UserInput";
 import TipButtonGroup from "./Components/TipButtonGroup";
+import CheckoutSummary from "./Components/CheckoutSummary";
 
 //Styles
 import { StyledButton } from "./Checkout.styles";
 
 //HelperFunctions
-import { priceToString } from "../../HelperFunctions";
+import { priceToString, priceToNumber } from "../../HelperFunctions";
 
 //Interfaces
 import { RootState } from "../../Redux/store";
@@ -42,7 +43,8 @@ interface IFormInputs {
   email: string;
   phone: string;
   orderNotes: string;
-  tips: string | null;
+  tips: string;
+  tax: string;
   total: string;
 }
 
@@ -120,7 +122,6 @@ const orderNotesInputProps: InputProps = {
 const Checkout = () => {
   const { tax, total, cart } = useSelector((state: RootState) => state.cart);
   const navigate = useNavigate();
-  const checkoutTotal = `${priceToString(total * (1 + tax))}`;
   const methods = useForm<IFormInputs>({
     defaultValues: {
       firstName: "",
@@ -128,8 +129,9 @@ const Checkout = () => {
       email: "",
       phone: "",
       orderNotes: "",
-      tips: null,
-      total: checkoutTotal,
+      tips: "",
+      tax: priceToString(Math.round(total * tax)),
+      total: priceToString(total),
     },
   });
 
@@ -181,7 +183,7 @@ const Checkout = () => {
         <form onSubmit={methods.handleSubmit(handleOnSubmit)}>
           <Stack spacing={0}>
             <AppBar sx={{ flexDirection: "row", p: "1rem" }}>
-              <IconButton onClick={() => console.log("this isworking")}>
+              <IconButton onClick={() => navigate("/")}>
                 <ArrowBackIosNewRoundedIcon />
                 <Typography sx={{ ml: "1rem" }} variant="h4">
                   Checkout
@@ -189,8 +191,8 @@ const Checkout = () => {
               </IconButton>
             </AppBar>
 
-            <Container sx={{ p: ".25rem" }}>
-              <Typography sx={{ mt: "8rem", ml: "1rem" }} variant="h5">
+            <Container sx={{ p: ".25rem", mt: "8rem" }}>
+              <Typography sx={{ ml: "1rem" }} variant="h5">
                 Order Details
               </Typography>
               <Paper sx={{ p: "1rem", mt: "1rem" }}>
@@ -210,8 +212,8 @@ const Checkout = () => {
               </Paper>
             </Container>
 
-            <Container sx={{ p: ".25rem" }}>
-              <Typography sx={{ mt: "5rem", ml: "1rem" }} variant="h5">
+            <Container sx={{ p: ".25rem", mt: "3rem" }}>
+              <Typography sx={{ ml: "1rem" }} variant="h5">
                 Personal Information
               </Typography>
               <Paper sx={{ p: "1rem", mt: "1rem" }}>
@@ -224,14 +226,20 @@ const Checkout = () => {
             </Container>
           </Stack>
 
-          <Container sx={{ p: ".25rem" }}>
-            <Typography sx={{ mt: "5rem", ml: "1rem" }} variant="h5">
+          <Container sx={{ p: ".25rem", mt: "3rem" }}>
+            <Typography sx={{ ml: "1rem" }} variant="h5">
               Tips
             </Typography>
             <Paper sx={{ p: "1rem", mt: "1rem" }}>
               <TipButtonGroup name="tips" />
             </Paper>
           </Container>
+
+          <CheckoutSummary
+            tax={tax}
+            total={priceToNumber(methods.getValues("total"))}
+            tips={priceToNumber(methods.getValues("tips"))}
+          />
           <Button type="submit" variant="contained">
             Submit
           </Button>
