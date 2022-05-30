@@ -14,7 +14,6 @@ import {
   Paper,
   AppBar,
   IconButton,
-  Button,
   Stack,
   Typography,
 } from "@mui/material";
@@ -155,11 +154,12 @@ const Checkout = () => {
 
     const response = await fetchStripeCheckoutUrl(data);
     try {
-      if (response.ok) {
-        const { url } = response.json();
-        navigate(url);
+      console.log(response);
+      if (!response.ok) {
+        throw Error(response.statusText);
       }
-      throw Error(response.statusText);
+      const { url } = await response.json();
+      window.location.replace(url);
     } catch (e) {
       if (e instanceof Error) {
         console.log(e.message);
