@@ -181,7 +181,7 @@ const Checkout = () => {
     <Paper sx={{ backgroundColor: "#f6f0eb" }}>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(handleOnSubmit)}>
-          <Stack spacing={0}>
+          <Stack spacing={0} sx={{ pb: "3rem" }}>
             <AppBar sx={{ flexDirection: "row", p: "1rem" }}>
               <IconButton onClick={() => navigate("/")}>
                 <ArrowBackIosNewRoundedIcon />
@@ -224,25 +224,22 @@ const Checkout = () => {
                 </Stack>
               </Paper>
             </Container>
+
+            <Container sx={{ p: ".25rem", mt: "3rem" }}>
+              <Typography sx={{ ml: "1rem" }} variant="h5">
+                Tips
+              </Typography>
+              <Paper sx={{ p: "1rem", mt: "1rem" }}>
+                <TipButtonGroup name="tips" />
+              </Paper>
+            </Container>
+
+            <CheckoutSummary
+              tax={tax}
+              total={priceToNumber(methods.getValues("total"))}
+              tips={priceToNumber(methods.getValues("tips"))}
+            />
           </Stack>
-
-          <Container sx={{ p: ".25rem", mt: "3rem" }}>
-            <Typography sx={{ ml: "1rem" }} variant="h5">
-              Tips
-            </Typography>
-            <Paper sx={{ p: "1rem", mt: "1rem" }}>
-              <TipButtonGroup name="tips" />
-            </Paper>
-          </Container>
-
-          <CheckoutSummary
-            tax={tax}
-            total={priceToNumber(methods.getValues("total"))}
-            tips={priceToNumber(methods.getValues("tips"))}
-          />
-          <Button type="submit" variant="contained">
-            Submit
-          </Button>
         </form>
       </FormProvider>
     </Paper>

@@ -1,9 +1,9 @@
 import {
-  Card,
-  CardContent,
-  CardActions,
+
   Stack,
   Typography,
+  Paper,
+  Container,
 } from "@mui/material";
 import { useNavigate } from "react-router";
 
@@ -33,8 +33,8 @@ const CartSummary = ({
   console.log(tax);
 
   return (
-    <Card>
-      <CardContent>
+    <Container sx={{ p: "0.25rem" }}>
+      <Paper sx={{ p: "1rem" }}>
         <Stack>
           <Stack direction="row" justifyContent="space-between" spacing={1}>
             <Typography sx={{ fontWeight: "bold" }}>Item Total:</Typography>
@@ -65,10 +65,7 @@ const CartSummary = ({
             </Typography>
           </Stack>
         </Stack>
-      </CardContent>
-      <CardActions
-        sx={{ display: "flex", justifyContent: "center", pb: "1rem" }}
-      >
+
         <StyledButton
           size="large"
           disableElevation
@@ -77,8 +74,8 @@ const CartSummary = ({
         >
           Proceed to Payment Method
         </StyledButton>
-      </CardActions>
-    </Card>
+      </Paper>
+    </Container>
   );
 };
 
