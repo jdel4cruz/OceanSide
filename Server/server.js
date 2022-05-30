@@ -18,10 +18,10 @@ app.post("/create-checkout-session", async (req, res) => {
       line_items: req.body.items.map((item) => ({
         price_data: {
           currency: "usd",
-          unit_amount: req.item.price,
+          unit_amount: item.price,
           product_data: {
-            name: item.menuItem.foodName,
-            metadata: item.options,
+            name: item.name,
+            metadata: item.metaData,
           },
         },
       })),

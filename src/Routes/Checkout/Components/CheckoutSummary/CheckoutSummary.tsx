@@ -1,10 +1,4 @@
-import {
-
-  Stack,
-  Typography,
-  Paper,
-  Container,
-} from "@mui/material";
+import { Stack, Typography, Paper, Container } from "@mui/material";
 import { useNavigate } from "react-router";
 
 //Styles
@@ -66,12 +60,7 @@ const CartSummary = ({
           </Stack>
         </Stack>
 
-        <StyledButton
-          size="large"
-          disableElevation
-          type="submit"
-          onClick={() => null}
-        >
+        <StyledButton size="large" disableElevation type="submit">
           Proceed to Payment Method
         </StyledButton>
       </Paper>

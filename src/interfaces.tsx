@@ -26,6 +26,18 @@ export interface MenuItemPropsInterface {
   price: number;
 }
 
+export interface IFormInputs {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  orderNotes: string;
+  tips: string;
+  tax: string;
+  cart: CartItemInterface[];
+  total: string;
+}
+
 export interface foodOptionsInterface {
   removeOptions?: foodOptionInterface[];
   addOptions?: foodOptionInterface[];

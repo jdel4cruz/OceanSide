@@ -35,18 +35,12 @@ import { StyledButton } from "./Checkout.styles";
 //HelperFunctions
 import { priceToString, priceToNumber } from "../../HelperFunctions";
 
+//API
+import { fetchStripeCheckoutUrl } from "../../API";
+
 //Interfaces
 import { RootState } from "../../Redux/store";
-interface IFormInputs {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  orderNotes: string;
-  tips: string;
-  tax: string;
-  total: string;
-}
+import { IFormInputs } from "../../interfaces";
 
 interface InputProps {
   name: string;
@@ -124,6 +118,7 @@ const Checkout = () => {
   const navigate = useNavigate();
   const methods = useForm<IFormInputs>({
     defaultValues: {
+      cart,
       firstName: "",
       lastName: "",
       email: "",
@@ -153,8 +148,23 @@ const Checkout = () => {
     );
   }
 
-  const handleOnSubmit: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
+  const handleOnSubmit: SubmitHandler<IFormInputs> = async (
+    data: IFormInputs
+  ) => {
     console.log(data);
+
+    const response = await fetchStripeCheckoutUrl(data);
+    try {
+      if (response.ok) {
+        const { url } = response.json();
+        navigate(url);
+      }
+      throw Error(response.statusText);
+    } catch (e) {
+      if (e instanceof Error) {
+        console.log(e.message);
+      }
+    }
   };
   console.log(methods.watch("total"));
 
