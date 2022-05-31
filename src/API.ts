@@ -1,5 +1,7 @@
 import { IFormInputs } from "./interfaces";
 
+import { priceToNumber } from "./HelperFunctions";
+
 export const fetchStripeCheckoutUrl = async (form: IFormInputs) => {
   console.log(form.cart);
   const response = await fetch(
@@ -21,6 +23,7 @@ export const fetchStripeCheckoutUrl = async (form: IFormInputs) => {
           email: `${form.email}`,
           phone: `${form.phone}`,
         },
+        tips: priceToNumber(form.tips),
       }),
     }
   );

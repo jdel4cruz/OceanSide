@@ -29,7 +29,7 @@ interface UpdateCartItemActionPayload {
 const initialState: CartState = {
   cart: [],
   nextId: 0,
-  tax: 0.056,
+  tax: 0.086,
   total: 0,
 };
 

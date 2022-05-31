@@ -6,7 +6,7 @@ import cors from "cors";
 dotenv.config({ path: "../.env" });
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.SERVER_PORT;
 app.use(express.json());
 app.use(
   cors({
@@ -16,24 +16,48 @@ app.use(
 
 const stripe = stripeConstructor(process.env.STRIPE_PRIVATE_KEY);
 
+const taxRate = await stripe.taxRates.create({
+  display_name: "Sales Tax",
+  inclusive: false,
+  percentage: 8.6,
+  country: "US",
+  state: "WA",
+  description: "WA Sales Tax",
+});
+
 app.post("/create-checkout-session", async (req, res) => {
   try {
     console.log(req.body);
     console.log(req.body.items[0].quantity);
+
+    const line_items = req.body.items.map((item) => ({
+      quantity: item.quantity,
+      tax_rates: [taxRate.id],
+      price_data: {
+        currency: "usd",
+        unit_amount: item.price,
+        product_data: {
+          name: item.name,
+          metadata: item.metaData,
+        },
+      },
+    }));
+
+    line_items.push({
+      quantity: 1,
+      price_data: {
+        currency: "usd",
+        unit_amount: req.body.tips,
+        product_data: {
+          name: "Tips",
+        },
+      },
+    });
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
-      line_items: req.body.items.map((item) => ({
-        quantity: item.quantity,
-        price_data: {
-          currency: "usd",
-          unit_amount: item.price,
-          product_data: {
-            name: item.name,
-            metadata: item.metaData,
-          },
-        },
-      })),
+      line_items: line_items,
       cancel_url: `${process.env.CLIENT_URL}`,
       success_url: `${process.env.CLIENT_URL}`,
     });
@@ -48,5 +72,7 @@ app.get("/create-checkout-session", (req, res) => {
 });
 
 app.listen(PORT, () =>
-  console.log(`Server runing on port: http://localhost:${process.env.PORT}`)
+  console.log(
+    `Server runing on port: http://localhost:${process.env.SERVER_PORT}`
+  )
 );
