@@ -82,7 +82,7 @@ const breakfast: MenuItemPropsInterface[] = [
       ],
       addOptions: [
         {
-          optionName: "Replace sliced avocado with avocado mash",
+          optionName: "Replace with avocado mash",
           price: 0,
         },
       ],
@@ -230,7 +230,7 @@ const breakfast: MenuItemPropsInterface[] = [
           price: 100,
         },
         {
-          optionName: "replace strawberry syrup with maple syrup",
+          optionName: "Top with strawberry syrup",
           price: 50,
         },
       ],

@@ -5,7 +5,7 @@ export const Wrapper = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  overflow: hidden;
   height: 100vh;
 
   background: linear-gradient(
@@ -19,7 +19,8 @@ export const Wrapper = styled(Container)`
 export const MenuContainer = styled(Container)`
   flex-grow: 1;
   padding: 1.5rem 0;
-  margin-top: 6rem;
+  margin-top: 4rem;
+  overflow: scroll;
 
   background: #f6f0eb;
 `;
