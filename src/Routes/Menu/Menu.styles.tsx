@@ -10,14 +10,16 @@ export const Wrapper = styled(Container)`
 
   background: linear-gradient(
     179.96deg,
-    #72bfd6ac 0%,
-    rgb(146, 228, 247) 4.66%,
+    #72bfd6ac 2%,
+    rgba(146, 229, 247, 0.74) 15%,
     rgba(241, 189, 169, 0.514) 35%
   );
 `;
 
 export const MenuContainer = styled(Container)`
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
   padding: 1.5rem 0;
   margin-top: 4rem;
   overflow: scroll;

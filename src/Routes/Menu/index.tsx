@@ -50,8 +50,8 @@ const Menu = () => {
     },
   ];
   return (
-    <Wrapper disableGutters>
-      <NavBar links={topNavBar} gap="5rem" fontSize="2rem" mTop="2rem" />
+    <Wrapper disableGutters maxWidth={false}>
+      <NavBar links={topNavBar} gap="3rem" fontSize="1.5rem" mTop="2rem" />
       <HeroText>OceanSide</HeroText>
       <MenuNavBar
         stateSetters={menuNavBar}
@@ -59,7 +59,7 @@ const Menu = () => {
         fontSize="1.25rem"
         mTop="1rems"
       />
-      <MenuContainer>
+      <MenuContainer maxWidth={false}>
         <MenuGrid foodType={foodType} />
       </MenuContainer>
     </Wrapper>
