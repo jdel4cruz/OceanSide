@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { Container } from "@mui/material";
 //Interfaces
 import { NavLink, setStateButtonInterface } from "../../interfaces";
 
@@ -9,7 +10,13 @@ import MenuNavBar from "./Components/MenuNavBar";
 import MenuGrid from "./Components/MenuGrid";
 
 //Styles
-import { Wrapper, HeroText, MenuContainer } from "./Menu.styles";
+import {
+  Wrapper,
+  HeroText,
+  MenuContainer,
+  HeaderContainer,
+} from "./Menu.styles";
+import { Header } from "../AddToCart/AddToCart.styles";
 
 const topNavBar: NavLink[] = [
   {
@@ -51,14 +58,17 @@ const Menu = () => {
   ];
   return (
     <Wrapper disableGutters maxWidth={false}>
-      <NavBar links={topNavBar} gap="3rem" fontSize="1.5rem" mTop="2rem" />
-      <HeroText>OceanSide</HeroText>
-      <MenuNavBar
-        stateSetters={menuNavBar}
-        gap="1rem"
-        fontSize="1.25rem"
-        mTop="1rems"
-      />
+      <HeaderContainer disableGutters maxWidth={false}>
+        <NavBar links={topNavBar} gap="3rem" fontSize="1.5rem" mTop="0" />
+        <HeroText>OceanSide</HeroText>
+        <MenuNavBar
+          stateSetters={menuNavBar}
+          gap="1rem"
+          fontSize="1.25rem"
+          mTop="1rems"
+        />
+      </HeaderContainer>
+
       <MenuContainer maxWidth={false}>
         <MenuGrid foodType={foodType} />
       </MenuContainer>

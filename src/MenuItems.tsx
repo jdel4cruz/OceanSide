@@ -390,6 +390,32 @@ const beverages: MenuItemPropsInterface[] = [
     imgPath: "/Images/Beverages/tea.jpg",
     price: 300,
   },
+  {
+    foodId: 16,
+    foodName: "Hot Cocoa",
+    foodType: "beverages",
+    description:
+      "Rich housemade hot cocoa made with dark chocolate and whole milk",
+    imgPath: "/Images/Beverages/hot_chocolate.jpg",
+    price: 400,
+  },
+  {
+    foodId: 17,
+    foodName: "Classic Mojito",
+    foodType: "beverages",
+    description:
+      "Lime juice, mint, white rum, and simple syrup make up this simple but awesome drink",
+    imgPath: "/Images/Beverages/mojito.jpg",
+    price: 500,
+  },
+  {
+    foodId: 18,
+    foodName: "Orange Juice",
+    foodType: "beverages",
+    description: "Fresh squeezed on request.",
+    imgPath: "/Images/Beverages/orange_juice.jpg",
+    price: 350,
+  },
 ];
 
 export const menuItemsArray = [...breakfast, ...beverages];

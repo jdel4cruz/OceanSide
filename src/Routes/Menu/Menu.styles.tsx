@@ -7,12 +7,19 @@ export const Wrapper = styled(Container)`
   align-items: center;
   overflow: hidden;
   height: 100vh;
+`;
+
+export const HeaderContainer = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0;
 
   background: linear-gradient(
     179.96deg,
     #72bfd6ac 2%,
-    rgba(146, 229, 247, 0.74) 15%,
-    rgba(241, 189, 169, 0.514) 35%
+    rgba(146, 229, 247, 0.74) 25%,
+    rgba(241, 189, 169, 0.514) 105%
   );
 `;
 
@@ -21,7 +28,6 @@ export const MenuContainer = styled(Container)`
   display: flex;
   justify-content: center;
   padding: 1.5rem 0;
-  margin-top: 4rem;
   overflow: scroll;
 
   background: #f6f0eb;
