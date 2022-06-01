@@ -6,7 +6,7 @@ const breakfast: MenuItemPropsInterface[] = [
     foodName: "Blueberry Banana French Toast",
     foodType: "breakfast",
     description:
-      "French Toast made with Japanese Shokupan bread. Topped with blueberries and bananas, dusted with powdered sugar, and finished with maple syrup.",
+      "French Toast made with Japanese Shokupan. Topped with blueberries, bananas, powdered sugar, and maple syrup.",
     imgPath: "/Images/Breakfast/Blueberry_Banana_French_Toast.jpg",
     price: 850,
     foodOptions: {
@@ -70,7 +70,7 @@ const breakfast: MenuItemPropsInterface[] = [
     foodName: "The Rise n' Shine",
     foodType: "breakfast",
     description:
-      "What you need to hit the ground running. Sliced avocado fanned on top of a slice of ciabatta bread accompanied with a sunnyside egg.",
+      "Sliced avocado fanned on top of a slice of ciabatta bread accompanied with a sunnyside egg.",
     imgPath: "/Images/Breakfast/The_Rise_N_Shine.jpg",
     price: 650,
     foodOptions: {
@@ -90,10 +90,10 @@ const breakfast: MenuItemPropsInterface[] = [
   },
   {
     foodId: 5,
-    foodName: "Gift of Elysium",
+    foodName: "Fritatta",
     foodType: "breakfast",
     description:
-      "Made from the gardens of paradise (aka the local farmers market). Contains free-range eggs, spinach, feta cheese, red onion, and Monterey Jack cheese.",
+      "Contains local free-range eggs, spinach, feta cheese, red onion, and Monterey Jack cheese.",
     imgPath: "/Images/Breakfast/Gift_From_Elysium.jpg",
     price: 750,
     foodOptions: {

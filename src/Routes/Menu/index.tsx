@@ -51,13 +51,13 @@ const Menu = () => {
   ];
   return (
     <Wrapper disableGutters>
-      <NavBar links={topNavBar} gap="3.5rem" fontSize="1.5rem" mTop="2rem" />
+      <NavBar links={topNavBar} gap="5rem" fontSize="2rem" mTop="2rem" />
       <HeroText>OceanSide</HeroText>
       <MenuNavBar
         stateSetters={menuNavBar}
         gap="1rem"
-        fontSize="1rem"
-        mTop="0"
+        fontSize="1.25rem"
+        mTop="1rems"
       />
       <MenuContainer>
         <MenuGrid foodType={foodType} />

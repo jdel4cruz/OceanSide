@@ -10,9 +10,9 @@ export const Wrapper = styled(Container)`
 
   background: linear-gradient(
     179.96deg,
-    #82aab4 0.04%,
-    rgba(77, 185, 210, 0.604167) 12%,
-    rgba(210, 174, 82, 0.3) 37%
+    #72bfd6ac 0%,
+    rgb(146, 228, 247) 4.66%,
+    rgba(241, 189, 169, 0.514) 35%
   );
 `;
 
@@ -26,7 +26,7 @@ export const MenuContainer = styled(Container)`
 `;
 
 export const HeroText = styled(Typography)`
-  margin-top: 3rem;
+  margin-top: 2rem;
 
   font-family: "Rochester", cursive;
   font-size: 3rem;
