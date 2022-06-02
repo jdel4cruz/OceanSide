@@ -11,6 +11,7 @@ interface CartState {
   nextId: number;
   tax: number;
   total: number;
+  currentMenuId: number | null;
 }
 
 interface NewCartItemActionPayload {
@@ -31,6 +32,7 @@ const initialState: CartState = {
   nextId: 0,
   tax: 0.086,
   total: 0,
+  currentMenuId: null,
 };
 
 const cartSlice = createSlice({
@@ -94,6 +96,9 @@ const cartSlice = createSlice({
         state.total = 0;
       }
       state.total = cartTotalPrice(state.cart);
+    },
+    updateCurrentMenuId: (state, action: PayloadAction<{ menuId: number }>) => {
+      state.currentMenuId = action.payload.menuId;
     },
   },
 });
