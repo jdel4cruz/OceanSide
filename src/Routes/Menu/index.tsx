@@ -32,12 +32,6 @@ const topNavBar: NavLink[] = [
     underline: "none",
     content: "Contact",
   },
-  {
-    path: "/cart",
-    color: "inherit",
-    underline: "none",
-    content: "Cart",
-  },
 ];
 
 const Menu = () => {

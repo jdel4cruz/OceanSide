@@ -41,7 +41,6 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
   const [extraOptions, setExtraOptions] = useState(initialOptions);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const price = totalPrice(extraOptions, menuItem, qty);
 
