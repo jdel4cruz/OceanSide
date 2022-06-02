@@ -23,7 +23,7 @@ const MenuGrid = ({ foodType }: { foodType: string }) => {
       {activeMenu !== undefined ? (
         activeMenu.map((menuItem: MenuItemPropsInterface, i: number) => (
           <Grid item xs={11} sm={6} key={i} display="flex">
-            <MenuCard menuItem={menuItem} id={i} />
+            <MenuCard menuItem={menuItem} id={menuItem.foodId} />
           </Grid>
         ))
       ) : (

@@ -1,5 +1,9 @@
 import { Typography } from "@mui/material";
-import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import {
+  updateCurrentMenuId,
+  updateIsAddToCartOpen,
+} from "../../../../Redux/Reducers/cartReducer";
 
 //Styles
 import {
@@ -19,12 +23,15 @@ const MenuCard = ({
   menuItem: MenuItemPropsInterface;
   id: number;
 }) => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <StyledCard
       variant="outlined"
-      onClick={() => navigate(`/${menuItem.foodType}/addtocart/${id}`)}
+      onClick={() => {
+        dispatch(updateCurrentMenuId({ menuId: id }));
+        dispatch(updateIsAddToCartOpen({ isOpen: true }));
+      }}
     >
       <StyledHeader title={menuItem.foodName} />
       <StyledDivider />
