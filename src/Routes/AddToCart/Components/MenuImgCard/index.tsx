@@ -110,7 +110,7 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
             disableElevation
             onClick={() => {
               dispatch(newCartItem({ qty, price, extraOptions, menuItem }));
-              navigate(`/`);
+              dispatch(updateIsAddToCartOpen({ isOpen: false }));
             }}
           >
             Add to cart
