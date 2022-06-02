@@ -8,6 +8,7 @@ import { NavLink, setStateButtonInterface } from "../../interfaces";
 import NavBar from "./Components/NavBar";
 import MenuNavBar from "./Components/MenuNavBar";
 import MenuGrid from "./Components/MenuGrid";
+import AddToCart from "../AddToCart";
 
 //Styles
 import {
@@ -58,6 +59,7 @@ const Menu = () => {
   ];
   return (
     <Wrapper disableGutters maxWidth={false}>
+      <AddToCart />
       <HeaderContainer disableGutters maxWidth={false}>
         <NavBar links={topNavBar} gap="3rem" fontSize="1.5rem" mTop="0" />
         <HeroText>OceanSide</HeroText>

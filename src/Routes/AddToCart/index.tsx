@@ -1,10 +1,10 @@
-import { Stack, Modal } from "@mui/material";
+import { Stack, Modal, IconButton } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { updateIsAddToCartOpen } from "../../Redux/Reducers/cartReducer";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 
 //Components
 import MenuImgCard from "./Components/MenuImgCard";
-import ReturnButton from "../../Components/ReturnButton";
 
 //Styles
 import { Wrapper, MenuContainer, Header } from "./AddToCart.styles";
@@ -33,18 +33,9 @@ const AddToCart = () => {
     <Modal
       open={isAddToCartOpen}
       onClose={() => dispatch(updateIsAddToCartOpen({ isOpen: false }))}
+      sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
     >
       <Wrapper>
-        <Stack
-          sx={{ width: 1, mb: "1rem" }}
-          direction="row"
-          justifyContent="space-between"
-        >
-          <Header variant="h4">Add To Cart:</Header>
-
-          <ReturnButton path="/" />
-        </Stack>
-
         {menuItem !== undefined ? (
           <MenuImgCard menuItem={menuItem} />
         ) : (

@@ -3,13 +3,14 @@ import { styled } from "@mui/system";
 
 export const Wrapper = styled(Container)`
   display: flex;
-  min-height: 100vh;
-  width: 600px;
+  max-height: 90vh;
+  max-width: 90vw;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem;
 
-  background: #9eccd0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 `;
 
 export const MenuContainer = styled(Container)`
@@ -20,8 +21,6 @@ export const MenuContainer = styled(Container)`
 `;
 
 export const Header = styled(Typography)`
-  align-self: start;
-  margin-top: 1rem;
   color: white;
 `;
 

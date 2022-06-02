@@ -12,6 +12,8 @@ export const StyledCard = styled(Card)`
   margin-top: 0.25rem;
   border: 4px solid white;
   padding: 0.5rem;
+
+  overflow-y: scroll;
 `;
 
 export const StyledHeader = styled(CardHeader)`

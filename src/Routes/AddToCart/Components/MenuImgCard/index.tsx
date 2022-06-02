@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { CardMedia, Typography, Stack } from "@mui/material";
+import { CardMedia, Typography, Stack, IconButton } from "@mui/material";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-
-import { useDispatch } from "react-redux";
-import { newCartItem } from "../../../../Redux/Reducers/cartReducer";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  updateIsAddToCartOpen,
+  newCartItem,
+} from "../../../../Redux/Reducers/cartReducer";
 
 import FoodOptions from "../FoodOptions";
 
@@ -44,6 +47,20 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
 
   return (
     <StyledCard variant="outlined">
+      <Stack
+        sx={{ width: 1 }}
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Typography variant="h5">Add To Cart:</Typography>
+        <IconButton
+          size="large"
+          onClick={() => dispatch(updateIsAddToCartOpen({ isOpen: false }))}
+        >
+          <HomeRoundedIcon />
+        </IconButton>
+      </Stack>
       <CardMedia component="img" image={menuItem.imgPath} />
       <StyledHeader title={menuItem.foodName} />
       <StyledDivider />
