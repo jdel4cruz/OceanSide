@@ -1,9 +1,9 @@
-import { useParams } from "react-router";
-import { Stack } from "@mui/material";
+import { Stack, Modal } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { updateIsAddToCartOpen } from "../../Redux/Reducers/cartReducer";
 
 //Components
 import MenuImgCard from "./Components/MenuImgCard";
-import FoodOptions from "./Components/FoodOptions";
 import ReturnButton from "../../Components/ReturnButton";
 
 //Styles
@@ -11,36 +11,47 @@ import { Wrapper, MenuContainer, Header } from "./AddToCart.styles";
 
 //Interfaces
 import { MenuItemPropsInterface } from "../../interfaces";
+import { RootState } from "../../Redux/store";
 
 //Data
-import { menuItems } from "../../MenuItems";
+import { menuItemsArray } from "../../MenuItems";
 
 const AddToCart = () => {
-  const { foodId, foodType } = useParams();
+  const { isAddToCartOpen, currentMenuId } = useSelector(
+    (state: RootState) => state.cart
+  );
+  const dispatch = useDispatch();
 
   let menuItem;
-  if (foodId !== undefined && foodType !== undefined) {
-    menuItem = menuItems[foodType][+foodId];
+  if (currentMenuId !== null) {
+    menuItem = menuItemsArray.filter(
+      (menuItem) => menuItem.foodId === currentMenuId
+    )[0];
   }
 
   return (
-    <Wrapper>
-      <Stack
-        sx={{ width: 1, mb: "1rem" }}
-        direction="row"
-        justifyContent="space-between"
-      >
-        <Header variant="h4">Add To Cart:</Header>
+    <Modal
+      open={isAddToCartOpen}
+      onClose={() => dispatch(updateIsAddToCartOpen({ isOpen: false }))}
+    >
+      <Wrapper>
+        <Stack
+          sx={{ width: 1, mb: "1rem" }}
+          direction="row"
+          justifyContent="space-between"
+        >
+          <Header variant="h4">Add To Cart:</Header>
 
-        <ReturnButton path="/" />
-      </Stack>
+          <ReturnButton path="/" />
+        </Stack>
 
-      {menuItem !== undefined ? (
-        <MenuImgCard menuItem={menuItem} />
-      ) : (
-        <div>ERROR</div>
-      )}
-    </Wrapper>
+        {menuItem !== undefined ? (
+          <MenuImgCard menuItem={menuItem} />
+        ) : (
+          <div>ERROR</div>
+        )}
+      </Wrapper>
+    </Modal>
   );
 };
 

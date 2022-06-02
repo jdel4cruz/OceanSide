@@ -12,6 +12,8 @@ interface CartState {
   tax: number;
   total: number;
   currentMenuId: number | null;
+  isCartOpen: boolean;
+  isAddToCartOpen: boolean;
 }
 
 interface NewCartItemActionPayload {
@@ -33,6 +35,8 @@ const initialState: CartState = {
   tax: 0.086,
   total: 0,
   currentMenuId: null,
+  isCartOpen: false,
+  isAddToCartOpen: false,
 };
 
 const cartSlice = createSlice({
@@ -100,9 +104,25 @@ const cartSlice = createSlice({
     updateCurrentMenuId: (state, action: PayloadAction<{ menuId: number }>) => {
       state.currentMenuId = action.payload.menuId;
     },
+    updateIsCartOpen: (state, action: PayloadAction<{ isOpen: boolean }>) => {
+      state.isCartOpen = action.payload.isOpen;
+    },
+    updateIsAddToCartOpen: (
+      state,
+      action: PayloadAction<{ isOpen: boolean }>
+    ) => {
+      state.isAddToCartOpen = action.payload.isOpen;
+    },
   },
 });
 
-export const { newCartItem, addCartItem, removeCartItem, deleteCartItem } =
-  cartSlice.actions;
+export const {
+  newCartItem,
+  addCartItem,
+  removeCartItem,
+  deleteCartItem,
+  updateCurrentMenuId,
+  updateIsAddToCartOpen,
+  updateIsCartOpen,
+} = cartSlice.actions;
 export default cartSlice.reducer;

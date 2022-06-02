@@ -4,6 +4,7 @@ import { styled } from "@mui/system";
 export const Wrapper = styled(Container)`
   display: flex;
   min-height: 100vh;
+  width: 600px;
   flex-direction: column;
   align-items: center;
   padding: 1.5rem;
