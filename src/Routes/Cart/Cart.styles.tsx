@@ -2,8 +2,10 @@ import { Stack, Container, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const Wrapper = styled(Stack)`
-  min-height: 100vh;
-  padding: 1.5rem;
+  max-height: 90vh;
+  max-width: 90vw;
+  padding: 0;
+  margin: 0;
 
   background: #9eccd0;
 `;

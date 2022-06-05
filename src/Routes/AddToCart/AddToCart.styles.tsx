@@ -11,17 +11,10 @@ export const Wrapper = styled(Container)`
   margin: 0;
   padding: 0;
   overflow: hidden;
-`;
 
-export const MenuContainer = styled(Container)`
-  flex-grow: 1;
-  padding: 1.5rem;
-  margin-top: 6rem;
-  background: #f6f0eb;
-`;
-
-export const Header = styled(Typography)`
-  color: white;
+  @media screen and (min-width: 400px) {
+    width: 400px;
+  }
 `;
 
 /* export const HeroText = styled(Typography)`

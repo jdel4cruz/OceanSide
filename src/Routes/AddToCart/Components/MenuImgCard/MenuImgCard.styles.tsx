@@ -9,11 +9,15 @@ import {
 import { styled } from "@mui/system";
 
 export const StyledCard = styled(Card)`
-  margin-top: 0.25rem;
+  box-sizing: border-box;
   border: 4px solid white;
   padding: 0.5rem;
 
   overflow-y: scroll;
+
+  @media screen and (min-width: 400px) {
+    width: 100%;
+  }
 `;
 
 export const StyledHeader = styled(CardHeader)`
