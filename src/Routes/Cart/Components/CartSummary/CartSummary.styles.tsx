@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Divider } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const StyledButton = styled(Button)`
@@ -17,4 +17,9 @@ export const StyledButton = styled(Button)`
     border: 1px solid #cfaf90;
     color: #cfaf90;
   }
+`;
+
+export const StyledDivider = styled(Divider)`
+  border: 2px solid #f7e4d4;
+  margin: 1rem 0;
 `;

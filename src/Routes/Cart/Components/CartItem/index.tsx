@@ -42,12 +42,12 @@ const CartItem = ({
       <StyledHeader title={menuItem.foodName} />
       <StyledDivider />
       <StyledContent>
-        <ContentContainer>
+        {/* <ContentContainer>
           <CardMedia component="img" image={menuItem.imgPath} />
-        </ContentContainer>
+        </ContentContainer> */}
         <ContentContainer>
-          <AdjustCartQty qty={qty} cartId={cartId} />
           <Typography>{`Price $${priceToString(price)}`}</Typography>
+          <AdjustCartQty qty={qty} cartId={cartId} />
         </ContentContainer>
 
         <IconButton onClick={() => dispatch(deleteCartItem({ cartId }))}>

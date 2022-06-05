@@ -47,17 +47,18 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
   return (
     <StyledCard variant="outlined">
       <Stack
-        sx={{ width: 1 }}
+        sx={{ width: 1, mb: "1rem" }}
         direction="row"
         justifyContent="space-between"
         alignItems="center"
       >
-        <Typography variant="h5">Add To Cart:</Typography>
+        <Typography variant="h4">Add To Cart</Typography>
         <IconButton
+          sx={{ pr: "0" }}
           size="large"
           onClick={() => dispatch(updateIsAddToCartOpen({ isOpen: false }))}
         >
-          <HomeRoundedIcon />
+          <HomeRoundedIcon sx={{ fontSize: "3rem" }} />
         </IconButton>
       </Stack>
       <CardMedia component="img" image={menuItem.imgPath} />

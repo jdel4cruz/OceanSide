@@ -1,7 +1,11 @@
 import { Stack, Button } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const Wrapper = styled(Stack)``;
+export const Wrapper = styled(Stack)`
+  width: 100%;
+  flex: 1 1 0;
+  overflow-y: scroll;
+`;
 
 export const CartStack = styled(Stack)``;
 
@@ -9,6 +13,7 @@ export const NoCartItems = styled(Stack)`
   width: 100%;
   flex: 1 1 0;
   background: white;
+  border-radius: 0.5rem;
 `;
 
 export const StyledButton = styled(Button)`

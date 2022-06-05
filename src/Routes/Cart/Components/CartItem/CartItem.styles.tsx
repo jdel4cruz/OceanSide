@@ -20,8 +20,9 @@ export const StyledHeader = styled(CardHeader)`
 
 export const ContentContainer = styled("div")`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: start;
+  gap: 1rem;
   align-items: center;
   width: 30%;
   flex: 1 1 0;

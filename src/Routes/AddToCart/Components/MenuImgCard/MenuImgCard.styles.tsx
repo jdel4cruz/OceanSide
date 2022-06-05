@@ -11,7 +11,7 @@ import { styled } from "@mui/system";
 export const StyledCard = styled(Card)`
   box-sizing: border-box;
   border: 4px solid white;
-  padding: 0.5rem;
+  padding: 1rem;
 
   overflow-y: scroll;
 
