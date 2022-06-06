@@ -3,8 +3,12 @@ import { styled } from "@mui/system";
 
 export const Wrapper = styled(Stack)`
   width: 100%;
-  flex: 1 1 0;
+  flex: 1 1 auto;
   overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const CartStack = styled(Stack)``;

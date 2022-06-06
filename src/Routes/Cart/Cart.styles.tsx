@@ -3,12 +3,12 @@ import { styled } from "@mui/system";
 
 export const Wrapper = styled(Container)`
   display: flex;
-  height: 90vh;
+  max-height: 90vh;
   max-width: 90vw;
   flex-direction: column;
   align-items: center;
   border-radius: 1rem;
-  gap: 1rem;
+  gap: 0.5rem;
 
   margin: 0;
   padding: 1rem;

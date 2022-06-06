@@ -10,7 +10,6 @@ export const Wrapper = styled(Container)`
 
   margin: 0;
   padding: 0;
-  overflow: hidden;
 
   @media screen and (min-width: 400px) {
     width: 400px;

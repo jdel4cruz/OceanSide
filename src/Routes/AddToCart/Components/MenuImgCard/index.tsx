@@ -54,19 +54,24 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
       >
         <Typography variant="h4">Add To Cart</Typography>
         <IconButton
-          sx={{ pr: "0" }}
+          sx={{
+            pr: "0",
+            "&.MuiButtonBase-root:hover": {
+              backgroundColor: "transparent",
+            },
+          }}
           size="large"
           onClick={() => dispatch(updateIsAddToCartOpen({ isOpen: false }))}
         >
           <HomeRoundedIcon sx={{ fontSize: "3rem" }} />
         </IconButton>
       </Stack>
-      <CardMedia component="img" image={menuItem.imgPath} />
+      <CardMedia
+        component="img"
+        image={menuItem.imgPath}
+        sx={{ height: "auto", maxWidth: "100%" }}
+      />
       <StyledHeader title={menuItem.foodName} />
-      <StyledDivider />
-      <StyledContent>
-        <Typography>{menuItem.description}</Typography>
-      </StyledContent>
 
       {menuItem.foodOptions?.addOptions !== undefined && (
         <>

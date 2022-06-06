@@ -27,7 +27,7 @@ const Cart = () => {
     >
       <Wrapper disableGutters>
         <Stack
-          sx={{ width: 1, mb: "1rem" }}
+          sx={{ width: 1, mb: ".5rem" }}
           direction="row"
           justifyContent="space-between"
           alignItems="center"
