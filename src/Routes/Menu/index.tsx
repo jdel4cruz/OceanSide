@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Container } from "@mui/material";
+import { Fade } from "@mui/material";
 //Interfaces
 import { NavLink, setStateButtonInterface } from "../../interfaces";
 
@@ -52,24 +52,26 @@ const Menu = () => {
     },
   ];
   return (
-    <Wrapper disableGutters maxWidth={false}>
-      <AddToCart />
-      <Cart />
-      <HeaderContainer disableGutters maxWidth={false}>
-        <NavBar links={topNavBar} gap="3rem" fontSize="1.5rem" mTop="0" />
-        <HeroText>OceanSide</HeroText>
-        <MenuNavBar
-          stateSetters={menuNavBar}
-          gap="1rem"
-          fontSize="1.25rem"
-          mTop="1rems"
-        />
-      </HeaderContainer>
+    <Fade in={true} timeout={700}>
+      <Wrapper disableGutters maxWidth={false}>
+        <AddToCart />
+        <Cart />
+        <HeaderContainer disableGutters maxWidth={false}>
+          <NavBar links={topNavBar} gap="3rem" fontSize="1.5rem" mTop="0" />
+          <HeroText>OceanSide</HeroText>
+          <MenuNavBar
+            stateSetters={menuNavBar}
+            gap="1rem"
+            fontSize="1.25rem"
+            mTop="1rems"
+          />
+        </HeaderContainer>
 
-      <MenuContainer maxWidth={false}>
-        <MenuGrid foodType={foodType} />
-      </MenuContainer>
-    </Wrapper>
+        <MenuContainer maxWidth={false}>
+          <MenuGrid foodType={foodType} />
+        </MenuContainer>
+      </Wrapper>
+    </Fade>
   );
 };
 

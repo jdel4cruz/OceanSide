@@ -11,11 +11,21 @@ import { styled } from "@mui/system";
 export const StyledCard = styled(Card)`
   box-sizing: border-box;
   padding: 1rem;
+  padding-left: 1.5rem;
 
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
-    display: none;
+    width: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    margin-block: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cfaf90;
+    border-radius: 100vw;
   }
 
   @media screen and (min-width: 400px) {

@@ -1,7 +1,6 @@
-import { Stack, Modal, IconButton } from "@mui/material";
+import { Fade, Modal } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { updateIsAddToCartOpen } from "../../Redux/Reducers/cartReducer";
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 
 //Components
 import MenuImgCard from "./Components/MenuImgCard";
@@ -39,13 +38,15 @@ const AddToCart = () => {
         justifyContent: "center",
       }}
     >
-      <Wrapper disableGutters>
-        {menuItem !== undefined ? (
-          <MenuImgCard menuItem={menuItem} />
-        ) : (
-          <div>ERROR</div>
-        )}
-      </Wrapper>
+      <Fade in={isAddToCartOpen} timeout={300}>
+        <Wrapper disableGutters>
+          {menuItem !== undefined ? (
+            <MenuImgCard menuItem={menuItem} />
+          ) : (
+            <div>ERROR</div>
+          )}
+        </Wrapper>
+      </Fade>
     </Modal>
   );
 };
