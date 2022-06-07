@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Fade } from "@mui/material";
+import { Container, Fade } from "@mui/material";
 //Interfaces
 import { NavLink, setStateButtonInterface } from "../../interfaces";
 

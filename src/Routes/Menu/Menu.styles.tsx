@@ -7,6 +7,8 @@ export const Wrapper = styled(Container)`
   align-items: center;
   overflow: hidden;
   height: 100vh;
+  padding-bottom: 1.5rem;
+  background-color: #f6f0eb;
 `;
 
 export const HeaderContainer = styled(Container)`
@@ -24,13 +26,27 @@ export const HeaderContainer = styled(Container)`
 `;
 
 export const MenuContainer = styled(Container)`
-  flex-grow: 1;
+  width: fit-content;
   display: flex;
   justify-content: center;
   padding: 1.5rem 0;
-  overflow: scroll;
 
-  background: #f6f0eb;
+  background-color: #f6f0eb;
+
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 1.5rem;
+  }
+  ::-webkit-scrollbar-track {
+    margin-block: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #9eccd0;
+    border: 0.25rem solid #f6f0eb;
+    border-radius: 100vw;
+  }
 `;
 
 export const HeroText = styled(Typography)`
