@@ -55,7 +55,7 @@ export const StyledContent = styled(CardContent)`
   padding: 1rem 0;
 `;
 export const Price = styled(Typography)`
-  align-self: center;
+  width: 10rem;
 `;
 
 export const StyledButton = styled(Button)`

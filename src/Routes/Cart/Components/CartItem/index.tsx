@@ -22,7 +22,7 @@ import { priceToString } from "../../../../HelperFunctions";
 
 //Interfaces
 import { MenuItemPropsInterface } from "../../../../interfaces";
-import { CardMedia, IconButton } from "@mui/material";
+import { CardMedia, Container, IconButton } from "@mui/material";
 
 const CartItem = ({
   menuItem,
@@ -46,7 +46,13 @@ const CartItem = ({
           <CardMedia component="img" image={menuItem.imgPath} />
         </ContentContainer> */}
         <ContentContainer>
-          <Typography>{`Price $${priceToString(price)}`}</Typography>
+          <Container
+            sx={{ width: "7rem", padding: "0", margin: "0" }}
+            disableGutters
+          >
+            <Typography>{`Price: $${priceToString(price)}`}</Typography>
+          </Container>
+
           <AdjustCartQty qty={qty} cartId={cartId} />
         </ContentContainer>
 

@@ -7,17 +7,27 @@ export const Wrapper = styled(Stack)`
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
-    display: none;
+    width: 1rem;
+  }
+
+  ::-webkit-scrollbar-track {
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 0.25rem solid #9eccd0;
+    background: #cfaf90;
+    border-radius: 100vw;
   }
 `;
 
 export const CartStack = styled(Stack)``;
 
 export const NoCartItems = styled(Stack)`
-  width: 100%;
+  width: 90%;
   flex: 1 1 0;
-  background: white;
   border-radius: 0.5rem;
+  padding: 1rem;
+  background: white;
 `;
 
 export const StyledButton = styled(Button)`

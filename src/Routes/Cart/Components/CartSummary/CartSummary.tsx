@@ -20,7 +20,13 @@ const CartSummary = ({ tax, total }: { tax: number; total: number }) => {
     return <></>;
   }
   return (
-    <Card sx={{ width: "100%", overflow: "visible" }}>
+    <Card
+      sx={{
+        width: "calc(100% - 1rem)",
+        overflow: "visible",
+        alignSelf: "start",
+      }}
+    >
       <CardContent>
         <Stack>
           <Stack direction="row" justifyContent="space-between" spacing={1}>

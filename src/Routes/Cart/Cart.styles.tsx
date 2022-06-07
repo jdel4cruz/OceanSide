@@ -11,7 +11,8 @@ export const Wrapper = styled(Container)`
   gap: 0.5rem;
 
   margin: 0;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
+  padding-left: 1.5rem;
   overflow: hidden;
 
   background-color: #9eccd0;

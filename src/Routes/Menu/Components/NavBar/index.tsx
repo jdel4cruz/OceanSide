@@ -35,7 +35,14 @@ const NavBar = ({
           {link.content}
         </StyledLink>
       ))}
-      <IconButton onClick={() => dispatch(updateIsCartOpen({ isOpen: true }))}>
+      <IconButton
+        onClick={() => dispatch(updateIsCartOpen({ isOpen: true }))}
+        sx={{
+          "&.MuiButtonBase-root:hover": {
+            backgroundColor: "transparent",
+          },
+        }}
+      >
         <Typography sx={{ color: "white", fontSize: "1.5rem", mr: "1rem" }}>
           Cart
         </Typography>

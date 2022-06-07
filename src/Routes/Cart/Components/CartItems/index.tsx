@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../../Redux/store";
 import { useDispatch } from "react-redux";
 import { updateIsCartOpen } from "../../../../Redux/Reducers/cartReducer";
-
 //Components
 import CartItem from "../CartItem";
 
@@ -13,6 +12,7 @@ import {
   NoCartItems,
   StyledButton,
 } from "./CartItems.styles";
+import { Typography } from "@mui/material";
 
 const CartItems = () => {
   /*Will map out cartItems based on current Cart state in redux store. 
@@ -25,7 +25,7 @@ const CartItems = () => {
   if (cart.length === 0) {
     return (
       <NoCartItems alignItems="center" justifyContent="center">
-        Add items to cart and they will appear here.
+        <Typography variant="h5">Your cart is empty!</Typography>
         <StyledButton
           size="large"
           disableElevation
