@@ -27,15 +27,24 @@ export const MenuContainer = styled(Container)`
   width: fit-content;
   display: flex;
   justify-content: center;
-  padding: 1.5rem 0;
+  padding-top: 1rem;
+  padding-left: 1rem;
   flex: 1 1 0;
 
   background-color: #f6f0eb;
 
   overflow-y: scroll;
 
+  @media screen and (min-width: 600px) {
+    padding: 1.5rem;
+    padding-left: 2.5rem;
+    ::-webkit-scrollbar {
+      width: 1.5rem;
+    }
+  }
+
   ::-webkit-scrollbar {
-    width: 1.5rem;
+    width: 1rem;
   }
   ::-webkit-scrollbar-track {
     margin-block: 0.5rem;

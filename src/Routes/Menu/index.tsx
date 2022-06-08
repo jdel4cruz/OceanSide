@@ -67,7 +67,7 @@ const Menu = () => {
           />
         </HeaderContainer>
 
-        <MenuContainer maxWidth={false}>
+        <MenuContainer maxWidth={false} disableGutters>
           <MenuGrid foodType={foodType} />
         </MenuContainer>
       </Wrapper>
