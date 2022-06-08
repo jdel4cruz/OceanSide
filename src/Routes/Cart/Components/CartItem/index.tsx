@@ -50,7 +50,9 @@ const CartItem = ({
             sx={{ width: "7rem", padding: "0", margin: "0" }}
             disableGutters
           >
-            <Typography>{`Price: $${priceToString(price)}`}</Typography>
+            <Typography sx={{ fontWeight: "bold" }}>{`Price: $${priceToString(
+              price
+            )}`}</Typography>
           </Container>
 
           <AdjustCartQty qty={qty} cartId={cartId} />

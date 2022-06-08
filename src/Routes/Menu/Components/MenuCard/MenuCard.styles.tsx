@@ -7,6 +7,7 @@ export const StyledCard = styled(Card)`
   flex-grow: 1;
   padding: 0.25rem;
   border-radius: 0.5rem;
+  color: #0000009e;
 `;
 
 export const StyledHeader = styled(CardHeader)`
@@ -25,5 +26,4 @@ export const StyledDivider = styled(Divider)`
 
 export const StyledContent = styled(CardContent)`
   font-size: 0.75rem;
-  color: #0000009e;
 `;

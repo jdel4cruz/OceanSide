@@ -27,7 +27,7 @@ const CartSummary = ({ tax, total }: { tax: number; total: number }) => {
         alignSelf: "start",
       }}
     >
-      <CardContent>
+      <CardContent sx={{ color: "#0000009e" }}>
         <Stack>
           <Stack direction="row" justifyContent="space-between" spacing={1}>
             <Typography sx={{ fontWeight: "bold" }}>Item Total</Typography>

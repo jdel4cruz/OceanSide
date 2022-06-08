@@ -36,7 +36,13 @@ const Cart = () => {
             My Cart
           </Typography>
           <IconButton
-            sx={{ pr: "0" }}
+            sx={{
+              pr: "0",
+              mr: ".5rem",
+              "&:hover": {
+                backgroundColor: "transparent",
+              },
+            }}
             onClick={() => dispatch(updateIsCartOpen({ isOpen: false }))}
           >
             <HomeRoundedIcon sx={{ color: "white", fontSize: "3rem" }} />

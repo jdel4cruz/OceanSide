@@ -15,6 +15,8 @@ export const StyledCard = styled(Card)`
 
   overflow-y: scroll;
 
+  color: #0000009e;
+
   ::-webkit-scrollbar {
     width: 0.5rem;
   }

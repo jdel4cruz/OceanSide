@@ -27,6 +27,7 @@ export const NoCartItems = styled(Stack)`
   flex: 1 1 0;
   border-radius: 0.5rem;
   padding: 1rem;
+  margin-right: 1rem;
   background: white;
 `;
 

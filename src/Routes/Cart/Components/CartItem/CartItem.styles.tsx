@@ -4,6 +4,7 @@ import { styled } from "@mui/system";
 export const StyledCard = styled(Card)`
   border: 4px solid white;
   padding: 0.5rem;
+  color: #0000009e;
 `;
 
 export const StyledHeader = styled(CardHeader)`
