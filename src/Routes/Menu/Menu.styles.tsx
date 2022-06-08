@@ -17,12 +17,10 @@ export const HeaderContainer = styled(Container)`
   align-items: center;
   padding: 3rem 0;
 
-  background: linear-gradient(
-    179.96deg,
-    #72bfd6ac 2%,
-    rgba(146, 229, 247, 0.74) 25%,
-    rgba(241, 189, 169, 0.514) 105%
-  );
+  background-image: url(/images/background_img2.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100%;
 `;
 
 export const MenuContainer = styled(Container)`
@@ -30,6 +28,7 @@ export const MenuContainer = styled(Container)`
   display: flex;
   justify-content: center;
   padding: 1.5rem 0;
+  flex: 1 1 0;
 
   background-color: #f6f0eb;
 
