@@ -1,24 +1,24 @@
-import { Stack, Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const Wrapper = styled(Stack)`
-  min-height: 100vh;
-  padding: 1.5rem;
+export const Wrapper = styled(Container)`
+  display: flex;
+  max-height: 90vh;
+  max-width: 90vw;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  gap: 0.5rem;
 
-  background: #9eccd0;
-`;
+  margin: 0;
+  padding: 1rem 0.5rem;
+  padding-left: 1.5rem;
+  overflow: hidden;
 
-export const MenuContainer = styled(Container)`
-  flex-grow: 1;
-  padding: 1.5rem;
-  margin-top: 6rem;
-  background: #f6f0eb;
-`;
-
-export const Header = styled(Typography)`
-  align-self: start;
-  margin-top: 1rem;
-  color: white;
+  background-color: #9eccd0;
+  @media screen and (min-width: 400px) {
+    width: 400px;
+  }
 `;
 
 /* export const HeroText = styled(Typography)`

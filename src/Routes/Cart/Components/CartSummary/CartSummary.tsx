@@ -8,7 +8,7 @@ import {
 import { useNavigate } from "react-router";
 
 //Styles
-import { StyledButton } from "./CartSummary.styles";
+import { StyledButton, StyledDivider } from "./CartSummary.styles";
 
 //Helper Functions
 import { priceToString } from "../../../../HelperFunctions";
@@ -16,9 +16,18 @@ import { priceToString } from "../../../../HelperFunctions";
 const CartSummary = ({ tax, total }: { tax: number; total: number }) => {
   const navigate = useNavigate();
 
+  if (total === 0) {
+    return <></>;
+  }
   return (
-    <Card>
-      <CardContent>
+    <Card
+      sx={{
+        width: "calc(100% - 1rem)",
+        overflow: "visible",
+        alignSelf: "start",
+      }}
+    >
+      <CardContent sx={{ color: "#0000009e" }}>
         <Stack>
           <Stack direction="row" justifyContent="space-between" spacing={1}>
             <Typography sx={{ fontWeight: "bold" }}>Item Total</Typography>
@@ -32,11 +41,8 @@ const CartSummary = ({ tax, total }: { tax: number; total: number }) => {
               {`$${priceToString(Math.round(total * tax))}`}
             </Typography>
           </Stack>
-          <Stack
-            sx={{ paddingTop: "1rem" }}
-            direction="row"
-            justifyContent="space-between"
-          >
+          <StyledDivider />
+          <Stack direction="row" justifyContent="space-between">
             <Typography sx={{ fontWeight: "bold" }}>Total:</Typography>
             <Typography sx={{ fontWeight: "bold" }}>
               {`$${priceToString(Math.round(total + total * tax))}`}

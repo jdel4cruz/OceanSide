@@ -22,7 +22,7 @@ import { priceToString } from "../../../../HelperFunctions";
 
 //Interfaces
 import { MenuItemPropsInterface } from "../../../../interfaces";
-import { CardMedia, IconButton } from "@mui/material";
+import { CardMedia, Container, IconButton } from "@mui/material";
 
 const CartItem = ({
   menuItem,
@@ -42,12 +42,20 @@ const CartItem = ({
       <StyledHeader title={menuItem.foodName} />
       <StyledDivider />
       <StyledContent>
-        <ContentContainer>
+        {/* <ContentContainer>
           <CardMedia component="img" image={menuItem.imgPath} />
-        </ContentContainer>
+        </ContentContainer> */}
         <ContentContainer>
+          <Container
+            sx={{ width: "7rem", padding: "0", margin: "0" }}
+            disableGutters
+          >
+            <Typography sx={{ fontWeight: "bold" }}>{`Price: $${priceToString(
+              price
+            )}`}</Typography>
+          </Container>
+
           <AdjustCartQty qty={qty} cartId={cartId} />
-          <Typography>{`Price $${priceToString(price)}`}</Typography>
         </ContentContainer>
 
         <IconButton onClick={() => dispatch(deleteCartItem({ cartId }))}>

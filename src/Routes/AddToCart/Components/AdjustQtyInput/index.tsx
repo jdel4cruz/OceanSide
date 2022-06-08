@@ -14,7 +14,7 @@ const AdjustQtyInput = ({
 }) => {
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
-      <Stack direction="row" alignItems="center" spacing={2}>
+      <Stack direction="row" alignItems="center" spacing={1}>
         <IconButton onClick={() => qty > 1 && setQty((prevQty) => prevQty - 1)}>
           <RemoveIcon />
         </IconButton>

@@ -29,7 +29,7 @@ import TipButtonGroup from "./Components/TipButtonGroup";
 import CheckoutSummary from "./Components/CheckoutSummary";
 
 //Styles
-import { StyledButton } from "./Checkout.styles";
+import { StyledButton, StyledForm } from "./Checkout.styles";
 
 //HelperFunctions
 import { priceToString, priceToNumber } from "../../HelperFunctions";
@@ -41,76 +41,8 @@ import { fetchStripeCheckoutUrl } from "../../API";
 import { RootState } from "../../Redux/store";
 import { IFormInputs } from "../../interfaces";
 
-interface InputProps {
-  name: string;
-  defaultValue: string;
-  variant: "standard" | "filled" | "outlined" | undefined;
-  type: string;
-  label: string;
-  id: string;
-  placeholder: string;
-  sx: { width: number };
-  required: boolean;
-}
-
-const personalInformationProps: InputProps[] = [
-  {
-    id: "firstName",
-    defaultValue: "",
-    name: "firstName",
-    type: "firstName",
-    label: "First name",
-    variant: "standard",
-    placeholder: "First name",
-    sx: { width: 1 },
-    required: true,
-  },
-  {
-    id: "lastName",
-    defaultValue: "",
-    name: "lastName",
-    type: "lastName",
-    label: "Last name",
-    variant: "standard",
-    placeholder: "Last name",
-    sx: { width: 1 },
-    required: true,
-  },
-  {
-    id: "email",
-    defaultValue: "",
-    name: "email",
-    type: "email",
-    label: "Email",
-    variant: "standard",
-    placeholder: "Email",
-    sx: { width: 1 },
-    required: true,
-  },
-  {
-    id: "phone",
-    defaultValue: "",
-    name: "phone",
-    type: "phone",
-    label: "Phone",
-    variant: "standard",
-    placeholder: "Phone",
-    sx: { width: 1 },
-    required: true,
-  },
-];
-
-const orderNotesInputProps: InputProps = {
-  name: "orderNotes",
-  defaultValue: "",
-  variant: "standard",
-  type: "orderNotes",
-  label: "Order Notes",
-  id: "orderNotes",
-  placeholder: "Please specify any additional order notes",
-  sx: { width: 1 },
-  required: false,
-};
+//Consts
+import { personalInformationProps, orderNotesInputProps } from "./Consts";
 
 const Checkout = () => {
   const { tax, total, cart } = useSelector((state: RootState) => state.cart);
@@ -128,24 +60,6 @@ const Checkout = () => {
       total: priceToString(total),
     },
   });
-
-  if (cart.length === 0) {
-    return (
-      <>
-        <div>There are no cart items!</div>
-        <StyledButton
-          size="large"
-          disableElevation
-          variant="contained"
-          onClick={() => {
-            navigate(`/`);
-          }}
-        >
-          Return to menu
-        </StyledButton>
-      </>
-    );
-  }
 
   const handleOnSubmit: SubmitHandler<IFormInputs> = async (
     data: IFormInputs
@@ -166,7 +80,24 @@ const Checkout = () => {
       }
     }
   };
-  console.log(methods.watch("total"));
+
+  if (cart.length === 0) {
+    return (
+      <>
+        <div>There are no cart items!</div>
+        <StyledButton
+          size="large"
+          disableElevation
+          variant="contained"
+          onClick={() => {
+            navigate(`/`);
+          }}
+        >
+          Return to menu
+        </StyledButton>
+      </>
+    );
+  }
 
   const currentDate = new Date();
   const date = getDate(currentDate);
@@ -188,11 +119,23 @@ const Checkout = () => {
   }
 
   return (
-    <Paper sx={{ backgroundColor: "#f6f0eb" }}>
+    <Paper
+      sx={{
+        backgroundColor: "#f6f0eb",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(handleOnSubmit)}>
-          <Stack spacing={0} sx={{ pb: "3rem" }}>
-            <AppBar sx={{ flexDirection: "row", p: "1rem" }}>
+        <StyledForm onSubmit={methods.handleSubmit(handleOnSubmit)}>
+          <Stack spacing={0} sx={{ pb: "3rem" }} alignItems="center">
+            <AppBar
+              sx={{
+                flexDirection: "row",
+                p: "1rem",
+                backgroundColor: "#a7e2e7",
+              }}
+            >
               <IconButton onClick={() => navigate("/")}>
                 <ArrowBackIosNewRoundedIcon />
                 <Typography sx={{ ml: "1rem" }} variant="h4">
@@ -250,7 +193,7 @@ const Checkout = () => {
               tips={priceToNumber(methods.getValues("tips"))}
             />
           </Stack>
-        </form>
+        </StyledForm>
       </FormProvider>
     </Paper>
   );

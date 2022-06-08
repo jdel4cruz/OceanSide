@@ -3,25 +3,17 @@ import { styled } from "@mui/system";
 
 export const Wrapper = styled(Container)`
   display: flex;
-  min-height: 100vh;
+  max-height: 90vh;
+  max-width: 90vw;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem;
 
-  background: #9eccd0;
-`;
+  margin: 0;
+  padding: 0;
 
-export const MenuContainer = styled(Container)`
-  flex-grow: 1;
-  padding: 1.5rem;
-  margin-top: 6rem;
-  background: #f6f0eb;
-`;
-
-export const Header = styled(Typography)`
-  align-self: start;
-  margin-top: 1rem;
-  color: white;
+  @media screen and (min-width: 400px) {
+    width: 400px;
+  }
 `;
 
 /* export const HeroText = styled(Typography)`

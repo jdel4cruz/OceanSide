@@ -14,3 +14,11 @@ export const StyledButton = styled(Button)`
     background-color: #b9926c;
   }
 `;
+
+export const StyledForm = styled("form")`
+  width: 90%;
+
+  @media screen and (min-width: 1200px) {
+    width: 1200px;
+  }
+`;

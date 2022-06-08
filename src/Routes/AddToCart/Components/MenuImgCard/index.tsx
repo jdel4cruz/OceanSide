@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { CardMedia, Typography, Stack } from "@mui/material";
+import { CardMedia, Typography, Stack, IconButton } from "@mui/material";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-
-import { useDispatch } from "react-redux";
-import { newCartItem } from "../../../../Redux/Reducers/cartReducer";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  updateIsAddToCartOpen,
+  newCartItem,
+} from "../../../../Redux/Reducers/cartReducer";
 
 import FoodOptions from "../FoodOptions";
 
@@ -38,18 +41,37 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
   const [extraOptions, setExtraOptions] = useState(initialOptions);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const price = totalPrice(extraOptions, menuItem, qty);
 
   return (
     <StyledCard variant="outlined">
-      <CardMedia component="img" image={menuItem.imgPath} />
+      <Stack
+        sx={{ width: 1, mb: "1rem" }}
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Typography variant="h4">Add To Cart</Typography>
+        <IconButton
+          sx={{
+            pr: "0",
+            "&.MuiButtonBase-root:hover": {
+              backgroundColor: "transparent",
+            },
+          }}
+          size="large"
+          onClick={() => dispatch(updateIsAddToCartOpen({ isOpen: false }))}
+        >
+          <HomeRoundedIcon sx={{ fontSize: "3rem" }} />
+        </IconButton>
+      </Stack>
+      <CardMedia
+        component="img"
+        image={menuItem.imgPath}
+        sx={{ height: "auto", maxWidth: "100%" }}
+      />
       <StyledHeader title={menuItem.foodName} />
-      <StyledDivider />
-      <StyledContent>
-        <Typography>{menuItem.description}</Typography>
-      </StyledContent>
 
       {menuItem.foodOptions?.addOptions !== undefined && (
         <>
@@ -82,7 +104,7 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
 
       <StyledContent>
         <Stack alignItems="center" spacing={2}>
-          <Stack direction="row" alignItems="center" spacing={8}>
+          <Stack direction="row" justifyContent="space-between" spacing={2}>
             <Price variant="h6">{`Price: $${priceToString(price)}`}</Price>
             <AdjustQtyInput qty={qty} setQty={setQty} />
           </Stack>
@@ -93,7 +115,7 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
             disableElevation
             onClick={() => {
               dispatch(newCartItem({ qty, price, extraOptions, menuItem }));
-              navigate(`/`);
+              dispatch(updateIsAddToCartOpen({ isOpen: false }));
             }}
           >
             Add to cart

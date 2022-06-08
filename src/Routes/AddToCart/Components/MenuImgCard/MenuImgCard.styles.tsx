@@ -9,13 +9,34 @@ import {
 import { styled } from "@mui/system";
 
 export const StyledCard = styled(Card)`
-  margin-top: 0.25rem;
-  border: 4px solid white;
-  padding: 0.5rem;
+  box-sizing: border-box;
+  padding: 1rem;
+  padding-left: 1.5rem;
+
+  overflow-y: scroll;
+
+  color: #0000009e;
+
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    margin-block: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cfaf90;
+    border-radius: 100vw;
+  }
+
+  @media screen and (min-width: 400px) {
+    width: 100%;
+  }
 `;
 
 export const StyledHeader = styled(CardHeader)`
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
   span {
     font-style: normal;
     font-weight: bold;
@@ -33,9 +54,10 @@ export const StyledContent = styled(CardContent)`
   width: 100%;
   font-size: 0.75rem;
   color: #0000009e;
+  padding: 1rem 0;
 `;
 export const Price = styled(Typography)`
-  align-self: center;
+  width: 10rem;
 `;
 
 export const StyledButton = styled(Button)`

@@ -2,12 +2,12 @@ import { Card, CardHeader, CardContent, Divider } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const StyledCard = styled(Card)`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   padding: 0.25rem;
   border-radius: 0.5rem;
-
-  @media (min-width: 600px) {
-    height: 150px;
-  }
+  color: #0000009e;
 `;
 
 export const StyledHeader = styled(CardHeader)`
@@ -26,5 +26,4 @@ export const StyledDivider = styled(Divider)`
 
 export const StyledContent = styled(CardContent)`
   font-size: 0.75rem;
-  color: #0000009e;
 `;

@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { Container, Fade } from "@mui/material";
 //Interfaces
 import { NavLink, setStateButtonInterface } from "../../interfaces";
 
@@ -7,9 +8,16 @@ import { NavLink, setStateButtonInterface } from "../../interfaces";
 import NavBar from "./Components/NavBar";
 import MenuNavBar from "./Components/MenuNavBar";
 import MenuGrid from "./Components/MenuGrid";
+import AddToCart from "../AddToCart";
+import Cart from "../Cart";
 
 //Styles
-import { Wrapper, HeroText, MenuContainer } from "./Menu.styles";
+import {
+  Wrapper,
+  HeroText,
+  MenuContainer,
+  HeaderContainer,
+} from "./Menu.styles";
 
 const topNavBar: NavLink[] = [
   {
@@ -23,12 +31,6 @@ const topNavBar: NavLink[] = [
     color: "inherit",
     underline: "none",
     content: "Contact",
-  },
-  {
-    path: "/cart",
-    color: "inherit",
-    underline: "none",
-    content: "Cart",
   },
 ];
 
@@ -50,19 +52,26 @@ const Menu = () => {
     },
   ];
   return (
-    <Wrapper disableGutters>
-      <NavBar links={topNavBar} gap="3.5rem" fontSize="1.5rem" mTop="2rem" />
-      <HeroText>OceanSide</HeroText>
-      <MenuNavBar
-        stateSetters={menuNavBar}
-        gap="1rem"
-        fontSize="1rem"
-        mTop="0"
-      />
-      <MenuContainer>
-        <MenuGrid foodType={foodType} />
-      </MenuContainer>
-    </Wrapper>
+    <Fade in={true} timeout={700}>
+      <Wrapper disableGutters maxWidth={false}>
+        <AddToCart />
+        <Cart />
+        <HeaderContainer disableGutters maxWidth={false}>
+          <NavBar links={topNavBar} gap="3rem" fontSize="1.5rem" mTop="0" />
+          <HeroText>OceanSide</HeroText>
+          <MenuNavBar
+            stateSetters={menuNavBar}
+            gap="1rem"
+            fontSize="1.25rem"
+            mTop="1rems"
+          />
+        </HeaderContainer>
+
+        <MenuContainer maxWidth={false} disableGutters>
+          <MenuGrid foodType={foodType} />
+        </MenuContainer>
+      </Wrapper>
+    </Fade>
   );
 };
 

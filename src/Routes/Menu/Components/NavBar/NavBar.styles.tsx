@@ -11,6 +11,7 @@ export const Wrapper = styled(Container, {
 }>`
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 90%;
   margin-top: ${(props) => (props.mTop ? props.mTop : "")};
   gap: ${(props) => (props.gap ? props.gap : "")};

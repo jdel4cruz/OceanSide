@@ -4,6 +4,7 @@ import { styled } from "@mui/system";
 export const StyledCard = styled(Card)`
   border: 4px solid white;
   padding: 0.5rem;
+  color: #0000009e;
 `;
 
 export const StyledHeader = styled(CardHeader)`
@@ -20,8 +21,8 @@ export const StyledHeader = styled(CardHeader)`
 
 export const ContentContainer = styled("div")`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: start;
   align-items: center;
   width: 30%;
   flex: 1 1 0;

@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../Redux/store";
-import { useNavigate } from "react-router";
-
+import { useDispatch } from "react-redux";
+import { updateIsCartOpen } from "../../../../Redux/Reducers/cartReducer";
 //Components
 import CartItem from "../CartItem";
-import CartSummary from "../CartSummary";
 
 //Styles
 import {
@@ -13,6 +12,7 @@ import {
   NoCartItems,
   StyledButton,
 } from "./CartItems.styles";
+import { Typography } from "@mui/material";
 
 const CartItems = () => {
   /*Will map out cartItems based on current Cart state in redux store. 
@@ -20,18 +20,18 @@ const CartItems = () => {
   */
   const { cart, tax, total } = useSelector((state: RootState) => state.cart);
 
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   if (cart.length === 0) {
     return (
       <NoCartItems alignItems="center" justifyContent="center">
-        Add items to cart and they will appear here.
+        <Typography variant="h5">Your cart is empty!</Typography>
         <StyledButton
           size="large"
           disableElevation
           variant="contained"
           onClick={() => {
-            navigate(`/`);
+            dispatch(updateIsCartOpen({ isOpen: false }));
           }}
         >
           Return to menu
@@ -42,7 +42,7 @@ const CartItems = () => {
 
   return (
     <Wrapper>
-      <CartStack spacing={2}>
+      <CartStack spacing={1}>
         {cart.map((cartItem, i) => (
           <CartItem
             menuItem={cartItem.menuItem}
@@ -52,7 +52,6 @@ const CartItems = () => {
             key={i}
           />
         ))}
-        <CartSummary total={total} tax={tax} />
       </CartStack>
     </Wrapper>
   );

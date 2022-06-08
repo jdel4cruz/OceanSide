@@ -19,7 +19,7 @@ const foodOptions = ({
   setOptions: React.Dispatch<React.SetStateAction<InitialOptions>>;
 }) => {
   return (
-    <StyledStack spacing={1}>
+    <StyledStack spacing={0}>
       {options !== undefined ? (
         options.map((foodOption, i) => (
           <FoodOption option={foodOption} setOption={setOptions} key={i} />

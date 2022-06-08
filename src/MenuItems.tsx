@@ -6,7 +6,7 @@ const breakfast: MenuItemPropsInterface[] = [
     foodName: "Blueberry Banana French Toast",
     foodType: "breakfast",
     description:
-      "French Toast made with Japanese Shokupan bread. Topped with blueberries and bananas, dusted with powdered sugar, and finished with maple syrup.",
+      "French Toast made with Japanese Shokupan. Topped with blueberries, bananas, powdered sugar, and maple syrup.",
     imgPath: "/Images/Breakfast/Blueberry_Banana_French_Toast.jpg",
     price: 850,
     foodOptions: {
@@ -70,7 +70,7 @@ const breakfast: MenuItemPropsInterface[] = [
     foodName: "The Rise n' Shine",
     foodType: "breakfast",
     description:
-      "What you need to hit the ground running. Sliced avocado fanned on top of a slice of ciabatta bread accompanied with a sunnyside egg.",
+      "Sliced avocado fanned on top of a slice of ciabatta bread accompanied with a sunnyside egg.",
     imgPath: "/Images/Breakfast/The_Rise_N_Shine.jpg",
     price: 650,
     foodOptions: {
@@ -90,10 +90,10 @@ const breakfast: MenuItemPropsInterface[] = [
   },
   {
     foodId: 5,
-    foodName: "Gift of Elysium",
+    foodName: "Fritatta",
     foodType: "breakfast",
     description:
-      "Made from the gardens of paradise (aka the local farmers market). Contains free-range eggs, spinach, feta cheese, red onion, and Monterey Jack cheese.",
+      "Contains local free-range eggs, spinach, feta cheese, red onion, and Monterey Jack cheese.",
     imgPath: "/Images/Breakfast/Gift_From_Elysium.jpg",
     price: 750,
     foodOptions: {
@@ -389,6 +389,32 @@ const beverages: MenuItemPropsInterface[] = [
       "We provide an English Breakfast tea that carries a toasty aroma and notes of honey. Goes great with milk and sugar.",
     imgPath: "/Images/Beverages/tea.jpg",
     price: 300,
+  },
+  {
+    foodId: 16,
+    foodName: "Hot Cocoa",
+    foodType: "beverages",
+    description:
+      "Rich housemade hot cocoa made with dark chocolate and whole milk",
+    imgPath: "/Images/Beverages/hot_chocolate.jpg",
+    price: 400,
+  },
+  {
+    foodId: 17,
+    foodName: "Classic Mojito",
+    foodType: "beverages",
+    description:
+      "Lime juice, mint, white rum, and simple syrup make up this simple but awesome drink",
+    imgPath: "/Images/Beverages/mojito.jpg",
+    price: 500,
+  },
+  {
+    foodId: 18,
+    foodName: "Orange Juice",
+    foodType: "beverages",
+    description: "Fresh squeezed on request.",
+    imgPath: "/Images/Beverages/orange_juice.jpg",
+    price: 350,
   },
 ];
 

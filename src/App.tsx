@@ -36,8 +36,7 @@ function App() {
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<Menu />} />
-          <Route path="/:foodType/addtocart/:foodId" element={<AddToCart />} />
-          <Route path="/Cart" element={<Cart />} />
+
           <Route path="/Checkout" element={<Checkout />} />
         </Routes>
       </Provider>

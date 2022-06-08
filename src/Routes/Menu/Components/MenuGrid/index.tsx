@@ -19,11 +19,11 @@ const MenuGrid = ({ foodType }: { foodType: string }) => {
   }
 
   return (
-    <StyledGrid container spacing={1}>
+    <StyledGrid container spacing={1} justifyContent="center">
       {activeMenu !== undefined ? (
         activeMenu.map((menuItem: MenuItemPropsInterface, i: number) => (
-          <Grid item xs={11} sm={6} key={i}>
-            <MenuCard menuItem={menuItem} id={i} />
+          <Grid item xs={11} sm={6} key={i} display="flex">
+            <MenuCard menuItem={menuItem} id={menuItem.foodId} />
           </Grid>
         ))
       ) : (
