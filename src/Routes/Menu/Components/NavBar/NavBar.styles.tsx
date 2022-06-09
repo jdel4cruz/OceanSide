@@ -22,6 +22,9 @@ export const Wrapper = styled(Container, {
 `;
 
 export const StyledLink = styled(Link)`
-  color: inherit;
+  font-family: Lato, Roboto, sans-serif;
+  padding-block: 0.5rem;
+  font-size: 1.5rem;
+  color: #ffffff;
   text-decoration: none;
 `;

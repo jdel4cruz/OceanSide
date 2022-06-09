@@ -57,7 +57,7 @@ const Menu = () => {
         <AddToCart />
         <Cart />
         <HeaderContainer disableGutters maxWidth={false}>
-          <NavBar links={topNavBar} gap="3rem" fontSize="1.5rem" mTop="0" />
+          <NavBar />
           <HeroText>OceanSide</HeroText>
           <MenuNavBar
             stateSetters={menuNavBar}

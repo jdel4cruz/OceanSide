@@ -1,4 +1,4 @@
-import { Badge, IconButton, Typography } from "@mui/material";
+import { Badge, IconButton, Stack, Typography } from "@mui/material";
 import ShoppingBagRoundedIcon from "@mui/icons-material/ShoppingBagRounded";
 import { useSelector, useDispatch } from "react-redux";
 import { updateIsCartOpen } from "../../../../Redux/Reducers/cartReducer";
@@ -10,24 +10,35 @@ import { NavLink } from "../../../../interfaces";
 //Styles
 import { StyledLink, Wrapper } from "./NavBar.styles";
 
-const NavBar = ({
-  links,
-  gap,
-  fontSize,
-  mTop,
-}: {
-  links: NavLink[];
-  gap: string;
-  fontSize: string;
-  mTop: string;
-}) => {
+const links: NavLink[] = [
+  {
+    path: "/",
+    color: "inherit",
+    underline: "none",
+    content: "Home",
+  },
+  {
+    path: "/about",
+    color: "inherit",
+    underline: "none",
+    content: "About",
+  },
+  {
+    path: "/contact",
+    color: "inherit",
+    underline: "none",
+    content: "Contact",
+  },
+];
+
+const NavBar = () => {
   const dispatch = useDispatch();
   const { cart } = useSelector((state: RootState) => state.cart);
   let cartQty = 0;
   cart.forEach((cartItem) => (cartQty += cartItem.qty));
 
   return (
-    <Wrapper gap={gap} fontSize={fontSize} mTop={mTop}>
+    <Stack direction="row" spacing={2} alignItems="center">
       {links.map((link: NavLink, i: number) => (
         <StyledLink to={link.path} key={i}>
           {link.content}
@@ -48,7 +59,7 @@ const NavBar = ({
           <ShoppingBagRoundedIcon sx={{ color: "white" }} />
         </Badge>
       </IconButton>
-    </Wrapper>
+    </Stack>
   );
 };
 
