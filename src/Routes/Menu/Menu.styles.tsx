@@ -3,6 +3,7 @@ import { styled } from "@mui/system";
 
 export const Wrapper = styled(Container)`
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
@@ -63,9 +64,9 @@ export const MenuContainer = styled(Container)`
 `;
 
 export const HeroText = styled(Typography)`
-  margin-top: 2rem;
-
   font-family: "Rochester", cursive;
   font-size: 3rem;
+  margin-top: 3rem;
+
   color: #ffffff;
 `;

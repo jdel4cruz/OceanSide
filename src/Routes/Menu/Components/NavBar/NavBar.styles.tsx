@@ -27,4 +27,8 @@ export const StyledLink = styled(Link)`
   font-size: 1.5rem;
   color: #ffffff;
   text-decoration: none;
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
