@@ -17,10 +17,14 @@ export const HeaderContainer = styled(Container)`
   align-items: center;
   padding: 3rem 0;
 
-  background-image: url(/images/background_img2.jpg);
+  background-image: url(/images/background_img6.jpg);
   background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: 100%;
+  background-position: 50% 58%;
+  background-size: cover;
+
+  @media screen and (min-width: 600px) {
+    background-position: 50% 40%;
+  }
 `;
 
 export const MenuContainer = styled(Container)`
@@ -38,6 +42,7 @@ export const MenuContainer = styled(Container)`
   @media screen and (min-width: 600px) {
     padding: 1.5rem;
     padding-left: 2.5rem;
+
     ::-webkit-scrollbar {
       width: 1.5rem;
     }

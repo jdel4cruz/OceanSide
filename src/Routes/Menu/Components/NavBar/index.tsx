@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router";
 import { Badge, IconButton, Typography } from "@mui/material";
 import ShoppingBagRoundedIcon from "@mui/icons-material/ShoppingBagRounded";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,7 +9,6 @@ import { NavLink } from "../../../../interfaces";
 
 //Styles
 import { StyledLink, Wrapper } from "./NavBar.styles";
-import { Shop } from "@mui/icons-material";
 
 const NavBar = ({
   links,
