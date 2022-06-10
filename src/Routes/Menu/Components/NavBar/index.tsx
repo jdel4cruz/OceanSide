@@ -55,7 +55,11 @@ const NavBar = () => {
   console.log(isOpen);
 
   return (
-    <Stack direction="row" spacing={2} alignItems="center">
+    <Stack
+      direction="row"
+      spacing={{ sm: 4, md: 7, lg: 10 }}
+      alignItems="center"
+    >
       <Drawer anchor="top" open={isOpen} onClose={() => setIsOpen(false)}>
         <List>
           {links.map((link, i) => (
@@ -129,11 +133,11 @@ const NavBar = () => {
           },
         }}
       >
-        <Typography sx={{ color: "white", fontSize: "1.5rem", mr: "1rem" }}>
+        <Typography sx={{ color: "white", fontSize: "2rem", mr: "1rem" }}>
           Cart
         </Typography>
         <Badge badgeContent={cartQty} color="info">
-          <ShoppingBagRoundedIcon sx={{ color: "white" }} />
+          <ShoppingBagRoundedIcon sx={{ color: "white", fontSize: "2rem" }} />
         </Badge>
       </IconButton>
     </Stack>

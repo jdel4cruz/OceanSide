@@ -18,7 +18,8 @@ export const HeaderContainer = styled(Container)`
   align-items: center;
   padding: 3rem 0;
 
-  background-image: url(/images/background_img6.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.01)),
+    url(/images/background_img6.jpg);
   background-repeat: no-repeat;
   background-position: 50% 58%;
   background-size: cover;
