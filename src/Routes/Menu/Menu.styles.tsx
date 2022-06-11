@@ -3,6 +3,7 @@ import { styled } from "@mui/system";
 
 export const Wrapper = styled(Container)`
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
@@ -24,6 +25,8 @@ export const HeaderContainer = styled(Container)`
 
   @media screen and (min-width: 600px) {
     background-position: 50% 40%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.01)),
+      url(/images/background_img6.jpg);
   }
 `;
 
@@ -63,9 +66,9 @@ export const MenuContainer = styled(Container)`
 `;
 
 export const HeroText = styled(Typography)`
-  margin-top: 2rem;
-
   font-family: "Rochester", cursive;
   font-size: 3rem;
+  margin-top: 3rem;
+
   color: #ffffff;
 `;
