@@ -15,14 +15,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useSelector, useDispatch } from "react-redux";
 import { updateIsCartOpen } from "../../../../Redux/Reducers/cartReducer";
 import { RootState } from "../../../../Redux/store";
-import { useState } from "react";
-import { useNavigate } from "react-router";
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router";
 
 //Interfaces
 import { NavLink } from "../../../../interfaces";
 
 //Styles
-import { StyledLink, Wrapper } from "./NavBar.styles";
+import { StyledLink, StyledListItem, Wrapper } from "./NavBar.styles";
 
 const links: NavLink[] = [
   {
@@ -49,10 +49,12 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { cart } = useSelector((state: RootState) => state.cart);
   let cartQty = 0;
   cart.forEach((cartItem) => (cartQty += cartItem.qty));
   console.log(isOpen);
+  console.log(location);
 
   return (
     <Stack
@@ -60,11 +62,16 @@ const NavBar = () => {
       spacing={{ sm: 4, md: 7, lg: 10 }}
       alignItems="center"
     >
-      <Drawer anchor="top" open={isOpen} onClose={() => setIsOpen(false)}>
-        <List>
+      <Drawer
+        anchor="top"
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        sx={{ display: { sm: "none" } }}
+      >
+        <List disablePadding>
           {links.map((link, i) => (
-            <>
-              <ListItem>
+            <React.Fragment key={i}>
+              <StyledListItem current={location.pathname} path={link.path}>
                 <ListItemButton
                   onClick={() => {
                     navigate(link.path);
@@ -73,9 +80,9 @@ const NavBar = () => {
                 >
                   <ListItemText>{link.content}</ListItemText>
                 </ListItemButton>
-              </ListItem>
+              </StyledListItem>
               {i < links.length - 1 ? <Divider /> : ""}
-            </>
+            </React.Fragment>
           ))}
         </List>
       </Drawer>
@@ -120,7 +127,12 @@ const NavBar = () => {
         </Badge>
       </IconButton>
       {links.map((link: NavLink, i: number) => (
-        <StyledLink to={link.path} key={i}>
+        <StyledLink
+          to={link.path}
+          key={i}
+          current={location.pathname}
+          path={link.path}
+        >
           {link.content}
         </StyledLink>
       ))}
@@ -132,6 +144,7 @@ const NavBar = () => {
             backgroundColor: "transparent",
           },
         }}
+        key="cart"
       >
         <Typography sx={{ color: "white", fontSize: "2rem", mr: "1rem" }}>
           Cart
