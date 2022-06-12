@@ -19,21 +19,6 @@ import {
   HeaderContainer,
 } from "./Menu.styles";
 
-const topNavBar: NavLink[] = [
-  {
-    path: "/about",
-    color: "inherit",
-    underline: "none",
-    content: "About",
-  },
-  {
-    path: "/contact",
-    color: "inherit",
-    underline: "none",
-    content: "Contact",
-  },
-];
-
 const Menu = () => {
   const [foodType, setFoodType] = useState("breakfast");
 
@@ -51,6 +36,7 @@ const Menu = () => {
       content: "Coffee/Beverages",
     },
   ];
+
   return (
     <Fade in={true} timeout={700}>
       <Wrapper disableGutters maxWidth={false}>
@@ -59,12 +45,7 @@ const Menu = () => {
         <HeaderContainer disableGutters maxWidth={false}>
           <NavBar />
           <HeroText>OceanSide</HeroText>
-          <MenuNavBar
-            stateSetters={menuNavBar}
-            gap="1rem"
-            fontSize="1.25rem"
-            mTop="1rems"
-          />
+          <MenuNavBar stateSetters={menuNavBar} foodType={foodType} />
         </HeaderContainer>
 
         <MenuContainer maxWidth={false} disableGutters>

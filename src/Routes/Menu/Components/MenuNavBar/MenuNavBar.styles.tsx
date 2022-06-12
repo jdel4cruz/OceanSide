@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const Wrapper = styled(Container, {
@@ -14,4 +14,14 @@ export const Wrapper = styled(Container, {
   gap: ${(props) => (props.gap ? props.gap : "")};
 
   color: #ffffff;
+`;
+
+export const StyledMenuText = styled(Typography)<{
+  currentType: string;
+  value: string;
+}>`
+  color: #ffffff;
+  text-decoration: ${(props) =>
+    props.currentType === props.value ? "underline" : "none"};
+  text-underline-position: under;
 `;

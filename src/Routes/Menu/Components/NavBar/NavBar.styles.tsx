@@ -31,6 +31,7 @@ export const StyledLink = styled(Link)<{
   color: #ffffff;
   text-decoration: ${(props) =>
     props.current === props.path ? "underline" : "none"};
+  text-underline-position: under;
 
   @media screen and (max-width: 600px) {
     display: none;

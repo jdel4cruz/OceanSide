@@ -1,35 +1,36 @@
-import { Button } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 
 //Interfaces
 import { setStateButtonInterface } from "../../../../interfaces";
 
-//Styles
-import { Wrapper } from "./MenuNavBar.styles";
+// Styles
+import { StyledMenuText } from "./MenuNavBar.styles";
 
 const MenuNavBar = ({
   stateSetters,
-  gap,
-  fontSize,
-  mTop,
+  foodType,
 }: {
   stateSetters: setStateButtonInterface[];
-  gap: string;
-  fontSize: string;
-  mTop: string;
+  foodType: string;
 }) => {
   return (
-    <Wrapper gap={gap} mTop={mTop}>
+    <Stack direction="row">
       {stateSetters.map((setter: setStateButtonInterface, i: number) => (
         <Button
           onClick={() => setter.setStateFunc(setter.value)}
           variant={setter.variant}
-          sx={{ fontSize: fontSize, color: "#ffffff" }}
           key={i}
         >
-          {setter.content}
+          <StyledMenuText
+            currentType={foodType}
+            value={setter.value}
+            sx={{ fontSize: { xs: "1.25rem", sm: "1.5rem" } }}
+          >
+            {setter.content}
+          </StyledMenuText>
         </Button>
       ))}
-    </Wrapper>
+    </Stack>
   );
 };
 

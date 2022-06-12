@@ -4,7 +4,6 @@ import {
   Drawer,
   IconButton,
   List,
-  ListItem,
   ListItemButton,
   ListItemText,
   Stack,
@@ -22,7 +21,7 @@ import { useNavigate, useLocation } from "react-router";
 import { NavLink } from "../../../../interfaces";
 
 //Styles
-import { StyledLink, StyledListItem, Wrapper } from "./NavBar.styles";
+import { StyledLink, StyledListItem } from "./NavBar.styles";
 
 const links: NavLink[] = [
   {
@@ -53,13 +52,11 @@ const NavBar = () => {
   const { cart } = useSelector((state: RootState) => state.cart);
   let cartQty = 0;
   cart.forEach((cartItem) => (cartQty += cartItem.qty));
-  console.log(isOpen);
-  console.log(location);
 
   return (
     <Stack
       direction="row"
-      spacing={{ sm: 4, md: 7, lg: 10 }}
+      spacing={{ sm: 4, md: 7, lg: 12 }}
       alignItems="center"
     >
       <Drawer
@@ -146,7 +143,7 @@ const NavBar = () => {
         }}
         key="cart"
       >
-        <Typography sx={{ color: "white", fontSize: "2rem", mr: "1rem" }}>
+        <Typography sx={{ color: "white", fontSize: "2rem", mr: ".5rem" }}>
           Cart
         </Typography>
         <Badge badgeContent={cartQty} color="info">

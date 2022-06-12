@@ -6,9 +6,8 @@ import { store } from "./Redux/store";
 
 //Routes
 import Menu from "./Routes/Menu";
-import AddToCart from "./Routes/AddToCart";
-import Cart from "./Routes/Cart";
 import Checkout from "./Routes/Checkout";
+import About from "./Routes/About";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -36,7 +35,7 @@ function App() {
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<Menu />} />
-
+          <Route path="/about" element={<About />} />
           <Route path="/Checkout" element={<Checkout />} />
         </Routes>
       </Provider>
