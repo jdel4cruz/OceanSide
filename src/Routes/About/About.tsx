@@ -78,7 +78,7 @@ const About = () => {
                         color: "white",
                         position: "absolute",
                         top: "-3rem",
-                        left: { xs: "3rem", md: "-3rem" },
+                        left: { xs: "3rem", sm: "-3rem" },
                         p: "1rem",
                         fontSize: { md: "1.5rem", lg: "1.75rem" },
                       }}
@@ -133,8 +133,10 @@ const About = () => {
                         backgroundColor: "#9eccd0",
                         color: "white",
                         position: "absolute",
+                        width: "fit-content",
                         top: "-3rem",
-                        right: "3rem",
+                        right: { xs: "50%", md: "3rem" },
+                        transform: { xs: "translate(50%)", md: "translate(0)" },
                         p: "1rem",
                         fontSize: { md: "1.5rem", lg: "1.75rem" },
                       }}
