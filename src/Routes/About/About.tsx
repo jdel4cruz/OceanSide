@@ -19,23 +19,19 @@ const About = () => {
     <Fade in={true} timeout={700}>
       <Stack>
         <Header />
-        <Box>
+        <Box sx={{ pb: "2rem" }}>
           <Container
             sx={{
               backgroundColor: "white",
-              p: { sm: "2rem 4rem", md: "1rem 2rem" },
+              p: { xs: "1rem 2rem", sm: "2rem 4rem", md: "1rem 2rem" },
+              maxWidth: { md: "900px", lg: "1200px" },
             }}
           >
-            <Stack sx={{ color: "#0000009e" }}>
+            <Stack sx={{ color: "#0000009e" }} alignItems="center">
               <Typography variant="h3" component="h1" mt="2rem">
                 ABOUT
               </Typography>
-              <Typography
-                sx={{ width: "85%" }}
-                variant="h6"
-                component="p"
-                mt="1rem"
-              >
+              <Typography variant="h6" component="p" mt="1rem">
                 {aboutBody}
               </Typography>
               <Container
@@ -43,21 +39,22 @@ const About = () => {
                 maxWidth={false}
                 sx={{
                   position: "relative",
-                  width: "75%",
-                  alignSelf: "end",
+                  width: { sm: "100%", md: "75%" },
+                  alignSelf: { sm: "", md: "end" },
                   mt: "4rem",
-                  mr: "0",
+                  marginInline: "0",
                 }}
               >
                 <StyledImage src="/images/About/img1_test.jpg" />
                 <Container
                   disableGutters
                   sx={{
-                    position: "absolute",
-                    top: "5%",
-                    left: "-10rem",
-                    width: "60%",
+                    position: { sm: "relative", md: "absolute" },
+                    top: "0",
+                    left: "0",
+                    width: { md: "60%" },
                     height: "50%",
+                    marginInline: "0",
                   }}
                 >
                   <Typography
@@ -65,10 +62,11 @@ const About = () => {
                       backgroundColor: "#cfaf90",
                       color: "white",
                       position: "relative",
-                      top: "15%",
-                      width: "100%",
+                      top: { sm: "0", md: "6rem" },
+                      left: { sm: "0", md: "-6rem" },
+
                       p: "2rem",
-                      // fontSize: { sm: "1rem", md: "1.5rem" },
+                      fontSize: { md: "1.125rem", lg: "1.25rem" },
                     }}
                     variant="body1"
                     component="p"
@@ -80,9 +78,9 @@ const About = () => {
                         color: "white",
                         position: "absolute",
                         top: "-3rem",
-                        left: "-2rem",
+                        left: { xs: "3rem", md: "-3rem" },
                         p: "1rem",
-                        // fontSize: { sm: "1.25rem", md: "1.75rem" },
+                        fontSize: { md: "1.5rem", lg: "1.75rem" },
                       }}
                       variant="h6"
                       component="h2"
@@ -97,21 +95,22 @@ const About = () => {
                 maxWidth={false}
                 sx={{
                   position: "relative",
-                  width: "85%",
+                  width: { sm: "100%", md: "85%" },
 
-                  mt: "12rem",
+                  mt: { xs: "4rem", md: "8rem" },
+                  marginInline: "0",
                 }}
               >
                 <StyledImage src="/images/About/img2_test.jpg" />
                 <Container
                   disableGutters
                   sx={{
-                    position: "absolute",
-                    top: "-20%",
-                    right: "50%",
-                    transform: "translateX(50%)",
-                    width: "70%",
-                    height: "50%",
+                    display: "flex",
+                    justifyContent: "center",
+                    position: { sm: "relative", md: "absolute" },
+                    top: "0",
+
+                    marginInline: "0",
                   }}
                 >
                   <Typography
@@ -119,10 +118,11 @@ const About = () => {
                       backgroundColor: "#cfaf90",
                       color: "white",
                       position: "relative",
-                      top: "5%",
-                      width: "100%",
+                      width: { xs: "100%", md: "70%" },
+
+                      top: { sm: "0", md: "-4rem" },
                       p: "2rem",
-                      // fontSize: { sm: "1rem", md: "1.5rem" },
+                      fontSize: { md: "1.125rem", lg: "1.25rem" },
                     }}
                     variant="body1"
                     component="p"
@@ -136,7 +136,7 @@ const About = () => {
                         top: "-3rem",
                         right: "3rem",
                         p: "1rem",
-                        // fontSize: { sm: "1.25rem", md: "1.75rem" },
+                        fontSize: { md: "1.5rem", lg: "1.75rem" },
                       }}
                       variant="h6"
                       component="h2"
@@ -146,6 +146,73 @@ const About = () => {
                   </Typography>
                 </Container>
               </Container>
+              <Container
+                disableGutters
+                maxWidth={false}
+                sx={{
+                  position: "relative",
+                  width: { xs: "100%", md: "85%" },
+                  marginInline: "0",
+                  mt: { xs: "2rem", md: "8rem" },
+                  alignSelf: "start",
+                }}
+              >
+                <StyledImage src="/images/About/img3_test.jpg" />
+                <Container
+                  disableGutters
+                  sx={{
+                    position: { sm: "relative", md: "absolute" },
+                    top: "0",
+                    display: "flex",
+                    justifyContent: "end",
+
+                    marginInline: "0",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      backgroundColor: "#cfaf90",
+                      color: "white",
+                      position: "relative",
+                      width: { md: "50%" },
+                      top: { xs: "0", md: "-3rem" },
+                      right: { xs: "0", md: "-3rem" },
+                      p: "2rem",
+                      fontSize: { md: "1.125rem", lg: "1.25rem" },
+                    }}
+                    variant="body1"
+                    component="p"
+                  >
+                    {aboutBody4}
+                    <Typography
+                      sx={{
+                        backgroundColor: "#9eccd0",
+                        color: "white",
+                        position: "absolute",
+                        bottom: "-3rem",
+                        right: { xs: "3rem", sm: "-3rem" },
+                        p: "1rem",
+                        fontSize: { md: "1.5rem", lg: "1.75rem" },
+                      }}
+                      variant="h6"
+                      component="h2"
+                    >
+                      Closing Thoughts
+                    </Typography>
+                  </Typography>
+                </Container>
+              </Container>
+              <Typography
+                variant="h6"
+                component="p"
+                sx={{ mt: { xs: "5rem", md: "3rem" } }}
+              >
+                {aboutClose}
+              </Typography>
+              <Typography variant="h6" component="p" mt="1.5rem">
+                Thanks for checking out my project and I hope you have a good
+                day!
+              </Typography>
             </Stack>
           </Container>
         </Box>
