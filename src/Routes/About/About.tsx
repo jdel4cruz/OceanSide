@@ -78,7 +78,7 @@ const About = () => {
                         color: "white",
                         position: "absolute",
                         top: "-3rem",
-                        left: { xs: "3rem", sm: "-3rem" },
+                        left: { xs: "3rem", sm: "1rem", md: "-3rem" },
                         p: "1rem",
                         fontSize: { md: "1.5rem", lg: "1.75rem" },
                       }}
@@ -192,7 +192,7 @@ const About = () => {
                         color: "white",
                         position: "absolute",
                         bottom: "-3rem",
-                        right: { xs: "3rem", sm: "-3rem" },
+                        right: { xs: "3rem", sm: "1rem", md: "-3rem" },
                         p: "1rem",
                         fontSize: { md: "1.5rem", lg: "1.75rem" },
                       }}

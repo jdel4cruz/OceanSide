@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Container, ListItem, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/system";
 
@@ -48,4 +48,12 @@ export const StyledLink = styled(Link)<{
   @media screen and (max-width: 600px) {
     display: none;
   }
+`;
+
+export const StyledListItem = styled(ListItem)<{
+  current: string;
+  path: string;
+}>`
+  background-color: ${(props) =>
+    props.current === props.path ? "#beedf1" : ""};
 `;
