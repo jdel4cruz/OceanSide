@@ -35,15 +35,16 @@ export const StyledButton = styled(Button)`
   width: 90%;
   height: 4rem;
   margin-top: 1rem;
-
   border-radius: 0.5rem;
-  background-color: #cfaf90;
+  background: #cfaf90;
 
   border: 1px solid;
   color: white;
   font-weight: 500;
 
   :hover {
-    background-color: #b9926c;
+    background: white;
+    border: 1px solid #cfaf90;
+    color: #cfaf90;
   }
 `;

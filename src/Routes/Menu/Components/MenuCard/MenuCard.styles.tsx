@@ -21,7 +21,7 @@ export const StyledHeader = styled(CardHeader)`
 `;
 
 export const StyledDivider = styled(Divider)`
-  border: 2px solid #f6ede5;
+  border: 2px solid #b8e5e9;
 `;
 
 export const StyledContent = styled(CardContent)`

@@ -25,7 +25,9 @@ const CartItems = () => {
   if (cart.length === 0) {
     return (
       <NoCartItems alignItems="center" justifyContent="center">
-        <Typography variant="h5">Your cart is empty!</Typography>
+        <Typography variant="h5" sx={{ color: "#0000009e" }}>
+          Your cart is empty!
+        </Typography>
         <StyledButton
           size="large"
           disableElevation
