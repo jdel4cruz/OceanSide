@@ -24,7 +24,7 @@ import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 import { useNavigate } from "react-router";
 
 //Components
-import UserInput from "./Components/UserInput";
+import UserInput from "../../Components/UserInput";
 import TipButtonGroup from "./Components/TipButtonGroup";
 import CheckoutSummary from "./Components/CheckoutSummary";
 

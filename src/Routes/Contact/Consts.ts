@@ -1,6 +1,6 @@
 import { InputProps } from "../../interfaces";
 
-export const personalInformationProps: InputProps[] = [
+export const nameInformationProps: InputProps[] = [
   {
     id: "firstName",
     defaultValue: "",
@@ -23,6 +23,9 @@ export const personalInformationProps: InputProps[] = [
     sx: { width: 1 },
     required: true,
   },
+];
+
+export const detailInformationProps: InputProps[] = [
   {
     id: "email",
     defaultValue: "",
@@ -35,26 +38,47 @@ export const personalInformationProps: InputProps[] = [
     required: true,
   },
   {
-    id: "phone",
+    id: "subject",
     defaultValue: "",
-    name: "phone",
-    type: "phone",
-    label: "Phone",
+    name: "subject",
+    type: "subject",
+    label: "Subject",
     variant: "standard",
-    placeholder: "Phone",
+    placeholder: "Subject",
     sx: { width: 1 },
     required: true,
   },
+  {
+    id: "message",
+    defaultValue: "",
+    name: "message",
+    type: "message",
+    label: "Message",
+    variant: "outlined",
+    placeholder: "Message",
+    sx: { width: 1 },
+    required: true,
+    multiline: true,
+    rows: "4",
+  },
 ];
 
-export const orderNotesInputProps: InputProps = {
-  name: "orderNotes",
-  defaultValue: "",
-  variant: "standard",
-  type: "orderNotes",
-  label: "Order Notes",
-  id: "orderNotes",
-  placeholder: "Please specify any additional order notes",
-  sx: { width: 1 },
-  required: false,
-};
+export const openHours = [
+  "Closed",
+  "8:00 AM - 4:00 PM",
+  "8:00 AM - 4:00 PM",
+  "8:00 AM - 4:00 PM",
+  "8:00 AM - 4:00 PM",
+  "8:00 AM - 4:00 PM",
+  "Closed",
+];
+
+export const weekdays = [
+  "Sunday: ",
+  "Monday: ",
+  "Tuesday: ",
+  "Wednesday: ",
+  "Thursday: ",
+  "Friday: ",
+  "Saturday: ",
+];

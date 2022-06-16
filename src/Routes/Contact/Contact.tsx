@@ -1,52 +1,68 @@
 import {
   Box,
+  Container,
   List,
   ListItem,
   ListItemText,
   Fade,
   Stack,
-  Container,
   Typography,
 } from "@mui/material";
 import { getDay } from "date-fns";
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 
 // Components
 import Header from "../../Components/Header";
+import UserInput from "../../Components/UserInput";
 
 // Styles
-import { StyledImage } from "./Contact.styles";
+import { StyledButton, StyledForm, StyledImage } from "./Contact.styles";
+
+//Consts
+import {
+  openHours,
+  weekdays,
+  nameInformationProps,
+  detailInformationProps,
+} from "./Consts";
 
 const currentDate = new Date();
 const currentDay = getDay(currentDate);
-const openHours = [
-  "Closed",
-  "8:00 AM - 4:00 PM",
-  "8:00 AM - 4:00 PM",
-  "8:00 AM - 4:00 PM",
-  "8:00 AM - 4:00 PM",
-  "8:00 AM - 4:00 PM",
-  "Closed",
-];
-const weekdays = [
-  "Sunday: ",
-  "Monday: ",
-  "Tuesday: ",
-  "Wednesday: ",
-  "Thursday: ",
-  "Friday: ",
-  "Saturday: ",
-];
 
+interface IFormInputs {
+  firstName: string;
+  lastName: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 const Contact = () => {
-  console.log(currentDate);
-  console.log(currentDay);
+  const methods = useForm<IFormInputs>({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
+  });
+  console.log();
+
+  const handleOnSubmit: SubmitHandler<IFormInputs> = async (
+    data: IFormInputs
+  ) => {
+    console.log(data);
+  };
   return (
     <Fade in={true} timeout={700}>
       <Box sx={{ color: "#0000009e" }}>
         <Header />
-        <Stack sx={{ pt: "3rem" }} alignItems="center">
-          <Stack direction="row" justifyContent="space-between">
-            <List sx={{ width: "50%" }}>
+        <Stack sx={{ pt: "3rem" }} alignItems="center" spacing={6}>
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            justifyContent="space-between"
+          >
+            <List sx={{ width: { xs: "90%", sm: "50%" } }}>
               <Typography variant="h4" component="h1" sx={{ m: "1rem" }}>
                 Contact Information:
               </Typography>
@@ -88,6 +104,34 @@ const Contact = () => {
               </>
             </List>
           </Stack>
+
+          <StyledForm onSubmit={methods.handleSubmit(handleOnSubmit)}>
+            <FormProvider {...methods}>
+              <Stack spacing={4}>
+                <Typography
+                  variant="h5"
+                  component="h2"
+                  sx={{ alignSelf: "start" }}
+                >
+                  If you have any questions or comments please let us know!
+                </Typography>
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={{ xs: 4, sm: 6 }}
+                >
+                  {nameInformationProps.map((element, i) => (
+                    <UserInput {...element} key={i} />
+                  ))}
+                </Stack>
+                {detailInformationProps.map((element, i) => (
+                  <UserInput {...element} key={i} />
+                ))}
+                <StyledButton size="large" disableElevation type="submit">
+                  Submit
+                </StyledButton>
+              </Stack>
+            </FormProvider>
+          </StyledForm>
         </Stack>
       </Box>
     </Fade>

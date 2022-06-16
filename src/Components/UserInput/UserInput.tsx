@@ -1,17 +1,8 @@
 import { useFormContext, Controller } from "react-hook-form";
 import { TextField } from "@mui/material";
+import { InputProps } from "../../interfaces";
 
-const UserInput = (props: {
-  name: string;
-  defaultValue: string;
-  variant: "standard" | "filled" | "outlined" | undefined;
-  type: string;
-  label: string;
-  id: string;
-  placeholder: string;
-  sx: { width: number };
-  required: boolean;
-}) => {
+const UserInput = (props: InputProps) => {
   const {
     control,
     formState: { errors },
@@ -28,6 +19,8 @@ const UserInput = (props: {
           {...field}
           variant={props.variant}
           type={props.type}
+          multiline={props.multiline || false}
+          rows={props.rows || ""}
           label={props.label}
           id={props.id}
           placeholder={props.placeholder}

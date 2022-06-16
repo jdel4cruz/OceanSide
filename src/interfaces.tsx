@@ -57,3 +57,17 @@ export interface CartItemInterface {
   price: number;
   cartId: number;
 }
+
+export interface InputProps {
+  name: string;
+  defaultValue: string;
+  variant: "standard" | "filled" | "outlined" | undefined;
+  type: string;
+  label: string;
+  id: string;
+  placeholder: string;
+  sx: { width: number };
+  required: boolean;
+  multiline?: boolean;
+  rows?: string;
+}
