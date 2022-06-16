@@ -153,7 +153,6 @@ const Checkout = () => {
                   <ShoppingBagTwoToneIcon />
                   <Typography>Pickup</Typography>
                   <Typography variant="subtitle2">
-                    {" "}
                     164 Chardonnay Drive
                   </Typography>
                 </Stack>

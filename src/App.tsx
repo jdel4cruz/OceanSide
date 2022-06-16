@@ -8,6 +8,7 @@ import { store } from "./Redux/store";
 import Menu from "./Routes/Menu";
 import Checkout from "./Routes/Checkout";
 import About from "./Routes/About";
+import Contact from "./Routes/Contact";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -36,7 +37,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Menu />} />
           <Route path="/about" element={<About />} />
-          <Route path="/Checkout" element={<Checkout />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Provider>
     </ThemeProvider>

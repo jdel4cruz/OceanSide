@@ -22,7 +22,7 @@ import {
 } from "./Header.styles";
 
 // Interfaces
-import { NavLink } from "../../../../interfaces";
+import { NavLink } from "../../interfaces";
 
 const links: NavLink[] = [
   {
