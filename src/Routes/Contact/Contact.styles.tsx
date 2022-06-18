@@ -19,9 +19,8 @@ export const StyledForm = styled("form")`
 
 export const StyledButton = styled(Button)`
   height: 4rem;
-  margin-top: 1rem;
+  min-width: 10rem;
   align-self: start;
-  padding: 0 3rem;
 
   border-radius: 0.5rem;
 
@@ -30,5 +29,9 @@ export const StyledButton = styled(Button)`
 
   :hover {
     background-color: #b9926c;
+  }
+
+  @media screen and (max-width: 600px) {
+    min-width: 8rem;
   }
 `;

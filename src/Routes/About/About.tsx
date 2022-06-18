@@ -1,4 +1,4 @@
-import { Box, Fade, Stack, Container, Typography } from "@mui/material";
+import { Fade, Stack, Container, Typography } from "@mui/material";
 
 // Components
 import Header from "../../Components/Header";
@@ -27,7 +27,12 @@ const About = () => {
           }}
         >
           <Stack sx={{ color: "#0000009e" }} alignItems="center">
-            <Typography variant="h3" component="h1" mt="2rem">
+            <Typography
+              variant="h3"
+              component="h1"
+              mt="2rem"
+              sx={{ alignSelf: { xs: "start", sm: "center" } }}
+            >
               ABOUT
             </Typography>
             <Typography variant="h6" component="p" mt="1rem">

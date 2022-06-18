@@ -1,4 +1,4 @@
-import { IFormInputs } from "./interfaces";
+import { IFormInputs, IContactFormInputs } from "./interfaces";
 
 import { priceToNumber } from "./HelperFunctions";
 
@@ -27,6 +27,21 @@ export const fetchStripeCheckoutUrl = async (form: IFormInputs) => {
       }),
     }
   );
+
+  return response;
+};
+
+export const fetchFormSpree = async (form: IContactFormInputs) => {
+  console.log(form);
+  console.log(process.env.REACT_APP_FORMSPREE_ENDPOINT);
+
+  const response = await fetch(`${process.env.REACT_APP_FORMSPREE_ENDPOINT}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(form),
+  });
 
   return response;
 };

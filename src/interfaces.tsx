@@ -38,6 +38,14 @@ export interface IFormInputs {
   total: string;
 }
 
+export interface IContactFormInputs {
+  firstName: string;
+  lastName: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 export interface foodOptionsInterface {
   removeOptions?: foodOptionInterface[];
   addOptions?: foodOptionInterface[];

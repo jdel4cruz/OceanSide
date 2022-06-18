@@ -59,7 +59,7 @@ export const detailInformationProps: InputProps[] = [
     sx: { width: 1 },
     required: true,
     multiline: true,
-    rows: "4",
+    rows: "6",
   },
 ];
 

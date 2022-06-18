@@ -1,6 +1,6 @@
 import {
   Box,
-  Container,
+  CircularProgress,
   List,
   ListItem,
   ListItemText,
@@ -10,6 +10,10 @@ import {
 } from "@mui/material";
 import { getDay } from "date-fns";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
+import { useState, useRef, useEffect } from "react";
+
+// API
+import { fetchFormSpree } from "../../API";
 
 // Components
 import Header from "../../Components/Header";
@@ -17,6 +21,9 @@ import UserInput from "../../Components/UserInput";
 
 // Styles
 import { StyledButton, StyledForm, StyledImage } from "./Contact.styles";
+
+//Interfaces
+import { IContactFormInputs } from "../../interfaces";
 
 //Consts
 import {
@@ -29,15 +36,15 @@ import {
 const currentDate = new Date();
 const currentDay = getDay(currentDate);
 
-interface IFormInputs {
-  firstName: string;
-  lastName: string;
-  email: string;
-  subject: string;
-  message: string;
-}
 const Contact = () => {
-  const methods = useForm<IFormInputs>({
+  const [query, setQuery] = useState("idle");
+  const timerRef = useRef<number>();
+
+  useEffect(() => {
+    clearTimeout(timerRef.current);
+  }, []);
+
+  const methods = useForm<IContactFormInputs>({
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -46,13 +53,29 @@ const Contact = () => {
       message: "",
     },
   });
-  console.log();
 
-  const handleOnSubmit: SubmitHandler<IFormInputs> = async (
-    data: IFormInputs
+  const handleOnSubmit: SubmitHandler<IContactFormInputs> = async (
+    data: IContactFormInputs
   ) => {
-    console.log(data);
+    setQuery("progress");
+    const response = await fetchFormSpree(data);
+    try {
+      console.log(response);
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      console.log("submission was successful");
+
+      timerRef.current = window.setTimeout(() => {
+        setQuery("success");
+      }, 1000);
+    } catch (e) {
+      if (e instanceof Error) {
+        console.log(e.message);
+      }
+    }
   };
+
   return (
     <Fade in={true} timeout={700}>
       <Box sx={{ color: "#0000009e" }}>
@@ -61,6 +84,7 @@ const Contact = () => {
           <Stack
             direction={{ xs: "column", sm: "row" }}
             justifyContent="space-between"
+            sx={{ width: { xs: "90%", sm: "80%" } }}
           >
             <List sx={{ width: { xs: "90%", sm: "50%" } }}>
               <Typography variant="h4" component="h1" sx={{ m: "1rem" }}>
@@ -126,9 +150,22 @@ const Contact = () => {
                 {detailInformationProps.map((element, i) => (
                   <UserInput {...element} key={i} />
                 ))}
-                <StyledButton size="large" disableElevation type="submit">
-                  Submit
-                </StyledButton>
+                <Stack direction="row" alignItems="center" spacing={4}>
+                  <StyledButton size="large" disableElevation type="submit">
+                    Submit
+                  </StyledButton>
+                  <Box>
+                    {query === "success" ? (
+                      <Typography variant="body2" component="p">
+                        Thank you for the submission! We will respond shortly!
+                      </Typography>
+                    ) : (
+                      <Fade in={query === "progress"} timeout={500}>
+                        <CircularProgress />
+                      </Fade>
+                    )}
+                  </Box>
+                </Stack>
               </Stack>
             </FormProvider>
           </StyledForm>
