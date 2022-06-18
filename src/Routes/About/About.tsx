@@ -18,10 +18,9 @@ import {
 
 const About = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
-  console.log(showScrollButton);
 
   const onScroll = () => {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 450) {
       setShowScrollButton(true);
     } else {
       setShowScrollButton(false);

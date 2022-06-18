@@ -18,6 +18,7 @@ import { fetchFormSpree } from "../../API";
 // Components
 import Header from "../../Components/Header";
 import UserInput from "../../Components/UserInput";
+import ScrollToTopButton from "../../Components/ScrollToTopButton";
 
 // Styles
 import { StyledButton, StyledForm, StyledImage } from "./Contact.styles";
@@ -38,11 +39,35 @@ const currentDay = getDay(currentDate);
 
 const Contact = () => {
   const [query, setQuery] = useState("idle");
-  const timerRef = useRef<number>();
+  const [showScrollButton, setShowScrollButton] = useState(false);
 
   useEffect(() => {
     clearTimeout(timerRef.current);
   }, []);
+
+  const onScroll = () => {
+    if (window.scrollY > 450) {
+      setShowScrollButton(true);
+    } else {
+      setShowScrollButton(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  const timerRef = useRef<number>();
 
   const methods = useForm<IContactFormInputs>({
     defaultValues: {
@@ -87,6 +112,10 @@ const Contact = () => {
         }}
       >
         <Header />
+        <ScrollToTopButton
+          isVisible={showScrollButton}
+          scrollToTop={scrollToTop}
+        />
         <Stack sx={{ pt: "3rem" }} alignItems="center" spacing={6}>
           <Stack
             direction={{ xs: "column", sm: "row" }}
