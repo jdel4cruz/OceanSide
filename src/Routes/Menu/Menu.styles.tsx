@@ -16,7 +16,7 @@ export const HeaderContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-block: 3rem 1rem;
+  padding-block: 3rem 2rem;
 
   background-image: url(/images/background_img6.jpg);
   background-repeat: no-repeat;
