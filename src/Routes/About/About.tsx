@@ -1,7 +1,9 @@
 import { Fade, Stack, Container, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 
 // Components
 import Header from "../../Components/Header";
+import ScrollButton from "../../Components/ScrollToTopButton";
 
 // Styles
 import { StyledImage } from "./About.styles";
@@ -15,9 +17,36 @@ import {
 } from "./Consts";
 
 const About = () => {
+  const [showScrollButton, setShowScrollButton] = useState(false);
+  console.log(showScrollButton);
+
+  const onScroll = () => {
+    if (window.scrollY > 300) {
+      setShowScrollButton(true);
+    } else {
+      setShowScrollButton(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <Fade in={true} timeout={700}>
       <Stack>
+        <ScrollButton isVisible={showScrollButton} scrollToTop={scrollToTop} />
         <Header />
         <Container
           sx={{

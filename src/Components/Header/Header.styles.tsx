@@ -22,8 +22,13 @@ export const HeaderContainer = styled(Container)`
 
 export const HeroText = styled(Typography)`
   font-family: "Rochester", cursive;
-  font-size: 4rem;
-  margin-top: 1rem;
+  font-size: 3rem;
+  margin-top: 3rem;
+
+  @media screen and (min-width: 600px) {
+    font-size: 4rem;
+    margin-top: 1rem;
+  }
 
   color: #ffffff;
 `;

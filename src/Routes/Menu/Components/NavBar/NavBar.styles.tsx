@@ -33,7 +33,7 @@ export const StyledLink = styled(Link)<{
     props.current === props.path ? "underline" : "none"};
   text-underline-position: under;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 599px) {
     display: none;
   }
 `;
