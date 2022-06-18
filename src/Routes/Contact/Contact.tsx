@@ -78,13 +78,21 @@ const Contact = () => {
 
   return (
     <Fade in={true} timeout={700}>
-      <Box sx={{ color: "#0000009e" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          color: "#0000009e",
+        }}
+      >
         <Header />
         <Stack sx={{ pt: "3rem" }} alignItems="center" spacing={6}>
           <Stack
             direction={{ xs: "column", sm: "row" }}
             justifyContent="space-between"
-            sx={{ width: { xs: "90%", sm: "80%" } }}
+            sx={{ width: "90%" }}
+            spacing={6}
           >
             <List sx={{ width: { xs: "90%", sm: "50%" } }}>
               <Typography variant="h4" component="h1" sx={{ m: "1rem" }}>
