@@ -72,7 +72,5 @@ app.get("/create-checkout-session", (req, res) => {
 });
 
 app.listen(PORT, () =>
-  console.log(
-    `Server runing on port: http://localhost:${process.env.SERVER_PORT}`
-  )
+  console.log(`Server runing on port: ${process.env.SERVER_PORT}`)
 );

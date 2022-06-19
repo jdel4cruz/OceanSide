@@ -4,6 +4,7 @@ import { priceToNumber } from "./HelperFunctions";
 
 export const fetchStripeCheckoutUrl = async (form: IFormInputs) => {
   console.log(form.cart);
+  console.log(process.env.REACT_APP_SERVER_URL);
   const response = await fetch(
     `${process.env.REACT_APP_SERVER_URL}/create-checkout-session`,
     {
