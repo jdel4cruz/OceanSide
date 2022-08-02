@@ -60,6 +60,11 @@ export const Price = styled(Typography)`
   width: 10rem;
 `;
 
+export const StyledImg = styled("img")`
+  aspect-ratio: 4 / 3;
+  max-width: 100%;
+`;
+
 export const StyledButton = styled(Button)`
   min-width: 100%;
   height: 4rem;

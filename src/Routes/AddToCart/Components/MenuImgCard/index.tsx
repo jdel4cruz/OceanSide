@@ -1,6 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { CardMedia, Typography, Stack, IconButton } from "@mui/material";
+import {
+  CardMedia,
+  CircularProgress,
+  Typography,
+  Stack,
+  IconButton,
+} from "@mui/material";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import { useSelector, useDispatch } from "react-redux";
@@ -21,6 +27,7 @@ import {
   StyledHeader,
   StyledContent,
   StyledButton,
+  StyledImg,
   Price,
 } from "./MenuImgCard.styles";
 
@@ -39,8 +46,15 @@ const initialOptions: InitialOptions = {};
 const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
   const [qty, setQty] = useState(1);
   const [extraOptions, setExtraOptions] = useState(initialOptions);
+  const [loading, setLoading] = useState(true);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
 
   const price = totalPrice(extraOptions, menuItem, qty);
 
@@ -66,10 +80,16 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
           <HomeRoundedIcon sx={{ fontSize: "3rem" }} />
         </IconButton>
       </Stack>
-      <CardMedia
+      {/* <CardMedia
         component="img"
         image={menuItem.imgPath}
-        sx={{ height: "auto", maxWidth: "100%" }}
+        sx={{ aspectRatio: "4 / 3", maxWidth: "100%" }}
+      /> */}
+      {loading && <CircularProgress />}
+      <StyledImg
+        src={menuItem.imgPath}
+        alt={"Menu Item"}
+        onLoad={() => setLoading(false)}
       />
       <StyledHeader title={menuItem.foodName} />
 
