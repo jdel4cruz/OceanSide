@@ -8,7 +8,9 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 
-export const StyledCard = styled(Card)`
+export const StyledCard = styled(Card)<{ isLoading: boolean }>(
+  ({ isLoading }) => `
+  display: ${isLoading ? "none" : "visible"};
   box-sizing: border-box;
   padding: 1rem;
   padding-left: 1.5rem;
@@ -33,7 +35,8 @@ export const StyledCard = styled(Card)`
   @media screen and (min-width: 400px) {
     width: 100%;
   }
-`;
+`
+);
 
 export const StyledHeader = styled(CardHeader)`
   padding: 0.5rem 0;
