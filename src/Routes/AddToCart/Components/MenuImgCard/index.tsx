@@ -54,7 +54,6 @@ const MenuImgCard = ({ menuItem }: { menuItem: MenuItemPropsInterface }) => {
 
   return (
     <>
-      {loading && <CircularProgress />}
       <StyledCard variant="outlined" isLoading={loading}>
         <Stack
           sx={{ width: 1, mb: "1rem" }}

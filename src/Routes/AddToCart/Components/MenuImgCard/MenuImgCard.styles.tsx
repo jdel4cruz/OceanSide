@@ -10,7 +10,7 @@ import { styled } from "@mui/system";
 
 export const StyledCard = styled(Card)<{ isLoading: boolean }>(
   ({ isLoading }) => `
-  display: ${isLoading ? "none" : "visible"};
+  visibility: ${isLoading ? "hidden" : "visible"};
   box-sizing: border-box;
   padding: 1rem;
   padding-left: 1.5rem;
