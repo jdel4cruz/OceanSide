@@ -6,7 +6,7 @@ import Header from "../../Components/Header";
 import ScrollButton from "../../Components/ScrollToTopButton";
 
 // Styles
-import { StyledImage } from "./About.styles";
+import { StyledStack, StyledImage } from "./About.styles";
 
 import {
   aboutBody,
@@ -18,6 +18,7 @@ import {
 
 const About = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const onScroll = () => {
     if (window.scrollY > 450) {
@@ -43,8 +44,8 @@ const About = () => {
   };
 
   return (
-    <Fade in={true} timeout={700}>
-      <Stack>
+    <Fade in={true} timeout={2000}>
+      <StyledStack isLoading={loading}>
         <ScrollButton isVisible={showScrollButton} scrollToTop={scrollToTop} />
         <Header />
         <Container
@@ -77,7 +78,10 @@ const About = () => {
                 marginInline: "0",
               }}
             >
-              <StyledImage src="/images/About/img1_test.jpg" />
+              <StyledImage
+                src="/images/About/img1_test.jpg"
+                onLoad={() => setLoading(false)}
+              />
               <Container
                 disableGutters
                 sx={{
@@ -248,7 +252,7 @@ const About = () => {
             </Typography>
           </Stack>
         </Container>
-      </Stack>
+      </StyledStack>
     </Fade>
   );
 };
