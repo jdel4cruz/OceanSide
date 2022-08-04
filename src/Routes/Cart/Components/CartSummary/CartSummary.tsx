@@ -6,6 +6,8 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { updateIsCartOpen } from "../../../../Redux/Reducers/cartReducer";
 
 //Styles
 import { StyledButton, StyledDivider } from "./CartSummary.styles";
@@ -15,6 +17,7 @@ import { priceToString } from "../../../../HelperFunctions";
 
 const CartSummary = ({ tax, total }: { tax: number; total: number }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   if (total === 0) {
     return <></>;
@@ -56,7 +59,10 @@ const CartSummary = ({ tax, total }: { tax: number; total: number }) => {
         <StyledButton
           size="large"
           disableElevation
-          onClick={() => navigate("/checkout")}
+          onClick={() => {
+            navigate("/checkout");
+            dispatch(updateIsCartOpen({ isOpen: false }));
+          }}
         >
           Proceed to Checkout
         </StyledButton>
