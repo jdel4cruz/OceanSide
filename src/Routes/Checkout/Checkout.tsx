@@ -21,12 +21,14 @@ import { useSelector } from "react-redux";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import ShoppingBagTwoToneIcon from "@mui/icons-material/ShoppingBagTwoTone";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 
 //Components
 import UserInput from "../../Components/UserInput";
 import TipButtonGroup from "./Components/TipButtonGroup";
 import CheckoutSummary from "./Components/CheckoutSummary";
+import ProgressModal from "./Components/ProgressModal";
 
 //Styles
 import { StyledButton, StyledForm } from "./Checkout.styles";
@@ -45,6 +47,8 @@ import { IFormInputs } from "../../interfaces";
 import { personalInformationProps, orderNotesInputProps } from "./Consts";
 
 const Checkout = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { tax, total, cart } = useSelector((state: RootState) => state.cart);
   const navigate = useNavigate();
   const methods = useForm<IFormInputs>({
@@ -61,10 +65,18 @@ const Checkout = () => {
     },
   });
 
+  const onSuccessfulSubmit = (url: string) => {
+    setTimeout(() => {
+      window.location.replace(url);
+    }, 2000);
+  };
+
   const handleOnSubmit: SubmitHandler<IFormInputs> = async (
     data: IFormInputs
   ) => {
     console.log(data);
+    setIsOpen(true);
+    setIsLoading(true);
 
     const response = await fetchStripeCheckoutUrl(data);
     try {
@@ -72,8 +84,9 @@ const Checkout = () => {
       if (!response.ok) {
         throw Error(response.statusText);
       }
+      setIsLoading(false);
       const { url } = await response.json();
-      window.location.replace(url);
+      onSuccessfulSubmit(url);
     } catch (e) {
       if (e instanceof Error) {
         console.log(e.message);
@@ -127,6 +140,7 @@ const Checkout = () => {
         minHeight: "100vh",
       }}
     >
+      <ProgressModal isOpen={isOpen} isLoading={isLoading} />
       <FormProvider {...methods}>
         <StyledForm onSubmit={methods.handleSubmit(handleOnSubmit)}>
           <Stack spacing={0} sx={{ pb: "3rem" }} alignItems="center">
