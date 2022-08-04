@@ -124,6 +124,7 @@ const Checkout = () => {
         backgroundColor: "#f6f0eb",
         display: "flex",
         justifyContent: "center",
+        minHeight: "100vh",
       }}
     >
       <FormProvider {...methods}>
@@ -136,7 +137,15 @@ const Checkout = () => {
                 backgroundColor: "#a7e2e7",
               }}
             >
-              <IconButton onClick={() => navigate("/")}>
+              <IconButton
+                onClick={() => navigate("/")}
+                sx={{
+                  pr: "0",
+                  "&.MuiButtonBase-root:hover": {
+                    backgroundColor: "transparent",
+                  },
+                }}
+              >
                 <ArrowBackIosNewRoundedIcon />
                 <Typography sx={{ ml: "1rem" }} variant="h4">
                   Checkout
