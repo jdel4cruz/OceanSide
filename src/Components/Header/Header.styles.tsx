@@ -50,6 +50,10 @@ export const StyledLink = styled(Link)<{
   }
 `;
 
+export const HeroLink = styled(Link)`
+  text-decoration: none;
+`;
+
 export const StyledListItem = styled(ListItem)<{
   current: string;
   path: string;

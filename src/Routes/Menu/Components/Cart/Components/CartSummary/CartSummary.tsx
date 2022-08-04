@@ -7,13 +7,13 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
-import { updateIsCartOpen } from "../../../../Redux/Reducers/cartReducer";
+import { updateIsCartOpen } from "../../../../../../Redux/Reducers/cartReducer";
 
 //Styles
 import { StyledButton, StyledDivider } from "./CartSummary.styles";
 
 //Helper Functions
-import { priceToString } from "../../../../HelperFunctions";
+import { priceToString } from "../../../../../../HelperFunctions";
 
 const CartSummary = ({ tax, total }: { tax: number; total: number }) => {
   const navigate = useNavigate();

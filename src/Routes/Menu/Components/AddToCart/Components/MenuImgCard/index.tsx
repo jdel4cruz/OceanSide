@@ -13,7 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   updateIsAddToCartOpen,
   newCartItem,
-} from "../../../../Redux/Reducers/cartReducer";
+} from "../../../../../../Redux/Reducers/cartReducer";
 
 import FoodOptions from "../FoodOptions";
 
@@ -32,10 +32,10 @@ import {
 } from "./MenuImgCard.styles";
 
 //Helper Functions
-import { priceToString, totalPrice } from "../../../../HelperFunctions";
+import { priceToString, totalPrice } from "../../../../../../HelperFunctions";
 
 //Interfaces
-import { MenuItemPropsInterface } from "../../../../interfaces";
+import { MenuItemPropsInterface } from "../../../../../../interfaces";
 
 interface InitialOptions {
   [index: string]: boolean;

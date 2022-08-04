@@ -4,7 +4,7 @@ import {
   addCartItem,
   removeCartItem,
   deleteCartItem,
-} from "../../../../Redux/Reducers/cartReducer";
+} from "../../../../../../Redux/Reducers/cartReducer";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 

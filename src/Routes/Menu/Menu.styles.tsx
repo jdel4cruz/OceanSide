@@ -1,4 +1,5 @@
 import { Container, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import { styled } from "@mui/system";
 
 export const Wrapper = styled(Container)`
@@ -76,4 +77,8 @@ export const HeroText = styled(Typography)`
   }
 
   color: #ffffff;
+`;
+
+export const HeroLink = styled(Link)`
+  text-decoration: none;
 `;

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import { deleteCartItem } from "../../../../Redux/Reducers/cartReducer";
-import { AppDispatch } from "../../../../Redux/store";
+import { deleteCartItem } from "../../../../../../Redux/Reducers/cartReducer";
+import { AppDispatch } from "../../../../../../Redux/store";
 
 import { Typography } from "@mui/material";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
@@ -18,10 +18,10 @@ import {
 } from "./CartItem.styles";
 
 //Helper Functions
-import { priceToString } from "../../../../HelperFunctions";
+import { priceToString } from "../../../../../../HelperFunctions";
 
 //Interfaces
-import { MenuItemPropsInterface } from "../../../../interfaces";
+import { MenuItemPropsInterface } from "../../../../../../interfaces";
 import { CardMedia, Container, IconButton } from "@mui/material";
 
 const CartItem = ({

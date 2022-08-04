@@ -1,6 +1,6 @@
 import { Fade, Modal } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { updateIsAddToCartOpen } from "../../Redux/Reducers/cartReducer";
+import { updateIsAddToCartOpen } from "../../../../Redux/Reducers/cartReducer";
 
 //Components
 import MenuImgCard from "./Components/MenuImgCard";
@@ -9,11 +9,11 @@ import MenuImgCard from "./Components/MenuImgCard";
 import { Wrapper } from "./AddToCart.styles";
 
 //Interfaces
-import { MenuItemPropsInterface } from "../../interfaces";
-import { RootState } from "../../Redux/store";
+import { MenuItemPropsInterface } from "../../../../interfaces";
+import { RootState } from "../../../../Redux/store";
 
 //Data
-import { menuItemsArray } from "../../MenuItems";
+import { menuItemsArray } from "../../../../MenuItems";
 
 const AddToCart = () => {
   const { isAddToCartOpen, currentMenuId } = useSelector(

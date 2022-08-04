@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -17,6 +18,7 @@ import { useNavigate } from "react-router";
 import {
   HeaderContainer,
   HeroText,
+  HeroLink,
   StyledLink,
   StyledListItem,
 } from "./Header.styles";
@@ -109,7 +111,9 @@ const Header = () => {
           </StyledLink>
         ))}
       </Stack>
-      <HeroText>OceanSide</HeroText>
+      <HeroLink to={"/"}>
+        <HeroText>OceanSide</HeroText>
+      </HeroLink>
     </HeaderContainer>
   );
 };

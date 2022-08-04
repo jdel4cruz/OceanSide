@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../../../../Redux/store";
+import { RootState } from "../../../../../../Redux/store";
 import { useDispatch } from "react-redux";
-import { updateIsCartOpen } from "../../../../Redux/Reducers/cartReducer";
+import { updateIsCartOpen } from "../../../../../../Redux/Reducers/cartReducer";
 //Components
 import CartItem from "../CartItem";
 

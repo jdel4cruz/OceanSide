@@ -1,6 +1,6 @@
 import { Stack, Modal, Typography, IconButton } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { updateIsCartOpen } from "../../Redux/Reducers/cartReducer";
+import { updateIsCartOpen } from "../../../../Redux/Reducers/cartReducer";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 
 //Components
@@ -11,7 +11,7 @@ import CartSummary from "./Components/CartSummary";
 import { Wrapper } from "./Cart.styles";
 
 //Interfaces
-import { RootState } from "../../Redux/store";
+import { RootState } from "../../../../Redux/store";
 
 const Cart = () => {
   const { isCartOpen, tax, total } = useSelector(
