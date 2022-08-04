@@ -1,4 +1,4 @@
-import { Fade, Modal } from "@mui/material";
+import { Modal } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { updateIsAddToCartOpen } from "../../../../Redux/Reducers/cartReducer";
 
@@ -38,15 +38,13 @@ const AddToCart = () => {
         justifyContent: "center",
       }}
     >
-      <Fade in={isAddToCartOpen} timeout={300}>
-        <Wrapper disableGutters>
-          {menuItem !== undefined ? (
-            <MenuImgCard menuItem={menuItem} />
-          ) : (
-            <div>ERROR</div>
-          )}
-        </Wrapper>
-      </Fade>
+      <Wrapper disableGutters>
+        {menuItem !== undefined ? (
+          <MenuImgCard menuItem={menuItem} />
+        ) : (
+          <div>ERROR</div>
+        )}
+      </Wrapper>
     </Modal>
   );
 };

@@ -19,6 +19,10 @@ export const StyledCard = styled(Card)<{ isLoading: boolean }>(
 
   color: #0000009e;
 
+  opacity: ${isLoading ? 0 : 100};
+
+  transition: opacity 250ms ease-out;
+
   ::-webkit-scrollbar {
     width: 0.5rem;
   }
